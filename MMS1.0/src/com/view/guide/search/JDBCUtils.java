@@ -1,0 +1,186 @@
+package com.view.guide.search;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class JDBCUtils {
+
+    //测试
+    public static void main(String[] args) {
+        try {
+            List<Map<String, Object>> list = JDBCUtils.findModeResult("select * from departinfo", null);
+            for(Map<String, Object> map : list) {
+                System.out.println(map);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static final String USERNAME = "MMS";
+    private static final String PASSWORD = "tiger";
+    private static final String DRIVER = "oracle.jdbc.driver.OracleDriver";
+    private static final String URL = "jdbc:oracle:thin:@localhost:1521:orcl";
+    private static Connection connection = null;
+    private static PreparedStatement preparedStatement = null;
+    private static ResultSet resultSet = null;
+
+    private JDBCUtils() { }
+
+    static {
+        try {
+            Class.forName(DRIVER);
+        } catch (ClassNotFoundException e) {
+            System.out.println("jdbc加载失败");
+        }
+    }
+
+    /**
+     * 获得数据库连接
+     *
+     * @return
+     */
+    public static void connect() {
+        try {
+            if(connection == null) {
+                connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            }
+        } catch (SQLException e) {
+            System.out.println("连接数据库失败");
+        }
+    }
+
+    /**
+     * 增加 删除 修改
+     *
+     * @param sql
+     * @param params
+     * @return
+     * @throws SQLException
+     */
+    public static boolean updateByPreparedStatement(String sql, List<Object> params) throws SQLException {
+        connect();
+        boolean flag = false;
+        int result = -1;
+        preparedStatement = connection.prepareStatement(sql);
+        int index = 1;
+        if (params != null && !params.isEmpty()) {
+            for (int i = 0; i < params.size(); i++) {
+                preparedStatement.setObject(index++, params.get(i));
+            }
+        }
+        result = preparedStatement.executeUpdate();
+        flag = result > 0 ? true : false;
+        return flag;
+    }
+
+    /**
+     * 查询单条记录
+     *
+     * @param sql
+     * @param params
+     * @return
+     * @throws SQLException
+     */
+    public static Map<String, Object> findSimpleResult(String sql, List<Object> params) throws SQLException {
+        connect();
+        Map<String, Object> map = new HashMap<>();
+        int index = 1;
+        preparedStatement = connection.prepareStatement(sql);
+        if (params != null && !params.isEmpty()) {
+            for (int i = 0; i < params.size(); i++) {
+                preparedStatement.setObject(index++, params.get(i));
+            }
+        }
+        resultSet = preparedStatement.executeQuery();
+        ResultSetMetaData metaData = resultSet.getMetaData();
+        int cols_len = metaData.getColumnCount();
+        if (resultSet.next()) {
+            for (int i = 0; i < cols_len; i++) {
+                String cols_name = metaData.getColumnName(i + 1);
+                Object cols_value = resultSet.getObject(cols_name);
+                if (cols_value == null) {
+                    cols_value = "";
+                }
+                map.put(cols_name, cols_value);
+            }
+        }
+        return map;
+    }
+
+    /**
+     * 查询多条记录
+     * @param sql
+     * @param params
+     * @return
+     * @throws SQLException
+     */
+    public static List<Map<String, Object>> findModeResult(String sql, List<Object> params) throws SQLException {
+        connect();
+        List<Map<String, Object>> list = new ArrayList<>();
+        int index = 1;
+        preparedStatement = connection.prepareStatement(sql);
+        if(params != null && !params.isEmpty()) {
+            for(int i = 0; i < params.size(); i++) {
+                preparedStatement.setObject(index++, params.get(i));
+            }
+        }
+        resultSet = preparedStatement.executeQuery();
+        ResultSetMetaData metaData = resultSet.getMetaData();
+        int cols_len = metaData.getColumnCount();
+        while(resultSet.next()) {
+            Map<String, Object> map = new HashMap<>();
+            for(int i = 0; i < cols_len; i++) {
+                String cols_name = metaData.getColumnName(i + 1);
+                Object cols_value = resultSet.getObject(cols_name);
+                if(cols_value == null) {
+                    cols_value = "";
+                }
+                map.put(cols_name, cols_value);
+            }
+            list.add(map);
+        }
+        return list;
+    }
+
+    /**
+     * 释放数据库连接
+     */
+    public static void close() {
+        connect();
+        if(resultSet != null) {
+            try {
+                resultSet.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                resultSet = null;
+            }
+        }
+
+        if(preparedStatement != null) {
+            try {
+                preparedStatement.close();
+            } catch(SQLException e) {
+                e.printStackTrace();
+            } finally {
+                preparedStatement =  null;
+            }
+        }
+
+        if(connection != null) {
+            try {
+                connection.close();
+            } catch(SQLException e) {
+                e.printStackTrace();
+            } finally {
+                connection = null;
+            }
+        }
+    }
+
+
+}

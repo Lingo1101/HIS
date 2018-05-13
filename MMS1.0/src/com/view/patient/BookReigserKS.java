@@ -115,7 +115,6 @@ public class BookReigserKS extends JFrame{
         });
         new ChooseBox(this);
 
-        //确定约事件:将病人预约的内容插入数据库（还没实现）
         //确定约事件:将病人预约的内容插入数据库
         Confirmbutton.addMouseListener(new MouseAdapter() {
             @Override
@@ -129,6 +128,12 @@ public class BookReigserKS extends JFrame{
                 }catch (Exception e3){
                     e3.printStackTrace();
                 }
+                JOptionPane.showMessageDialog(null, "恭喜你预约成功！！！");
+                Ksname.setText("");
+                Check.removeAllItems();
+                time.setText("");
+                int number = Integer.parseInt(patients) + 1;
+                BookNumber.setText("您当前的排号数是：" + number );
             }
         });
     }
@@ -160,7 +165,8 @@ public class BookReigserKS extends JFrame{
             e.printStackTrace();
         }
         jTextFields[0].setText(maps.get("PatientID".toUpperCase()).toString());
-        jTextFields[1].setText(maps.get("GENDER".toUpperCase()).toString());
+        jTextFields[1].setText(maps.get("PatientName".toUpperCase()).toString());
+        jTextFields[2].setText(maps.get("GENDER".toUpperCase()).toString());
         jTextFields[3].setText(maps.get("IDNumber".toUpperCase()).toString());
         for(int i = 0;i < 4;i ++) {
             jPanelA.add(jTextFields[i]);

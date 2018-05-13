@@ -40,8 +40,10 @@ public class PatientHome extends JFrame {
 
 
     //构造函数
-    public PatientHome() {
+    public PatientHome(String _str) {
+        this.patientId = _str;
         initComponents();
+        getIfos();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();//获取主显示器屏幕大小即获取PC屏幕尺寸
         screenWidth = screenSize.width;
         screenHeight = screenSize.height;
@@ -172,7 +174,7 @@ public class PatientHome extends JFrame {
     }
     //首页事件
     private void HomePageMouseClicked(MouseEvent e) {
-        new PatientHome();
+        new PatientHome(patientId);
     }
     //专家事件
     private void ProfessorMouseClicked(MouseEvent e) {
@@ -181,11 +183,6 @@ public class PatientHome extends JFrame {
     //科室事件
     private void DepartmentGuideMouseClicked(MouseEvent e) {
         new Department();
-    }
-    //获取病人ID方法
-    public void setUserID(String _str){
-        this.patientId = _str;
-        getIfos();
     }
 
     /**
@@ -200,13 +197,13 @@ public class PatientHome extends JFrame {
         }catch (SQLException e){
             e.printStackTrace();
         }
-        lab[1].setText(maps.get("PATIENTID").toString());
-        lab[3].setText(maps.get("PATIENTNAME").toString());
-        lab[5].setText(maps.get("GENDER").toString());
-        lab[7].setText(maps.get("BIRTHDAY").toString());
-        lab[9].setText(maps.get("IDNUMBER").toString());
-        lab[11].setText(maps.get("PHONENUMBER").toString());
-        lab[13].setText(maps.get("ADDRESS").toString());
+        lab[1].setText(maps.get("PATIENTID".toUpperCase()).toString());
+        lab[3].setText(maps.get("PATIENTNAME".toUpperCase()).toString());
+        lab[5].setText(maps.get("GENDER".toUpperCase()).toString());
+        lab[7].setText(maps.get("BIRTHDAY".toUpperCase()).toString());
+        lab[9].setText(maps.get("IDNUMBER".toUpperCase()).toString());
+        lab[11].setText(maps.get("PHONENUMBER".toUpperCase()).toString());
+        lab[13].setText(maps.get("ADDRESS".toUpperCase()).toString());
 
     }
     //内科事件

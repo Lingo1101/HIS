@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
@@ -21,7 +22,8 @@ public class BookReigserKS extends JFrame{
     public String patientId1;//病人ID
     public String patients;//所预约科室的总人数
     public String departID;//所预约科室的ID
-    public static String[]Ksxm = new String[4];//科室对应的项目
+    public static String XmId = null ;
+    public static String PriId;//所预约科室的项目ID
 
     JTextField[] jTextFields = {new JTextField("354"),new JTextField("767"),new JTextField("765"),new JTextField("354")};
     JLabel[]     jLabelsName = {new JLabel("用户ID："),new JLabel("用户名："),new JLabel("用户性别："),
@@ -30,7 +32,7 @@ public class BookReigserKS extends JFrame{
 
     JComboBox   Ldepart ;
     JButton      Confirmbutton = new JButton("确认预约");
-    JComboBox    Check ;
+    JComboBox    Check = new JComboBox();
     JPanel       jPanelA = new JPanel();
     JPanel       jPanelB = new JPanel();
     JPanel       jPanelC = new JPanel();
@@ -53,7 +55,6 @@ public class BookReigserKS extends JFrame{
         this.setSize(totalWidth + 16, totalHeight);
         //获取任务栏高度,以便将软件位置初始化为屏幕正中央
         BookNumber.setFont(new Font("宋体",Font.PLAIN,15));
-        Check = new JComboBox(Ksxm);
         jPanelA.setLayout(null);   jPanelB.setLayout(null);
         jPanelA.setBounds(340,200,totalWidth - 340,totalHeight - 200);
         jPanelB.setBounds(250,200,90,totalHeight - 200);
@@ -109,22 +110,24 @@ public class BookReigserKS extends JFrame{
         Check.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if(Ksname != null){
-                    gg();
-                }
+                getproject();
             }
         });
+        new ChooseBox(this);
 
         //确定约事件:将病人预约的内容插入数据库（还没实现）
+        //确定约事件:将病人预约的内容插入数据库
         Confirmbutton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                Gid();
                 String strSQL;
-                strSQL = "Insert into AppointmentCheckInfo(CheckNum,PatientID,ProjectID) values('"+ patients + "','"+ patientId1 +"','"+ patients +"')";
-                try {
+                strSQL = "Insert into AppointmentCheckInfo(CheckNum,PatientID,ProjectID) values('"+ patients + "','"+ jTextFields[0].getText().trim() +"','"+ PriId +"')";
+                Map<String, Object> maps = new HashMap<>();
+                try{
                     JDBCUtils.updateByPreparedStatement(strSQL, null);//更新数据库内容
-                } catch (SQLException e1) {
-                    e1.printStackTrace();
+                }catch (Exception e3){
+                    e3.printStackTrace();
                 }
             }
         });
@@ -144,7 +147,6 @@ public class BookReigserKS extends JFrame{
         this.patientId1 = _str;
         getIfos();
     }
-
     /**
      * 获取病人基本信息
      */
@@ -172,26 +174,54 @@ public class BookReigserKS extends JFrame{
         List<Map<String, Object>> lists;
         try {
             lists = JDBCUtils.findModeResult(sql, null);
-            for(int i = 1; i <= lists.size(); i++){
-                patients = i + "";//int转string
+            if(lists.size() == 0) {
+                patients = 1 + "";//int转string
                 BookNumber.setText("您当前的排号数是：" + patients );
+            } else {
+                for (int i = 1; i <= lists.size(); i++) {
+                    patients = i + 1 +"";//int转string
+                    BookNumber.setText("您当前的排号数是：" + patients);
+                }
             }
         }catch (Exception e){ }
     }
-
-    /**
-     * 获取所选科室对应的项目
-     */
-    public static void getproject(String[] _str){
-        for(int i = 0;i < 4;i ++){
-            Ksxm[i] = _str[i];
-        }
-    }
-
     /**
      * 更新ComboBox里的内容
      */
-    public void gg(){
-        Check = new JComboBox(Ksxm);
+    public void getproject(){
+        Check.removeAllItems();
+        addChoices();
     }
+    public void addChoices() {
+        String sql = "select ProjectName from HspPriceInfo where DepartID = '" + XmId + "' ";
+        try {
+            List<Map<String, Object>> modeResult = JDBCUtils.findModeResult(sql, null);
+            for(Map<String, Object> maps : modeResult) {
+                Check.addItem(maps.get("ProjectName".toUpperCase()));
+            }
+        }catch (SQLException e2){
+            e2.printStackTrace();
+        }
+    }
+    /**
+     * 获取所选科室对应的项目的ID
+     */
+    public static void Did(String _str){
+        XmId = _str;
+    }
+    /**
+     * 获取所选科室对应的项目的PriceID
+     */
+    public void Gid(){
+        String priceid = "select * from HspPriceInfo where ProjectName = '" + Check.getSelectedItem().toString() +"'";
+        Map<String, Object> maps = new HashMap<>();
+        try{
+            //单条记录用findSimpleResult
+            maps = JDBCUtils.findSimpleResult(priceid, null);
+            PriId =  maps.get("ProjectID".toUpperCase()).toString();
+        }catch (Exception e1){
+            e1.printStackTrace();
+        }
+    }
+
 }

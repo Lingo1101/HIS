@@ -55,6 +55,7 @@ public class Login extends JFrame {
         }
         String strSQL;
         String chooseUser = comboBox1.getSelectedItem().toString().trim();
+        //这里加逻辑========================
         switch (chooseUser) {
             case "医生":
 System.out.println("Doctor Login");
@@ -66,12 +67,14 @@ System.out.println("Doctor Login");
 System.out.println("Nurse Login");
                // dispose();
                 break;
+            //病人的
             default:
-                new PatientHome();
+                PatientHome patientHome = new PatientHome(textField1.getText().trim());
                 //dispose();
 System.out.println("Patient Login");
                 break;
         }
+        //========================================================
 
     }
 

@@ -23,10 +23,10 @@ public class JDBCUtils {
         }
     }
 
-    private static final String USERNAME = "MMS";
-    private static final String PASSWORD = "tiger";
-    private static final String DRIVER = "oracle.jdbc.driver.OracleDriver";
-    private static final String URL = "jdbc:oracle:thin:@localhost:1521:orcl";
+    private static final String USERNAME = "sa";
+    private static final String PASSWORD = "120819";
+    private static final String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+    private static final String URL = "jdbc:sqlserver://localhost:1433;databaseName=MMSS";
     private static Connection connection = null;
     private static PreparedStatement preparedStatement = null;
     private static ResultSet resultSet = null;
@@ -109,7 +109,7 @@ public class JDBCUtils {
                 if (cols_value == null) {
                     cols_value = "";
                 }
-                map.put(cols_name, cols_value);
+                map.put(cols_name.toUpperCase(), cols_value);
             }
         }
         return map;
@@ -143,7 +143,7 @@ public class JDBCUtils {
                 if(cols_value == null) {
                     cols_value = "";
                 }
-                map.put(cols_name, cols_value);
+                map.put(cols_name.toUpperCase(), cols_value);
             }
             list.add(map);
         }

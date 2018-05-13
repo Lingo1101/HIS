@@ -101,24 +101,10 @@ public class ChooseBox extends JPanel{
                             e1.printStackTrace();
                         }
 
+                        BookReigserKS.Did(departID);
                         ChooseBox.this.setVisible(false);
                         ChooseBox.this.jScrollPane.setVisible(false);
                         bookReigserKS.setVisible(true);
-                        /**
-                         * 获得所选科室对应的项目放到数组
-                         */
-                        String a = "K201821206";
-                        String sql = "select ProjectName from HspPriceInfo where DepartID = '" + a + "' ";
-                        try {
-
-                            List<Map<String, Object>> modeResult = JDBCUtils.findModeResult(sql, null);
-                            for(int i = 0;i < 4; i++){
-                                kk[i] = modeResult.get(i).get("ProjectName".toUpperCase()).toString();
-                            }
-                            BookReigserKS.getproject(kk);
-                        }catch (Exception e2){
-                            e2.printStackTrace();
-                        }
                     }
                 }
             });

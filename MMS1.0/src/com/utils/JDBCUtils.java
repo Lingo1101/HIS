@@ -109,7 +109,7 @@ public class JDBCUtils {
                 if (cols_value == null) {
                     cols_value = "";
                 }
-                map.put(cols_name, cols_value);
+                map.put(cols_name.toUpperCase(), cols_value);
             }
         }
         return map;
@@ -143,7 +143,7 @@ public class JDBCUtils {
                 if(cols_value == null) {
                     cols_value = "";
                 }
-                map.put(cols_name, cols_value);
+                map.put(cols_name.toUpperCase(), cols_value);
             }
             list.add(map);
         }

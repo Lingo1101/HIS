@@ -5,6 +5,7 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.view.guide.PationGuide;
 
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,20 +30,17 @@ public class Home extends JFrame {
     ImageIcon[] AllImages = {a, b, c};
     TastThread m_thread1;
     int currentImg=0;
+    public static final int WIDTH = 1500;
+    public static final int HEIGHT = 900;
 
     public Home() {
         initComponents();
-        setTitle("广州军区武汉总医院");
-        setSize(800, 800);
-        setLocation(100, 100);
-        setVisible(true);
-        //主界面菜单栏上面添加图片
-        JLabel jLabel = new JLabel( new ImageIcon("pictures/1.png"));
-        panel4.add(jLabel);
-
-        this.add(panel3);
+        launch();
+        this.setTitle("广州军区武汉总医院");
+        this.setSize(WIDTH, HEIGHT);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE) ;
         this.setLocationRelativeTo(getOwner());
+        this.setResizable(false);
         this.setVisible(true ) ;
     }
     //启用线程
@@ -85,8 +83,8 @@ public class Home extends JFrame {
         menu12 = new JMenu();
         menu13 = new JMenu();
         panel2 = new JPanel();
-        button6 = new JButton();
-        button4 = new JButton();
+        loginButton = new JButton();
+        guideButton = new JButton();
         button1 = new JButton();
         button2 = new JButton();
         button3 = new JButton();
@@ -98,7 +96,18 @@ public class Home extends JFrame {
 
         //======== panel4 ========
         {
-            panel4.setLayout(new BoxLayout(panel4, BoxLayout.X_AXIS));
+            panel4 = new JPanel() {
+                @Override
+                public void paintComponent(Graphics g) {
+                    Color c = g.getColor();
+                    ImageIcon imageIcon = new ImageIcon("pictures/1.png");
+                    g.setColor(Color.white);
+                    g.fillRect(0, 0, 1500, 100);
+                    g.drawImage(imageIcon.getImage(), 350, 0, 800, 100, null);
+                    g.setColor(c);
+                }
+            };
+            panel4.setPreferredSize(new Dimension(1000, 100));
             panel4.add(separator1);
         }
         contentPane.add(panel4, BorderLayout.NORTH);
@@ -193,45 +202,53 @@ public class Home extends JFrame {
 
             //======== panel2 ========
             {
-                panel2.setLayout(new FormLayout(
-                    "default",
-                    "fill:default, 14*($lgap, default)"));
-
+                panel2.setLayout(new GridLayout(5, 1));
+                panel2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK,2),
+                        "搜索结果", TitledBorder.LEFT,TitledBorder.TOP,new Font("华文新魏",Font.PLAIN,26)));
                 //---- button6 ----
-                button6.setText("\u767b\u5f55");
-                button6.addActionListener(e -> LoginButtonListener(e));
-                panel2.add(button6, CC.xy(1, 5));
+                loginButton.setText("登陆");
+                loginButton.setPreferredSize(new Dimension(100, 40));
+                loginButton.setFont(new Font("宋体", Font.BOLD, 20));
+                loginButton.addActionListener(e -> LoginButtonListener(e));
+                panel2.add(loginButton);
 
-                //---- button4 ----
-                button4.setText("\u5c31\u533b\u6307\u5357");
-                button4.setHorizontalAlignment(SwingConstants.RIGHT);
-                button4.setBackground(new Color(204, 204, 255));
-                button4.addActionListener(e -> button4ActionPerformed(e));
-                panel2.add(button4, CC.xy(1, 7));
-                button4.addActionListener(new ActionListener() {
+                //---- guideButton ----
+                guideButton.setText("就医指导");
+                guideButton.setPreferredSize(new Dimension(100, 40));
+                guideButton.setFont(new Font("宋体", Font.BOLD, 20));
+                guideButton.addActionListener(e -> button4ActionPerformed(e));
+                guideButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         new PationGuide();
                     }
                 });
+                panel2.add(guideButton);
+
 
                 //---- button1 ----
                 button1.setText("\u7f51\u7edc\u533b\u9662");
-                button1.setHorizontalAlignment(SwingConstants.RIGHT);
+                button1.setPreferredSize(new Dimension(100, 40));
+                button1.setFont(new Font("宋体", Font.BOLD, 20));
+                //未实现
                 button1.setBackground(new Color(204, 204, 255));
-                panel2.add(button1, CC.xy(1, 9));
+                panel2.add(button1);
 
                 //---- button2 ----
                 button2.setText("\u533b\u9662\u6982\u51b5");
-                button2.setHorizontalAlignment(SwingConstants.RIGHT);
+                button2.setPreferredSize(new Dimension(100, 40));
+                button2.setFont(new Font("宋体", Font.BOLD, 20));
+                //未实现
                 button2.setBackground(new Color(204, 204, 255));
-                panel2.add(button2, CC.xy(1, 11));
+                panel2.add(button2);
 
                 //---- button3 ----
                 button3.setText("\u670d\u52a1\u7279\u8272");
-                button3.setHorizontalAlignment(SwingConstants.RIGHT);
+                button3.setPreferredSize(new Dimension(100, 40));
+                button3.setFont(new Font("宋体", Font.BOLD, 20));
+                //未实现
                 button3.setBackground(new Color(204, 204, 255));
-                panel2.add(button3, CC.xy(1, 13));
+                panel2.add(button3);
             }
             panel3.add(panel2, BorderLayout.EAST);
         }
@@ -260,8 +277,8 @@ public class Home extends JFrame {
     private JMenu menu12;
     private JMenu menu13;
     private JPanel panel2;
-    private JButton button6;
-    private JButton button4;
+    private JButton loginButton;
+    private JButton guideButton;
     private JButton button1;
     private JButton button2;
     private JButton button3;

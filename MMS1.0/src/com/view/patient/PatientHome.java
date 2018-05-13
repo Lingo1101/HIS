@@ -11,6 +11,7 @@ import javax.swing.*;
 /**
  * @author ddd zhaung 主窗体函数，用于实现主要功能的操作界面
  */
+//比如 你在这改了代码 保存下 然后 打开github的那个
 public class PatientHome extends JFrame {
     int screenWidth,screenHeight;
     static int totalWidth;

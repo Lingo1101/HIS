@@ -49,19 +49,7 @@ public class Home extends JFrame {
         m_thread1.start();
     }
 
-    private void thisPropertyChange(PropertyChangeEvent e) {
-        // TODO add your code here
-    }
 
-    private void button4ActionPerformed(ActionEvent e) {
-        // TODO add your code here
-    }
-
-    private void LoginButtonListener(ActionEvent e) // 登录按钮
-    {
-        new Login();
-        dispose();
-    }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -90,7 +78,6 @@ public class Home extends JFrame {
         button3 = new JButton();
 
         //======== this ========
-        addPropertyChangeListener(e -> thisPropertyChange(e));
         Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
@@ -220,16 +207,21 @@ public class Home extends JFrame {
                 panel2.setLayout(new GridLayout(10, 1));
                 panel2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK,2),
                         "", TitledBorder.LEFT,TitledBorder.TOP,new Font("华文新魏",Font.PLAIN,26)));
-                //---- button6 ----
+
+                //---- loginbutton ----
                 loginButton.setText("登陆");
                 loginButton.setFont(new Font("宋体", Font.BOLD, 18));
-                loginButton.addActionListener(e -> LoginButtonListener(e));
+                loginButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                            new Login();
+                    }
+                });
                 panel2.add(loginButton);
 
                 //---- guideButton ----
                 guideButton.setText("就医指导");
                 guideButton.setFont(new Font("宋体", Font.BOLD, 18));
-                guideButton.addActionListener(e -> button4ActionPerformed(e));
                 guideButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -295,10 +287,7 @@ public class Home extends JFrame {
             showImage = new JPanel(){
                 @Override
                 protected void paintComponent(Graphics g) {
-                    Dimension dimension = panel3.getPreferredSize();
-                    int weight= dimension.width;
-                    int height = dimension.height;
-                    g.drawImage(AllImages[currentImg].getImage(), 0, 0 , 1350, 700, null);
+                    g.drawImage(AllImages[currentImg].getImage(), 100, 100 , 1000, 500, null);
                 }
             };
             panel3.add(showImage);

@@ -1,5 +1,6 @@
 package com.view;
 
+import com.utils.JDBCUtils;
 import com.view.Doctor.DoctorHome;
 import com.view.Nurse.NurseHome;
 import com.view.patient.PatientHome;
@@ -7,6 +8,9 @@ import com.view.patient.PatientHome;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 /*
  * Created by JFormDesigner on Wed Mar 28 08:04:14 CST 2018
  */
@@ -16,33 +20,35 @@ import java.awt.event.ActionEvent;
  * @author dasdfaf
  */
 public class Login extends JFrame {
-    private String pass; // 传值变量
+    String userID="", userName="", password="";
+
     public Login(){
         initComponents();
         setTitle("登录");
         setSize(500, 500);
-        setLocation(100, 100);
         this.setLocationRelativeTo(getOwner());
         setVisible(true);
 
     }
-    public Login(String pass) {
-        this.pass = pass;
-        initComponents();
-        setTitle("登录");
-        setSize(500, 500);
-        setLocation(100, 100);
-        setVisible(true);
-    }
 
     private void button1ActionPerformed(ActionEvent e) {
 
-        String user="", pass="";
         JPasswordField jpf=new JPasswordField(10);
         jpf.setEchoChar('.');
-        String userID=textField1.getText().trim();
-        pass=userID;
-        String password= passwordField1.getText().trim();
+
+        userID= textField1.getText().trim();
+        switch(comboBox1.getSelectedItem().toString().trim()) {
+            case "医生":
+                userName = "Doctor";
+                break;
+            case "护士":
+                userName = "Nurse";
+                break;
+            default:
+                userName = "Patient";
+                break;
+        }
+        password= passwordField1.getText().trim();
 
         if (textField1.getText().trim().equals("")) // 判断是否用户名和密码都为空
         {
@@ -53,26 +59,41 @@ public class Login extends JFrame {
             JOptionPane.showMessageDialog(null, "密码不可为空!");
             return;
         }
-        String strSQL;
-        String chooseUser = comboBox1.getSelectedItem().toString().trim();
-        switch (chooseUser) {
-            case "医生":
-System.out.println("Doctor Login");
-                new DoctorHome("D201821205");
-                //dispose();
-                break;
-            case "护士":
-                new NurseHome("N201821102");
-System.out.println("Nurse Login");
-               // dispose();
-                break;
-            default:
-                new PatientHome();
-                //dispose();
-System.out.println("Patient Login");
-                break;
+
+
+
+        if(isTrueUser()) {
+            switch (userName) {
+                case "Doctor":
+                    new DoctorHome("D201821205");
+                    dispose();
+                    break;
+                case "Nurse":
+                    new NurseHome("N201821102");
+                    dispose();
+                    break;
+                default:
+                    new PatientHome();
+                    dispose();
+                    break;
+            }
         }
 
+    }
+
+    public boolean isTrueUser() {
+        String strSQL;
+        Map<String, Object> maps = new HashMap<>();
+        strSQL = "select * from UserInfo where UserName = '"+userName+"'and PassWord = '"+password+"'and UserID = '"+userID+"'";
+        try {
+            maps = JDBCUtils.findSimpleResult(strSQL, null);
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        }
+        if(maps.size() != 0) {
+            return true;
+        }
+        return false;
     }
 
 

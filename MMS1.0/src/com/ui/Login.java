@@ -28,8 +28,20 @@ public class Login extends JFrame {
         setSize(500, 500);
         this.setLocationRelativeTo(getOwner());
         setVisible(true);
+        checkBox1.addActionListener(e -> {checkBox1ActionPerformed(e); });
 
     }
+
+    private void checkBox1ActionPerformed(ActionEvent e) {
+
+        if (checkBox1.isSelected()){
+            passwordField1.setEchoChar('\0');
+        }
+        else{
+            passwordField1.setEchoChar('*');
+        }
+    }
+
 
     private void button1ActionPerformed(ActionEvent e) {
 
@@ -48,7 +60,7 @@ public class Login extends JFrame {
                 userName = "Patient";
                 break;
         }
-        password= passwordField1.getText().trim();
+        password = String.valueOf(passwordField1.getPassword()).trim();
 
         if (textField1.getText().trim().equals("")) // 判断是否用户名和密码都为空
         {
@@ -125,7 +137,6 @@ public class Login extends JFrame {
         label2.setBounds(175, 155, 50, label2.getPreferredSize().height);
 
         //---- textField1 ----
-        textField1.setText("N201821102");
         contentPane.add(textField1);
         textField1.setBounds(235, 150, 90, textField1.getPreferredSize().height);
 
@@ -176,10 +187,9 @@ public class Login extends JFrame {
         }
         pack();
         setLocationRelativeTo(getOwner());
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
+
     }
 
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JLabel label1;
     private JLabel label2;
     private JTextField textField1;
@@ -189,5 +199,5 @@ public class Login extends JFrame {
     private JCheckBox checkBox1;
     private JComboBox<String> comboBox1;
     private JPasswordField passwordField1;
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
+
 }

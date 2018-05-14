@@ -1,5 +1,7 @@
 package com.view.guide.search;
 
+import com.utils.JDBCUtils;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;

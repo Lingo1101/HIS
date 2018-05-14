@@ -40,7 +40,7 @@ public class TextPanel extends JPanel {
         textPane.setEditable(false);
         textPane.setContentType("text/html");
         paneScrollPane = new JScrollPane(textPane);
-        paneScrollPane.setPreferredSize(new Dimension(350, 300));
+        paneScrollPane.setPreferredSize(new Dimension(700, 600));
         add(paneScrollPane);
     }
 

@@ -173,7 +173,7 @@ public class Search extends JPanel{
         }
     }
 
-    Dimension selectSize = new Dimension(400, 50);
+    Dimension selectSize = new Dimension(800, 50);
     JButton searchButton = new MyButton();
     JPanel choiceButton = new MyPanel();
     JTextField textField = new MyTextField();

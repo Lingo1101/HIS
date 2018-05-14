@@ -6,20 +6,8 @@ import java.awt.event.ActionEvent;
 
 public class SearchPanel extends JPanel{
 
-    public static void main(String[] args) {
-        JFrame jFrame = new JFrame();
-        jFrame.setSize(800, 800);
-        jFrame.getContentPane().setLayout(new FlowLayout());
-        //===================使用用例========================
-        SearchPanel searchPanel = new SearchPanel();
-        jFrame.getContentPane().add(searchPanel);
-        //==================================================
-        jFrame.setLocationRelativeTo(jFrame.getOwner());
-        jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        jFrame.setVisible(true);
-    }
     public SearchPanel() {
-        this.setPreferredSize(new Dimension(400, 400));
+        this.setPreferredSize(new Dimension(800, 700));
         this.setLayout(new BorderLayout());
         search = new Search();
         textPanel = new TextPanel();

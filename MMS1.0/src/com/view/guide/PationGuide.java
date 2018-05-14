@@ -1,5 +1,6 @@
 package com.view.guide;
 
+import com.view.Home;
 import com.view.guide.search.Search;
 import com.view.guide.search.SearchPanel;
 
@@ -20,7 +21,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PationGuide extends JFrame implements ActionListener {
-    public static final int WEIGHT = 1250,HEIGHT = 540;
     JPanel rightPanel = new JPanel();
     JPanel leftPanel = new JPanel();
     JLabel title = new JLabel();
@@ -47,8 +47,8 @@ public class PationGuide extends JFrame implements ActionListener {
     /*Constructor*/
     public PationGuide(){
         super("就医指南");
-        this.setSize(WEIGHT,HEIGHT);
-        this.setLocationRelativeTo(null);
+        this.setSize(Home.WIDTH,Home.HEIGHT);
+        this.setLocationRelativeTo(this.getOwner());
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -75,7 +75,7 @@ public class PationGuide extends JFrame implements ActionListener {
 
         leftPanel.setBackground(Color.LIGHT_GRAY);//copyright.setFont(new Font("黑体", Font.PLAIN, 12));
         rightPanel.setLayout(null);
-        rightPanel.setSize((int) ((WEIGHT-leftPanel.getWidth())/1.3), HEIGHT-title.getHeight());
+        rightPanel.setSize((int) ((Home.WIDTH-leftPanel.getWidth())/1.3), Home.HEIGHT-title.getHeight());
         rightPanel.setBackground(Color.WHITE);
 
         ImageIcon p1 = new ImageIcon("pho/科室分布.jpg");

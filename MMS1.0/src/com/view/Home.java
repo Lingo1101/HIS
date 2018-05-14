@@ -22,7 +22,7 @@ public class Home extends JFrame {
 
     //主界面图片更换
 
-    JLabel ShowImage= new JLabel();
+    JPanel showImage;
     JLabel Addword = new JLabel();
     ImageIcon a = new ImageIcon("pictures/04.jpg");
     ImageIcon b = new ImageIcon("pictures/6.jpg");
@@ -118,83 +118,97 @@ public class Home extends JFrame {
 
             //======== menuBar1 ========
             {
-                menuBar1.setBackground(new Color(0, 102, 51));
+                menuBar1.setBackground(new Color(103, 211, 113));
+                menuBar1.setPreferredSize(new Dimension(0,50));
 
                 //======== menu1 ========
                 {
                     menu1.setText("\u9996\u9875");
+                    menu1.setFont(new Font("宋体", Font.BOLD, 18));
                 }
                 menuBar1.add(menu1);
 
                 //======== menu2 ========
                 {
                     menu2.setText("\u533b\u9662\u72b6\u51b5");
+                    menu2.setFont(new Font("宋体", Font.BOLD, 18));
                 }
                 menuBar1.add(menu2);
 
                 //======== menu3 ========
                 {
                     menu3.setText("\u65b0\u95fb\u72b6\u6001");
+                    menu3.setFont(new Font("宋体", Font.BOLD, 18));
                 }
                 menuBar1.add(menu3);
 
                 //======== menu4 ========
                 {
                     menu4.setText("\u5c31\u533b\u6307\u5357");
+                    menu4.setFont(new Font("宋体", Font.BOLD, 18));
                 }
                 menuBar1.add(menu4);
 
                 //======== menu5 ========
                 {
                     menu5.setText("\u79d1\u5ba4\u5bfc\u822a");
+                    menu5.setFont(new Font("宋体", Font.BOLD, 18));
                 }
                 menuBar1.add(menu5);
 
                 //======== menu6 ========
                 {
                     menu6.setText("\u4e13\u5bb6\u835f\u8403");
+                    menu6.setFont(new Font("宋体", Font.BOLD, 18));
                 }
                 menuBar1.add(menu6);
 
                 //======== menu7 ========
                 {
                     menu7.setText("\u79d1\u7814\u6559\u5b66");
+                    menu7.setFont(new Font("宋体", Font.BOLD, 18));
                 }
                 menuBar1.add(menu7);
 
                 //======== menu8 ========
                 {
                     menu8.setText("\u62a4\u7406\u56ed\u5730");
+                    menu8.setFont(new Font("宋体", Font.BOLD, 18));
                 }
                 menuBar1.add(menu8);
 
                 //======== menu9 ========
                 {
                     menu9.setText("\u533b\u9662\u4fe1\u606f\u5316");
+                    menu9.setFont(new Font("宋体", Font.BOLD, 18));
                 }
                 menuBar1.add(menu9);
 
                 //======== menu10 ========
                 {
                     menu10.setText("\u4e3a\u5175\u670d\u52a1");
+                    menu10.setFont(new Font("宋体", Font.BOLD, 18));
                 }
                 menuBar1.add(menu10);
 
                 //======== menu11 ========
                 {
                     menu11.setText("\u533b\u7597\u4fdd\u5065");
+                    menu11.setFont(new Font("宋体", Font.BOLD, 18));
                 }
                 menuBar1.add(menu11);
 
                 //======== menu12 ========
                 {
                     menu12.setText("\u4eba\u529b\u8d44\u6e90");
+                    menu12.setFont(new Font("宋体", Font.BOLD, 18));
                 }
                 menuBar1.add(menu12);
 
                 //======== menu13 ========
                 {
                     menu13.setText("\u9884\u7ea6\u6302\u53f7");
+                    menu13.setFont(new Font("宋体", Font.BOLD, 18));
                 }
                 menuBar1.add(menu13);
             }
@@ -202,20 +216,19 @@ public class Home extends JFrame {
 
             //======== panel2 ========
             {
-                panel2.setLayout(new GridLayout(5, 1));
+                panel2.setPreferredSize(new Dimension(150, 0));
+                panel2.setLayout(new GridLayout(10, 1));
                 panel2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK,2),
-                        "搜索结果", TitledBorder.LEFT,TitledBorder.TOP,new Font("华文新魏",Font.PLAIN,26)));
+                        "", TitledBorder.LEFT,TitledBorder.TOP,new Font("华文新魏",Font.PLAIN,26)));
                 //---- button6 ----
                 loginButton.setText("登陆");
-                loginButton.setPreferredSize(new Dimension(100, 40));
-                loginButton.setFont(new Font("宋体", Font.BOLD, 20));
+                loginButton.setFont(new Font("宋体", Font.BOLD, 18));
                 loginButton.addActionListener(e -> LoginButtonListener(e));
                 panel2.add(loginButton);
 
                 //---- guideButton ----
                 guideButton.setText("就医指导");
-                guideButton.setPreferredSize(new Dimension(100, 40));
-                guideButton.setFont(new Font("宋体", Font.BOLD, 20));
+                guideButton.setFont(new Font("宋体", Font.BOLD, 18));
                 guideButton.addActionListener(e -> button4ActionPerformed(e));
                 guideButton.addActionListener(new ActionListener() {
                     @Override
@@ -228,26 +241,17 @@ public class Home extends JFrame {
 
                 //---- button1 ----
                 button1.setText("\u7f51\u7edc\u533b\u9662");
-                button1.setPreferredSize(new Dimension(100, 40));
-                button1.setFont(new Font("宋体", Font.BOLD, 20));
-                //未实现
-                button1.setBackground(new Color(204, 204, 255));
+                button1.setFont(new Font("宋体", Font.BOLD, 18));
                 panel2.add(button1);
 
                 //---- button2 ----
                 button2.setText("\u533b\u9662\u6982\u51b5");
-                button2.setPreferredSize(new Dimension(100, 40));
-                button2.setFont(new Font("宋体", Font.BOLD, 20));
-                //未实现
-                button2.setBackground(new Color(204, 204, 255));
+                button2.setFont(new Font("宋体", Font.BOLD, 18));
                 panel2.add(button2);
 
                 //---- button3 ----
                 button3.setText("\u670d\u52a1\u7279\u8272");
-                button3.setPreferredSize(new Dimension(100, 40));
-                button3.setFont(new Font("宋体", Font.BOLD, 20));
-                //未实现
-                button3.setBackground(new Color(204, 204, 255));
+                button3.setFont(new Font("宋体", Font.BOLD, 18));
                 panel2.add(button3);
             }
             panel3.add(panel2, BorderLayout.EAST);
@@ -284,10 +288,24 @@ public class Home extends JFrame {
     private JButton button3;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
     //    延时换图
- class TastThread extends Thread{
-        public boolean m_bdone = false;
+    class TastThread extends Thread{
+        public boolean flag = false;
+
+        public TastThread() {
+            showImage = new JPanel(){
+                @Override
+                protected void paintComponent(Graphics g) {
+                    Dimension dimension = panel3.getPreferredSize();
+                    int weight= dimension.width;
+                    int height = dimension.height;
+                    g.drawImage(AllImages[currentImg].getImage(), 0, 0 , 1350, 700, null);
+                }
+            };
+            panel3.add(showImage);
+        }
         public void run() {
-            while (true) {
+            flag = true;
+            while (flag) {
                 currentImg++;
                 if (currentImg >= 3) {
                     currentImg = 0;
@@ -295,19 +313,14 @@ public class Home extends JFrame {
                 if (currentImg < 0) {
                     currentImg = 2;
                 }
-               ShowImage.setIcon(AllImages[currentImg]);
-                panel3.add(ShowImage);
 
                 try {
-                    Thread.sleep(2000);//延时两秒
+                    Thread.sleep(3000);//延时3秒
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                if (m_bdone) {
-
-                    break;
-                }
-
+                showImage.repaint();
+                panel3.repaint();
             }
         }
     }

@@ -38,7 +38,6 @@ public class GetInfo {
                         "font-family: verdana,arial,sans-serif;" +
                         "font-size:11px;" +
                         "color:#333333;" +
-                        "border-width: 1px;" +
                         "border-color: #999999;" +
                         "border-collapse: collapse;" +
                     "}" +
@@ -46,6 +45,7 @@ public class GetInfo {
                         "background-color:#c3dde0;" +
                         "border-width: 1px;" +
                         "padding: 8px;" +
+                        "width: 100px;" +
                         "border-style: solid;" +
                         "border-color: #a9c6c9;" +
                     "}" +
@@ -59,7 +59,7 @@ public class GetInfo {
                         "border-color: #a9c6c9;" +
                     "}" +
                 "</style>" + "<div align=left>" +
-                "<table class=\"hovertable\" width=320>");
+                "<table class=\"hovertable\" width=800>");
         while(m.find()) {
             stringBuffer.append("<tr>");
             stringBuffer.append(td(m.group()));

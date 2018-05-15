@@ -37,7 +37,6 @@ public class DoctorHome extends JFrame {
 
     private void table1MouseClicked(MouseEvent e) //   单击调用编辑窗口
     {
-        // TODO add your code here
         if (e.getButton() == MouseEvent.BUTTON1) {
             //通过点击位置找到点击为表格中的行
             int focusedRowIndex = table1.rowAtPoint(e.getPoint());

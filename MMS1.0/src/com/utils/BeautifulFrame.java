@@ -19,7 +19,9 @@ public class BeautifulFrame extends JFrame{
 	private JPanel titleBarPanel;
 	private JPanel MasterPane;
 	private JLabel titleLabel;
+	private JPanel titleLeft;
 	private JPanel titleCenter;
+	private JPanel titleRight;
 
 	static {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -65,7 +67,7 @@ public class BeautifulFrame extends JFrame{
 	 */
 	public void initTitleBar() {
 		//titleLeft
-		JPanel titleLeft = new JPanel();
+		titleLeft = new JPanel();
 		titleLeft.setPreferredSize(new Dimension(frameWidth/6, titleBarPanelHeight));
 		titleLeft.setLayout(new FlowLayout());
 		titleLeft.setBackground(Color.red);
@@ -73,7 +75,7 @@ public class BeautifulFrame extends JFrame{
 		titleCenter = new JPanel();
 		titleCenter.setBackground(Color.yellow);
 		//titleRight
-		JPanel titleRight = new JPanel();
+		titleRight = new JPanel();
 		titleRight.setPreferredSize(new Dimension(frameWidth/12, titleBarPanelHeight));
 		titleRight.setLayout(new FlowLayout());
 		titleRight.setBackground(Color.green);
@@ -181,4 +183,31 @@ public class BeautifulFrame extends JFrame{
 		}
 	}
 
+	public int getTitleBarPanelHeight() {
+		return titleBarPanelHeight;
+	}
+
+	public JPanel getTitleBarPanel() {
+		return titleBarPanel;
+	}
+
+	public JPanel getMasterPane() {
+		return MasterPane;
+	}
+
+	public JLabel getTitleLabel() {
+		return titleLabel;
+	}
+
+	public JPanel getTitleLeft() {
+		return titleLeft;
+	}
+
+	public JPanel getTitleCenter() {
+		return titleCenter;
+	}
+
+	public JPanel getTitleRight() {
+		return titleRight;
+	}
 }

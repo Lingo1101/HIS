@@ -12,33 +12,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="9" column="38" lean-forward="false" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
+            <state relative-caret-position="270">
+              <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BeautifulFrame.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="BeautifulFrame.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/utils/BeautifulFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="37" column="52" lean-forward="false" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="52" />
+            <state relative-caret-position="510">
+              <caret line="189" column="38" lean-forward="true" selection-start-line="189" selection-start-column="38" selection-end-line="189" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2700#2887#0" expanded="true" />
-                <element signature="e#2886#2887#0" expanded="true" />
-                <element signature="e#3774#3775#0" expanded="true" />
-                <element signature="e#3819#3820#0" expanded="true" />
-                <element signature="e#3940#3941#0" expanded="true" />
-                <element signature="e#3965#3966#0" expanded="true" />
+                <element signature="e#2741#2928#0" expanded="true" />
+                <element signature="e#2927#2928#0" expanded="true" />
+                <element signature="e#3815#3816#0" expanded="true" />
+                <element signature="e#3860#3861#0" expanded="true" />
+                <element signature="e#3981#3982#0" expanded="true" />
+                <element signature="e#4006#4007#0" expanded="true" />
                 <element signature="method#paint#0;class#BeautifulFrame#0" expanded="false" />
                 <element signature="class#DragWindowMouseListeber#0;class#BeautifulFrame#0" expanded="false" />
-                <element signature="e#4411#4412#0" expanded="true" />
-                <element signature="e#4436#4437#0" expanded="true" />
+                <element signature="e#4452#4453#0" expanded="true" />
+                <element signature="e#4477#4478#0" expanded="true" />
+                <element signature="e#5310#5311#0" expanded="true" />
+                <element signature="e#5343#5344#0" expanded="true" />
+                <element signature="e#5407#5408#0" expanded="true" />
+                <element signature="e#5441#5442#0" expanded="true" />
+                <element signature="e#5465#5466#0" expanded="true" />
+                <element signature="e#5499#5500#0" expanded="true" />
+                <element signature="e#5523#5524#0" expanded="true" />
+                <element signature="e#5556#5557#0" expanded="true" />
+                <element signature="e#5579#5580#0" expanded="true" />
+                <element signature="e#5614#5615#0" expanded="true" />
+                <element signature="e#5639#5640#0" expanded="true" />
+                <element signature="e#5673#5674#0" expanded="true" />
+                <element signature="e#5697#5698#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -145,8 +158,8 @@
         <option value="$PROJECT_DIR$/src/com/utils/BeautifulPanel.java" />
         <option value="$PROJECT_DIR$/src/com/utils/HandMouseListener.java" />
         <option value="$PROJECT_DIR$/src/com/utils/BeautifulButton.java" />
-        <option value="$PROJECT_DIR$/src/com/utils/BeautifulFrame.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/utils/BeautifulFrame.java" />
       </list>
     </option>
   </component>
@@ -467,7 +480,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -477,7 +489,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296582" sideWeight="0.50625" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28665933" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28665933" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -820,31 +832,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/utils/BeautifulFrame.java">
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="37" column="52" lean-forward="false" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2700#2887#0" expanded="true" />
-            <element signature="e#2886#2887#0" expanded="true" />
-            <element signature="e#3774#3775#0" expanded="true" />
-            <element signature="e#3819#3820#0" expanded="true" />
-            <element signature="e#3940#3941#0" expanded="true" />
-            <element signature="e#3965#3966#0" expanded="true" />
-            <element signature="method#paint#0;class#BeautifulFrame#0" expanded="false" />
-            <element signature="class#DragWindowMouseListeber#0;class#BeautifulFrame#0" expanded="false" />
-            <element signature="e#4411#4412#0" expanded="true" />
-            <element signature="e#4436#4437#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="270">
+          <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/com/utils/BeautifulFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="9" column="38" lean-forward="false" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
-          <folding />
+        <state relative-caret-position="510">
+          <caret line="189" column="38" lean-forward="true" selection-start-line="189" selection-start-column="38" selection-end-line="189" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2741#2928#0" expanded="true" />
+            <element signature="e#2927#2928#0" expanded="true" />
+            <element signature="e#3815#3816#0" expanded="true" />
+            <element signature="e#3860#3861#0" expanded="true" />
+            <element signature="e#3981#3982#0" expanded="true" />
+            <element signature="e#4006#4007#0" expanded="true" />
+            <element signature="method#paint#0;class#BeautifulFrame#0" expanded="false" />
+            <element signature="class#DragWindowMouseListeber#0;class#BeautifulFrame#0" expanded="false" />
+            <element signature="e#4452#4453#0" expanded="true" />
+            <element signature="e#4477#4478#0" expanded="true" />
+            <element signature="e#5310#5311#0" expanded="true" />
+            <element signature="e#5343#5344#0" expanded="true" />
+            <element signature="e#5407#5408#0" expanded="true" />
+            <element signature="e#5441#5442#0" expanded="true" />
+            <element signature="e#5465#5466#0" expanded="true" />
+            <element signature="e#5499#5500#0" expanded="true" />
+            <element signature="e#5523#5524#0" expanded="true" />
+            <element signature="e#5556#5557#0" expanded="true" />
+            <element signature="e#5579#5580#0" expanded="true" />
+            <element signature="e#5614#5615#0" expanded="true" />
+            <element signature="e#5639#5640#0" expanded="true" />
+            <element signature="e#5673#5674#0" expanded="true" />
+            <element signature="e#5697#5698#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

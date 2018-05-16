@@ -11,13 +11,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class TestHome extends JFrame{
+public class BeautyFrame extends JFrame{
 	public  static final int screenWidth, screenHeight;
 	public static final int totalWidth;
 	public static final int totalHeight;
 	int titleBarPanelHeight = 50;
 	JPanel titleBarPanel;
-	JPanel backgroundPanel ;
+	JPanel MasterPane;
 
 	static {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -26,7 +26,7 @@ public class TestHome extends JFrame{
 		totalWidth = (int) Math.round(screenWidth * 0.7);
 		totalHeight = (int) Math.round(screenHeight * 0.9);
 	}
-	public TestHome() {
+	public BeautyFrame() {
 		this.setLayout(new BorderLayout());
 		initComponents();
 		initIcon();
@@ -54,10 +54,10 @@ public class TestHome extends JFrame{
 		titleBarPanel.setLayout(null);
 		this.getContentPane().add(titleBarPanel, BorderLayout.NORTH);
 		//显示面板
-		backgroundPanel = new JPanel();
-		backgroundPanel.setPreferredSize(new Dimension(totalWidth, totalHeight - titleBarPanelHeight));
-		backgroundPanel.setBackground(new Color(249, 249, 249));
-		this.getContentPane().add(backgroundPanel, BorderLayout.SOUTH);
+		MasterPane = new JPanel();
+		MasterPane.setPreferredSize(new Dimension(totalWidth, totalHeight - titleBarPanelHeight));
+		MasterPane.setBackground(new Color(249, 249, 249));
+		this.getContentPane().add(MasterPane, BorderLayout.SOUTH);
 		//标题文字
 		JLabel titleLabel = new JLabel("主页啊哈哈哈哈哈哈");
 		titleLabel.setFont(new Font("华文新魏", Font.PLAIN, 30));
@@ -98,11 +98,15 @@ public class TestHome extends JFrame{
 		});
 		titleBarPanel.add(miniButton);
 
-		JLabel logo = new JLabel();
+/*		JLabel logo = new JLabel();
 		//ImageIcon iconLogo = new ImageIcon("img/logo.png");
 		//logo.initIcon(iconLogo);
 		logo.setBounds(totalWidth / 2 - 300 / 2 - closeButtonWidth, 0, closeButtonWidth, closeButtonHeight);
-		titleBarPanel.add(logo);
+		titleBarPanel.add(logo);*/
+
+		JPanel iconPanel = new JPanel();
+		iconPanel.setBounds(totalWidth - closeButtonWidth*2 -20, 20, closeButtonWidth, closeButtonHeight);
+
 	}
 
 	/**
@@ -122,8 +126,8 @@ public class TestHome extends JFrame{
 	 */
 	private class DragWindowMouseListeber extends MouseAdapter{
 		private Point pressed = null;
-		TestHome home;
-		public DragWindowMouseListeber(TestHome home) {
+		BeautyFrame home;
+		public DragWindowMouseListeber(BeautyFrame home) {
 			this.home = home;
 		}
 		@Override

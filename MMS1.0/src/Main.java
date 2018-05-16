@@ -1,5 +1,4 @@
-import com.ui.BeautyFrame;
-import com.ui.Home;
+import com.utils.BeautifulFrame;
 
 public class Main {
     public static void main(String[] args) {
@@ -7,6 +6,7 @@ public class Main {
         //new DoctorHome("D201821205");
        //new PationGuide();
        // new DoctorHome("D201821205");
-        new BeautyFrame();
+        BeautifulFrame beautifulFrame = new BeautifulFrame();
+        beautifulFrame.setVisible(true);
     }
 }

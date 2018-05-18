@@ -19,10 +19,10 @@ import java.util.Map;
 /**
  * @author dasdfaf
  */
-public class Login extends JFrame {
+public class Login_old extends JFrame {
     String userID="", userName="", password="";
 
-    public Login(){
+    public Login_old(){
         initComponents();
         setTitle("登录");
         setSize(500, 500);

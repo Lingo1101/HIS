@@ -15,16 +15,24 @@ public class BeautifulButton extends JButton {
     private int height;
     private boolean enter = false;
 
+    public BeautifulButton(String text) {
+        this.setFont(new Font("宋体", Font.PLAIN, 20));
+        this.setText(text + "▼");
+        addMouseSysle();
+    }
     public BeautifulButton(ImageIcon normalStyle, ImageIcon armeStyle, int weight, int height) {
         this.normalStyle = normalStyle;
         this.armeStyle = armeStyle;
         this.weight = weight;
         this.height = height;
-
+        addMouseSysle();
+    }
+    public void addMouseSysle() {
         this.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseExited(MouseEvent e) {
                 enter = false;
+                BeautifulButton.this.setForeground(Color.BLACK);
                 BeautifulButton.this.repaint();
             }
         });
@@ -32,6 +40,7 @@ public class BeautifulButton extends JButton {
             @Override
             public void mouseEntered(MouseEvent e) {
                 BeautifulButton.this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                BeautifulButton.this.setForeground(Color.lightGray);
                 enter = true;
                 BeautifulButton.this.repaint();
             }

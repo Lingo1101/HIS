@@ -1,3 +1,4 @@
+import com.TestHome;
 import com.utils.BeautifulFrame;
 
 public class Main {
@@ -6,7 +7,8 @@ public class Main {
         //new DoctorHome("D201821205");
        //new PationGuide();
        // new DoctorHome("D201821205");
-        BeautifulFrame beautifulFrame = new BeautifulFrame();
-        beautifulFrame.setVisible(true);
+        //BeautifulFrame beautifulFrame = new BeautifulFrame();
+       // beautifulFrame.setVisible(true);
+        new TestHome();
     }
 }

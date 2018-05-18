@@ -40,7 +40,7 @@ public class BeautifulButton extends JButton {
             @Override
             public void mouseEntered(MouseEvent e) {
                 BeautifulButton.this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                BeautifulButton.this.setForeground(Color.lightGray);
+                BeautifulButton.this.setForeground(Color.white);
                 enter = true;
                 BeautifulButton.this.repaint();
             }

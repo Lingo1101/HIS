@@ -22,6 +22,7 @@ public class BeautifulFrame extends JFrame{
 	private JPanel titleLeft;
 	private JPanel titleCenter;
 	private JPanel titleRight;
+	private Color titleBarColor = Color.lightGray;
 
 	static {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -70,15 +71,15 @@ public class BeautifulFrame extends JFrame{
 		titleLeft = new JPanel();
 		titleLeft.setPreferredSize(new Dimension(frameWidth/6, titleBarPanelHeight));
 		titleLeft.setLayout(new FlowLayout());
-		titleLeft.setBackground(Color.red);
+		titleLeft.setBackground(titleBarColor);
 		//titleCenter
 		titleCenter = new JPanel();
-		titleCenter.setBackground(Color.yellow);
+		titleCenter.setBackground(titleBarColor);
 		//titleRight
 		titleRight = new JPanel();
 		titleRight.setPreferredSize(new Dimension(frameWidth/12, titleBarPanelHeight));
 		titleRight.setLayout(new FlowLayout());
-		titleRight.setBackground(Color.green);
+		titleRight.setBackground(titleBarColor);
 		//添加
 		titleBarPanel.add(titleLeft, BorderLayout.WEST);
 		titleBarPanel.add(titleCenter, BorderLayout.CENTER);

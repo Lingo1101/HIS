@@ -1,6 +1,6 @@
 package com.ui.guide;
 
-import com.ui.Home;
+import com.ui.Home_old;
 import com.ui.guide.search.SearchPanel;
 
 import javax.swing.*;
@@ -43,7 +43,7 @@ public class PationGuide extends JFrame implements ActionListener {
     /*Constructor*/
     public PationGuide(){
         super("就医指南");
-        this.setSize(Home.WIDTH,Home.HEIGHT);
+        this.setSize(Home_old.WIDTH, Home_old.HEIGHT);
         this.setLocationRelativeTo(this.getOwner());
         this.addWindowListener(new WindowAdapter() {
             @Override
@@ -71,7 +71,7 @@ public class PationGuide extends JFrame implements ActionListener {
 
         leftPanel.setBackground(Color.LIGHT_GRAY);//copyright.setFont(new Font("黑体", Font.PLAIN, 12));
         rightPanel.setLayout(null);
-        rightPanel.setSize((int) ((Home.WIDTH-leftPanel.getWidth())/1.3), Home.HEIGHT-title.getHeight());
+        rightPanel.setSize((int) ((Home_old.WIDTH-leftPanel.getWidth())/1.3), Home_old.HEIGHT-title.getHeight());
         rightPanel.setBackground(Color.WHITE);
 
         ImageIcon p1 = new ImageIcon("pho/科室分布.jpg");

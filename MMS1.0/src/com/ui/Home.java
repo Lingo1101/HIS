@@ -20,6 +20,14 @@ public class Home {
     public Home() {
         this.initComponents();
         frame.setVisible(true);
+
+        //---loginButton---
+        loginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                loginActionPerformed();
+            }
+        });
     }
 
     public void initComponents() {
@@ -28,25 +36,17 @@ public class Home {
         titleCenter = frame.getTitleCenter();
         titleRight = frame.getTitleRight();
 
-        //---loginButton---
-        loginButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                loginListener();
-            }
-        });
-
         //---titleCenter---
         titleCenter.setLayout(new BorderLayout());
         titleCenter.add(loginButton, BorderLayout.EAST);
 
     }
 
-    private void loginListener() {
+    private void loginActionPerformed() {
         if(logining == null) {
             //----logining----
             logining = new Logining();
-            frame.getLayeredPane().add(logining, JLayeredPane.DRAG_LAYER);
+            frame.getLayeredPane().add(logining, JLayeredPane.MODAL_LAYER);
             Point titleRightPoint = titleRight.getLocation();
             Point loginingPoint = new Point(titleRightPoint.x - logining.getWidth(), titleRightPoint.y + 60);
             logining.setLocation(loginingPoint);

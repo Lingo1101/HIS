@@ -2,6 +2,7 @@ package com.ui;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.ui.Login.Logining;
+import com.ui.patient.PatientHome;
 import com.utils.BeautifulButton;
 import com.utils.BeautifulFrame;
 
@@ -13,12 +14,19 @@ import java.awt.event.ActionListener;
 public class Home {
     private BeautifulFrame frame;
     private BeautifulButton loginButton;
+    private JPanel masterPanel;
     private JPanel titleCenter;
     private Logining logining;
     private JPanel titleRight;
 
     public Home() {
         this.initComponents();
+
+        PatientHome patientHome = new PatientHome(null);
+        patientHome.setBackground(Color.red);
+        masterPanel.setLayout(new BorderLayout());
+        masterPanel.add(patientHome, BorderLayout.CENTER);
+
         frame.setVisible(true);
 
         //---loginButton---
@@ -33,6 +41,7 @@ public class Home {
     public void initComponents() {
         frame = new BeautifulFrame();
         loginButton  = new BeautifulButton("未登录");
+        masterPanel = frame.getMasterPane();
         titleCenter = frame.getTitleCenter();
         titleRight = frame.getTitleRight();
 

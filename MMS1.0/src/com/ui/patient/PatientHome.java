@@ -189,11 +189,17 @@ public class PatientHome extends JFrame {
      * 查询病人基本信息方法
      */
     public void getIfos(){
+        if(null == patientId) {
+            return;
+        }
         String strSQL;
         Map<String, Object> maps = new HashMap<>();
         strSQL = "select * from PatientInfo where PatientID = '"+ patientId +"'";
         try {
             maps = JDBCUtils.findSimpleResult(strSQL, null);
+            if(0 == maps.size()) {
+                return;
+            }
         }catch (SQLException e){
             e.printStackTrace();
         }

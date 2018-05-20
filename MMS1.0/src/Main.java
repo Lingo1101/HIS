@@ -1,4 +1,5 @@
 import com.ui.Home;
+import com.ui.patient.PatientHome;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,6 +9,7 @@ public class Main {
        // new DoctorHome("D201821205");
         //BeautifulFrame beautifulFrame = new BeautifulFrame();
        // beautifulFrame.setVisible(true);
-        new Home();
+        //new Home();
+        new PatientHome(null);
     }
 }

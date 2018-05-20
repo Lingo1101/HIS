@@ -17,7 +17,7 @@ public class BeautifulFrame extends JFrame{
 	public static final int frameHeight;
 	private int titleBarPanelHeight = 50;
 	private JPanel titleBarPanel;
-	private JPanel MasterPane;
+	private JPanel masterPane;
 	private JLabel titleLabel;
 	private JPanel titleLeft;
 	private JPanel titleCenter;
@@ -56,10 +56,10 @@ public class BeautifulFrame extends JFrame{
 		titleBarPanel.setLayout(new BorderLayout());
 		this.getContentPane().add(titleBarPanel, BorderLayout.NORTH);
 		//显示面板
-		MasterPane = new JPanel();
-		MasterPane.setPreferredSize(new Dimension(frameWidth, frameHeight - titleBarPanelHeight));
-		MasterPane.setBackground(new Color(249, 249, 249));
-		this.getContentPane().add(MasterPane, BorderLayout.SOUTH);
+		masterPane = new JPanel();
+		masterPane.setPreferredSize(new Dimension(frameWidth, frameHeight - titleBarPanelHeight));
+		masterPane.setBackground(Color.white);
+		this.getContentPane().add(masterPane, BorderLayout.SOUTH);
 
 	}
 
@@ -193,7 +193,7 @@ public class BeautifulFrame extends JFrame{
 	}
 
 	public JPanel getMasterPane() {
-		return MasterPane;
+		return masterPane;
 	}
 
 	public JLabel getTitleLabel() {

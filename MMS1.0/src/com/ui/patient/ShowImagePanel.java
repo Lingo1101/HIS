@@ -161,17 +161,17 @@ public class ShowImagePanel extends JPanel{
                 ShowImage.setImageIcon(AllImages[currentImg]);
                 Addword.setText(word[currentImg]);
                 if(currentImg == 0){
-                    Addnumber[0].setBackground(Color.white);
+                    Addnumber[0].setBackground(Color.CYAN);
                 }
-                else { Addnumber[0].setBackground(Color.CYAN);}
+                else { Addnumber[0].setBackground(Color.white);}
                 if(currentImg == 1){
-                    Addnumber[1].setBackground(Color.white);
+                    Addnumber[1].setBackground(Color.CYAN);
                 }
-                else { Addnumber[1].setBackground(Color.CYAN);}
+                else { Addnumber[1].setBackground(Color.white);}
                 if(currentImg == 2){
-                    Addnumber[2].setBackground(Color.white);
+                    Addnumber[2].setBackground(Color.CYAN);
                 }
-                else { Addnumber[2].setBackground(Color.CYAN);}
+                else { Addnumber[2].setBackground(Color.white);}
 
                 try {
                     Thread.sleep(3000);//延时两秒

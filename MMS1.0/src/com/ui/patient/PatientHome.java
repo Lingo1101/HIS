@@ -12,7 +12,7 @@ import javax.swing.*;
  * @author ddd zhaung 主窗体函数，用于实现主要功能的操作界面
  */
 //比如 你在这改了代码 保存下 然后 打开github的那个
-public class PatientHome extends JFrame {
+public class PatientHome extends JPanel {
     int screenWidth,screenHeight;
     static int totalWidth;
     static int totalHeight;
@@ -51,16 +51,16 @@ public class PatientHome extends JFrame {
         totalWidth = (int) Math.round(screenWidth * 0.7);
         totalHeight = (int) Math.round(screenHeight * 0.9);//round是四舍五入
         //获取任务栏高度,以便将软件位置初始化为屏幕正中央
-        Insets screenInsets = Toolkit.getDefaultToolkit().getScreenInsets(this.getGraphicsConfiguration());
-        int bottomInset = screenInsets.bottom;
+//        Insets screenInsets = Toolkit.getDefaultToolkit().getScreenInsets(this.getGraphicsConfiguration());
+   //     int bottomInset = screenInsets.bottom;
         /**
          * 添加推送图片
          */
         ShowImagePanel t = new ShowImagePanel();
         PshowImage.setPreferredSize(new Dimension(200, 100));
-        this.add(PshowImage, BorderLayout.NORTH);
-        PshowImage.setLayout(new BorderLayout());
         PshowImage.add(t, BorderLayout.CENTER);
+        this.add(PshowImage, BorderLayout.NORTH);
+
 
         SelectPatientIfos.setLayout(null);
         PpatientIfoShowL.setLayout(new GridLayout(18,1,5,5));
@@ -109,9 +109,7 @@ public class PatientHome extends JFrame {
         this.add(PpatientIfoShowR);
         this.add(DoctorRemind);
         this.setSize(totalWidth + 16, totalHeight);
-        this.setLocation(Math.round((screenWidth - totalWidth) / 2), Math.round((screenHeight - bottomInset - totalHeight) / 2));
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setLocationRelativeTo(getOwner());
+       // this.setLocation(Math.round((screenWidth - totalWidth) / 2), Math.round((screenHeight - bottomInset - totalHeight) / 2));
         this.setVisible(true);
         //关闭病例查询事件
         BClose.addMouseListener(new MouseAdapter() {
@@ -156,7 +154,7 @@ public class PatientHome extends JFrame {
                 jScrollPane.add(textArea);
                 PMedRecordInfo.add(textArea);
                 jScrollPane.setViewportView(PMedRecordInfo);
-                getContentPane().add(jScrollPane);
+                PatientHome.this.add(jScrollPane);
 
                 PMedRecordInfo.setVisible(true);
                 if (!TuserID.getText().trim().equals(MedID0)){
@@ -311,8 +309,7 @@ public class PatientHome extends JFrame {
         BookReigser = new JMenu();
 
         //======== this ========
-        Container contentPane = getContentPane();
-        contentPane.setLayout(null);
+        this.setLayout(null);
 
         //======== menuBar1 ========
         {
@@ -470,24 +467,23 @@ public class PatientHome extends JFrame {
             }
             menuBar1.add(BookReigser);
         }
-        setJMenuBar(menuBar1);
+        PshowImage.setLayout(new BorderLayout());
+        menuBar1.setPreferredSize(new Dimension(0, 30));
+        this.PshowImage.add(menuBar1, BorderLayout.NORTH);
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
-            for(int i = 0; i < contentPane.getComponentCount(); i++) {
-                Rectangle bounds = contentPane.getComponent(i).getBounds();
+            for(int i = 0; i < this.getComponentCount(); i++) {
+                Rectangle bounds = this.getComponent(i).getBounds();
                 preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                 preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
             }
-            Insets insets = contentPane.getInsets();
+            Insets insets = this.getInsets();
             preferredSize.width += insets.right;
             preferredSize.height += insets.bottom;
-            contentPane.setMinimumSize(preferredSize);
-            contentPane.setPreferredSize(preferredSize);
+            this.setMinimumSize(preferredSize);
+            this.setPreferredSize(preferredSize);
         }
-        pack();
-        setLocationRelativeTo(getOwner());
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JMenuBar menuBar1;

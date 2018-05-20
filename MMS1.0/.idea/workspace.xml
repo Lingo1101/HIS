@@ -15,23 +15,9 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="12" column="8" lean-forward="false" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Logining.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ui/Login/Logining.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="671">
-              <caret line="126" column="30" lean-forward="false" selection-start-line="126" selection-start-column="30" selection-end-line="126" selection-end-column="30" />
-              <folding>
-                <marker date="1526781403979" expanded="true" signature="1076:2995" ph="// JFormDesigner - Component initialization - DO NOT MODIFY" />
-              </folding>
+            <state relative-caret-position="270">
+              <caret line="10" column="18" lean-forward="true" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -39,40 +25,50 @@
       <file leaf-file-name="PatientHome.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/ui/patient/PatientHome.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-117">
-              <caret line="199" column="16" lean-forward="false" selection-start-line="199" selection-start-column="16" selection-end-line="199" selection-end-column="16" />
+            <state relative-caret-position="268">
+              <caret line="470" column="53" lean-forward="false" selection-start-line="470" selection-start-column="53" selection-end-line="470" selection-end-column="53" />
               <folding>
-                <element signature="e#5492#5706#0" expanded="true" />
-                <element signature="e#5705#5706#0" expanded="true" />
-                <element signature="e#5762#8627#0" expanded="true" />
-                <element signature="e#8626#8627#0" expanded="true" />
-                <element signature="e#8699#8700#0" expanded="true" />
-                <element signature="e#8741#8742#0" expanded="true" />
-                <element signature="e#8807#8808#0" expanded="true" />
-                <element signature="e#8838#8839#0" expanded="true" />
-                <element signature="e#8910#8911#0" expanded="true" />
-                <element signature="e#8942#8943#0" expanded="true" />
-                <element signature="e#12735#12736#0" expanded="true" />
-                <element signature="e#12768#12769#0" expanded="true" />
-                <element signature="e#14176#14376#0" expanded="true" />
-                <element signature="e#14375#14376#0" expanded="true" />
-                <element signature="e#14937#15144#0" expanded="true" />
-                <element signature="e#15143#15144#0" expanded="true" />
-                <element signature="e#15314#15531#0" expanded="true" />
-                <element signature="e#15530#15531#0" expanded="true" />
-                <element signature="e#15764#15984#0" expanded="true" />
-                <element signature="e#15983#15984#0" expanded="true" />
-                <element signature="e#16222#16444#0" expanded="true" />
-                <element signature="e#16443#16444#0" expanded="true" />
-                <element signature="e#16675#16894#0" expanded="true" />
-                <element signature="e#16893#16894#0" expanded="true" />
-                <element signature="e#17184#17386#0" expanded="true" />
-                <element signature="e#17385#17386#0" expanded="true" />
-                <element signature="e#18051#18252#0" expanded="true" />
-                <element signature="e#18251#18252#0" expanded="true" />
-                <element signature="e#19255#19458#0" expanded="true" />
-                <element signature="e#19457#19458#0" expanded="true" />
+                <element signature="e#5340#5554#0" expanded="true" />
+                <element signature="e#5553#5554#0" expanded="true" />
+                <element signature="e#5610#8475#0" expanded="true" />
+                <element signature="e#8474#8475#0" expanded="true" />
+                <element signature="e#8547#8548#0" expanded="true" />
+                <element signature="e#8589#8590#0" expanded="true" />
+                <element signature="e#8655#8656#0" expanded="true" />
+                <element signature="e#8686#8687#0" expanded="true" />
+                <element signature="e#8758#8759#0" expanded="true" />
+                <element signature="e#8790#8791#0" expanded="true" />
+                <element signature="e#12583#12584#0" expanded="true" />
+                <element signature="e#12616#12617#0" expanded="true" />
+                <element signature="e#13967#14167#0" expanded="true" />
+                <element signature="e#14166#14167#0" expanded="true" />
+                <element signature="e#14728#14935#0" expanded="true" />
+                <element signature="e#14934#14935#0" expanded="true" />
+                <element signature="e#15105#15322#0" expanded="true" />
+                <element signature="e#15321#15322#0" expanded="true" />
+                <element signature="e#15555#15775#0" expanded="true" />
+                <element signature="e#15774#15775#0" expanded="true" />
+                <element signature="e#16013#16235#0" expanded="true" />
+                <element signature="e#16234#16235#0" expanded="true" />
+                <element signature="e#16466#16685#0" expanded="true" />
+                <element signature="e#16684#16685#0" expanded="true" />
+                <element signature="e#16975#17177#0" expanded="true" />
+                <element signature="e#17176#17177#0" expanded="true" />
+                <element signature="e#17842#18043#0" expanded="true" />
+                <element signature="e#18042#18043#0" expanded="true" />
+                <element signature="e#19046#19249#0" expanded="true" />
+                <element signature="e#19248#19249#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ShowImagePanel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ui/patient/ShowImagePanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="30" column="29" lean-forward="true" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -80,27 +76,12 @@
       <file leaf-file-name="Home.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ui/Home.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="25" column="8" lean-forward="false" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+            <state relative-caret-position="342">
+              <caret line="23" column="56" lean-forward="false" selection-start-line="23" selection-start-column="56" selection-end-line="23" selection-end-column="56" />
               <folding>
-                <element signature="e#1010#1011#0" expanded="true" />
-                <element signature="e#1064#1065#0" expanded="true" />
+                <element signature="e#906#907#0" expanded="true" />
+                <element signature="e#960#961#0" expanded="true" />
                 <element signature="method#loginActionPerformed#0;class#Home#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BeautifulFrame.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/utils/BeautifulFrame.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="58" column="34" lean-forward="false" selection-start-line="58" selection-start-column="34" selection-end-line="58" selection-end-column="34" />
-              <folding>
-                <element signature="method#paint#0;class#BeautifulFrame#0" expanded="false" />
-                <element signature="class#DragWindowMouseListeber#0;class#BeautifulFrame#0" expanded="false" />
-                <element signature="e#5483#5484#0" expanded="true" />
-                <element signature="e#5507#5508#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -120,6 +101,7 @@
       <find>close</find>
       <find>system</find>
       <find>defaultIcon</find>
+      <find>Color</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -145,9 +127,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/view/ChooseBox.java" />
-        <option value="$PROJECT_DIR$/src/com/view/DepartIntroduce.java" />
-        <option value="$PROJECT_DIR$/src/com/view/Professor.java" />
         <option value="$PROJECT_DIR$/src/com/view/HealthyReadTxt002.java" />
         <option value="$PROJECT_DIR$/src/com/model/Employee.java" />
         <option value="$PROJECT_DIR$/src/com/view/Mainpage.java" />
@@ -192,9 +171,12 @@
         <option value="$PROJECT_DIR$/src/com/ui/TestHome.java" />
         <option value="$PROJECT_DIR$/src/com/utils/BeautifulButton.java" />
         <option value="$PROJECT_DIR$/src/com/ui/Login/Logining.java" />
-        <option value="$PROJECT_DIR$/src/com/ui/Home.java" />
         <option value="$PROJECT_DIR$/src/com/utils/BeautifulFrame.java" />
+        <option value="$PROJECT_DIR$/src/com/ui/patient/PatientHome.jfd" />
+        <option value="$PROJECT_DIR$/src/com/ui/Home.java" />
+        <option value="$PROJECT_DIR$/src/com/ui/patient/PatientHome_old.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/ui/patient/ShowImagePanel.java" />
         <option value="$PROJECT_DIR$/src/com/ui/patient/PatientHome.java" />
       </list>
     </option>
@@ -254,7 +236,8 @@
               <item name="MMS1.0" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="patient" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -270,8 +253,8 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../github代码/jinshan-master" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.view" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\BaiduYunDownload\FirstProject\MMS1.0\img" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\BaiduYunDownload\FirstProject\MMS1.0\img" />
@@ -281,12 +264,13 @@
       <recent name="D:\IntelliJ\MMS1.0" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.ui.patient" />
       <recent name="com.view.Nurse" />
       <recent name="com.view" />
       <recent name="com.controller" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\BaiduYunDownload\FirstProject\MMS1.0\img" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.view" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -521,7 +505,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296582" sideWeight="0.5104167" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25358325" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25358325" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -551,8 +535,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/utils/XMLUtil.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/utils/config.xml" />
     <entry file="file://$PROJECT_DIR$/src/com/ui/patient/BookReigserKS.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-15">
@@ -610,13 +592,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ui/patient/Professor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ui/patient/ShowImagePanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
@@ -754,7 +729,7 @@
         <state relative-caret-position="78">
           <caret line="31" column="37" lean-forward="false" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
           <folding>
-            <marker date="1526781403979" expanded="true" signature="1076:2995" ph="// JFormDesigner - Component initialization - DO NOT MODIFY" />
+            <marker date="1526784877994" expanded="true" signature="1076:2995" ph="// JFormDesigner - Component initialization - DO NOT MODIFY" />
           </folding>
         </state>
       </provider>
@@ -826,16 +801,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ui/Login/Logining.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="671">
-          <caret line="126" column="30" lean-forward="false" selection-start-line="126" selection-start-column="30" selection-end-line="126" selection-end-column="30" />
-          <folding>
-            <marker date="1526781403979" expanded="true" signature="1076:2995" ph="// JFormDesigner - Component initialization - DO NOT MODIFY" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ui/Login_old.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="81">
@@ -857,63 +822,92 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ui/Home.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ui/patient/PatientHome.jfd">
+      <provider selected="true" editor-type-id="JFormDesigner">
+        <state paletteWidth="150" propertiesWidth="312" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ui/patient/PatientHome.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="25" column="8" lean-forward="false" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+        <state relative-caret-position="216">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ui/Login/Logining.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="671">
+          <caret line="126" column="24" lean-forward="false" selection-start-line="126" selection-start-column="24" selection-end-line="126" selection-end-column="24" />
           <folding>
-            <element signature="e#1010#1011#0" expanded="true" />
-            <element signature="e#1064#1065#0" expanded="true" />
-            <element signature="method#loginActionPerformed#0;class#Home#0" expanded="false" />
+            <marker date="1526784877994" expanded="true" signature="1076:2995" ph="// JFormDesigner - Component initialization - DO NOT MODIFY" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="12" column="8" lean-forward="false" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
+        <state relative-caret-position="270">
+          <caret line="10" column="18" lean-forward="true" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ui/Home.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="23" column="56" lean-forward="false" selection-start-line="23" selection-start-column="56" selection-end-line="23" selection-end-column="56" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#906#907#0" expanded="true" />
+            <element signature="e#960#961#0" expanded="true" />
+            <element signature="method#loginActionPerformed#0;class#Home#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ui/patient/ShowImagePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="30" column="29" lean-forward="true" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ui/patient/PatientHome.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-117">
-          <caret line="199" column="16" lean-forward="false" selection-start-line="199" selection-start-column="16" selection-end-line="199" selection-end-column="16" />
+        <state relative-caret-position="268">
+          <caret line="470" column="53" lean-forward="false" selection-start-line="470" selection-start-column="53" selection-end-line="470" selection-end-column="53" />
           <folding>
-            <element signature="e#5492#5706#0" expanded="true" />
-            <element signature="e#5705#5706#0" expanded="true" />
-            <element signature="e#5762#8627#0" expanded="true" />
-            <element signature="e#8626#8627#0" expanded="true" />
-            <element signature="e#8699#8700#0" expanded="true" />
-            <element signature="e#8741#8742#0" expanded="true" />
-            <element signature="e#8807#8808#0" expanded="true" />
-            <element signature="e#8838#8839#0" expanded="true" />
-            <element signature="e#8910#8911#0" expanded="true" />
-            <element signature="e#8942#8943#0" expanded="true" />
-            <element signature="e#12735#12736#0" expanded="true" />
-            <element signature="e#12768#12769#0" expanded="true" />
-            <element signature="e#14176#14376#0" expanded="true" />
-            <element signature="e#14375#14376#0" expanded="true" />
-            <element signature="e#14937#15144#0" expanded="true" />
-            <element signature="e#15143#15144#0" expanded="true" />
-            <element signature="e#15314#15531#0" expanded="true" />
-            <element signature="e#15530#15531#0" expanded="true" />
-            <element signature="e#15764#15984#0" expanded="true" />
-            <element signature="e#15983#15984#0" expanded="true" />
-            <element signature="e#16222#16444#0" expanded="true" />
-            <element signature="e#16443#16444#0" expanded="true" />
-            <element signature="e#16675#16894#0" expanded="true" />
-            <element signature="e#16893#16894#0" expanded="true" />
-            <element signature="e#17184#17386#0" expanded="true" />
-            <element signature="e#17385#17386#0" expanded="true" />
-            <element signature="e#18051#18252#0" expanded="true" />
-            <element signature="e#18251#18252#0" expanded="true" />
-            <element signature="e#19255#19458#0" expanded="true" />
-            <element signature="e#19457#19458#0" expanded="true" />
+            <element signature="e#5340#5554#0" expanded="true" />
+            <element signature="e#5553#5554#0" expanded="true" />
+            <element signature="e#5610#8475#0" expanded="true" />
+            <element signature="e#8474#8475#0" expanded="true" />
+            <element signature="e#8547#8548#0" expanded="true" />
+            <element signature="e#8589#8590#0" expanded="true" />
+            <element signature="e#8655#8656#0" expanded="true" />
+            <element signature="e#8686#8687#0" expanded="true" />
+            <element signature="e#8758#8759#0" expanded="true" />
+            <element signature="e#8790#8791#0" expanded="true" />
+            <element signature="e#12583#12584#0" expanded="true" />
+            <element signature="e#12616#12617#0" expanded="true" />
+            <element signature="e#13967#14167#0" expanded="true" />
+            <element signature="e#14166#14167#0" expanded="true" />
+            <element signature="e#14728#14935#0" expanded="true" />
+            <element signature="e#14934#14935#0" expanded="true" />
+            <element signature="e#15105#15322#0" expanded="true" />
+            <element signature="e#15321#15322#0" expanded="true" />
+            <element signature="e#15555#15775#0" expanded="true" />
+            <element signature="e#15774#15775#0" expanded="true" />
+            <element signature="e#16013#16235#0" expanded="true" />
+            <element signature="e#16234#16235#0" expanded="true" />
+            <element signature="e#16466#16685#0" expanded="true" />
+            <element signature="e#16684#16685#0" expanded="true" />
+            <element signature="e#16975#17177#0" expanded="true" />
+            <element signature="e#17176#17177#0" expanded="true" />
+            <element signature="e#17842#18043#0" expanded="true" />
+            <element signature="e#18042#18043#0" expanded="true" />
+            <element signature="e#19046#19249#0" expanded="true" />
+            <element signature="e#19248#19249#0" expanded="true" />
           </folding>
         </state>
       </provider>

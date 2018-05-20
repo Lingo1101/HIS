@@ -1,6 +1,5 @@
 package com.ui;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.ui.Login.Logining;
 import com.ui.patient.PatientHome;
 import com.utils.BeautifulButton;
@@ -23,7 +22,6 @@ public class Home {
         this.initComponents();
 
         PatientHome patientHome = new PatientHome(null);
-        patientHome.setBackground(Color.red);
         masterPanel.setLayout(new BorderLayout());
         masterPanel.add(patientHome, BorderLayout.CENTER);
 

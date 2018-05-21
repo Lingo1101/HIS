@@ -105,7 +105,6 @@ public class DoctorHome extends JPanel {
 
 
 
-/*
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         menuBar1 = new JMenuBar();
         menu1 = new JMenu();
@@ -190,7 +189,6 @@ public class DoctorHome extends JPanel {
             downPanel.setMinimumSize(preferredSize);
             downPanel.setPreferredSize(preferredSize);
         }
-*/
     }
 
     private void selete(String sqlString, String value) {

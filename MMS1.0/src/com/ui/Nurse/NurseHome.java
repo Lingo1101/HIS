@@ -17,41 +17,36 @@ import java.util.Map;
 /**
  * @author dasdfaf
  */
-public class NurseHome extends JFrame {
+public class NurseHome extends JPanel {
     public static int n=0;
     private String ID;
-    private Container c;
 
     public NurseHome(String nurseID) {
-        super("护士界面");
         initComponents();
         setSize(1000,1000);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        c=getContentPane();
-//        c.setLayout(new FlowLayout());
-        c.setLayout(new GridLayout(5,5,3,4));
-        selete("SELECT InpatientInfo.HspID,InpatientInfo.PatientID," +
-                "DepartID,DoctorID,NurseID,BedID,InHspTimes,PatientName,GENDER," +
-                "IDNumber,PhoneNumber from InpatientInfo,PatientInfo " +
-                "where InpatientInfo.PatientID=PatientInfo.PatientID " +
-                "and NurseID='"+ nurseID + "'","InpatientInfo");
-        this.setLocationRelativeTo(getOwner());
-        setVisible(true);
+
+        this.setLayout(new GridLayout(5,5,3,4));
+        if(null != nurseID) {
+            selete("SELECT InpatientInfo.HspID,InpatientInfo.PatientID," +
+                    "DepartID,DoctorID,NurseID,BedID,InHspTimes,PatientName,GENDER," +
+                    "IDNumber,PhoneNumber from InpatientInfo,PatientInfo " +
+                    "where InpatientInfo.PatientID=PatientInfo.PatientID " +
+                    "and NurseID='" + nurseID + "'", "InpatientInfo");
+        }
+
     }
 //  获取当前护士管理患者人数
     void selete(String sqlString, String value) {
         if (value == "InpatientInfo") {
-        c=getContentPane();
-        c.setLayout(new FlowLayout(FlowLayout.LEFT));
+        this.setLayout(new FlowLayout(FlowLayout.LEFT));
         List<Map<String, Object>> lists = new ArrayList<>();
         try {
             lists = JDBCUtils.findModeResult(sqlString, null);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println(lists.size());
-        for(Map<String, Object> maps : lists) {
 
+        for(Map<String, Object> maps : lists) {
             String patientID = maps.get("PatientID".toUpperCase()).toString();
             this.ID = patientID;
             String patientName = maps.get("PatientName".toUpperCase()).toString();
@@ -61,7 +56,7 @@ public class NurseHome extends JFrame {
             b.setText("姓名：" + patientName + "\n" + "病人ID：" + patientID + "\n" + "性别：" + gender + "\n" + "病床号：" + bedID + "");
             b.setBackground(getMyColor(patientID));
             b.setSize(50, 40);
-            c.add(b);
+            this.add(b);
             n++;
         }
 
@@ -95,8 +90,7 @@ public class NurseHome extends JFrame {
                 menu2 = new JMenu();
 
                 //======== this ========
-                Container contentPane = getContentPane();
-                contentPane.setLayout(null);
+                this.setLayout(null);
 
                 //======== menuBar1 ========
                 {
@@ -113,29 +107,25 @@ public class NurseHome extends JFrame {
                     }
                     menuBar1.add(menu2);
                 }
-                setJMenuBar(menuBar1);
+                this.add(menuBar1);
 
                 { // compute preferred size
                     Dimension preferredSize = new Dimension();
-                    for(int i = 0; i < contentPane.getComponentCount(); i++) {
-                        Rectangle bounds = contentPane.getComponent(i).getBounds();
+                    for(int i = 0; i < this.getComponentCount(); i++) {
+                        Rectangle bounds = this.getComponent(i).getBounds();
                         preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                         preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
                     }
-                    Insets insets = contentPane.getInsets();
+                    Insets insets = this.getInsets();
                     preferredSize.width += insets.right;
                     preferredSize.height += insets.bottom;
-                    contentPane.setMinimumSize(preferredSize);
-                    contentPane.setPreferredSize(preferredSize);
+                    this.setMinimumSize(preferredSize);
+                    this.setPreferredSize(preferredSize);
                 }
-                pack();
-                setLocationRelativeTo(getOwner());
-                // JFormDesigner - End of component initialization  //GEN-END:initComponents
-            }
 
-            // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+            }
             private JMenuBar menuBar1;
             private JMenu menu1;
             private JMenu menu2;
-            // JFormDesigner - End of variables declaration  //GEN-END:variables
+
         }

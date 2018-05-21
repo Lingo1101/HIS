@@ -109,20 +109,19 @@ public class Logining extends JPanel {
 
             switch (userNameComnoBox.getSelectedItem().toString()) {
                 case "医生":
-/*                    DoctorHome doctorHome = new DoctorHome(null);
-                    masterPanel.add(doctorHome, BorderLayout.CENTER);*/
-                    JPanel jPanel = new JPanel();
-                    jPanel.setBackground(Color.yellow);
-                    masterPanel.add(jPanel, BorderLayout.CENTER);
-                    masterPanel.repaint();
+                    DoctorHome doctorHome = new DoctorHome(null);
+                    masterPanel.add(doctorHome, BorderLayout.CENTER);
+                    masterPanel.updateUI();
                     break;
                 case "护士":
-                    new NurseHome("N201821102");
+                    NurseHome nurseHome = new NurseHome(null);
+                    masterPanel.add(nurseHome, BorderLayout.CENTER);
+                    masterPanel.updateUI();
                     break;
                 case "病人":
                     PatientHome patientHome = new PatientHome(null);
                     masterPanel.add(patientHome, BorderLayout.CENTER);
-                    masterPanel.repaint();
+                    masterPanel.updateUI();
                     break;
             }
         }

@@ -18,14 +18,12 @@ import java.util.Map;
  * @author dasdfaf
  */
 public class NurseHome extends JPanel {
-    public static int n=0;
-    private String ID;
 
     public NurseHome(String nurseID) {
         initComponents();
         setSize(1000,1000);
 
-        this.setLayout(new GridLayout(5,5,3,4));
+        downPanel.setLayout(new GridLayout(5,5,3,4));
         if(null != nurseID) {
             selete("SELECT InpatientInfo.HspID,InpatientInfo.PatientID," +
                     "DepartID,DoctorID,NurseID,BedID,InHspTimes,PatientName,GENDER," +
@@ -35,7 +33,7 @@ public class NurseHome extends JPanel {
         }
 
     }
-//  获取当前护士管理患者人数
+    // 获取当前护士管理患者人数
     void selete(String sqlString, String value) {
         if (value == "InpatientInfo") {
         this.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -56,7 +54,7 @@ public class NurseHome extends JPanel {
             b.setText("姓名：" + patientName + "\n" + "病人ID：" + patientID + "\n" + "性别：" + gender + "\n" + "病床号：" + bedID + "");
             b.setBackground(getMyColor(patientID));
             b.setSize(50, 40);
-            this.add(b);
+            downPanel.add(b);
             n++;
         }
 
@@ -84,48 +82,47 @@ public class NurseHome extends JPanel {
     }
 
     private void initComponents () {
-                // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-                menuBar1 = new JMenuBar();
-                menu1 = new JMenu();
-                menu2 = new JMenu();
+            menuBar1 = new JMenuBar();
+            menu1 = new JMenu();
+            menu2 = new JMenu();
 
-                //======== this ========
-                this.setLayout(null);
+            //======== this ========
+            this.setLayout(new BorderLayout());
 
-                //======== menuBar1 ========
+            //----------upPanel------------------
+            upPanel = new JPanel();
+            upPanel.setLayout(new BorderLayout());
+            upPanel.setPreferredSize(new Dimension(100, 50));
+            this.add(upPanel, BorderLayout.NORTH);
+
+            //---------downPanel------------------
+            downPanel = new JPanel();
+            downPanel.setLayout(new BorderLayout());
+            this.add(downPanel, BorderLayout.CENTER);
+
+            //======== menuBar1 ========
+            {
+                //======== menu1 ========
                 {
-
-                    //======== menu1 ========
-                    {
-                        menu1.setText("\u6570\u636e\u9996\u9875");
-                    }
-                    menuBar1.add(menu1);
-
-                    //======== menu2 ========
-                    {
-                        menu2.setText("\u60a3\u8005\u7ba1\u7406");
-                    }
-                    menuBar1.add(menu2);
+                    menu1.setText("\u6570\u636e\u9996\u9875");
                 }
-                this.add(menuBar1);
+                menuBar1.add(menu1);
 
-                { // compute preferred size
-                    Dimension preferredSize = new Dimension();
-                    for(int i = 0; i < this.getComponentCount(); i++) {
-                        Rectangle bounds = this.getComponent(i).getBounds();
-                        preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
-                        preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
-                    }
-                    Insets insets = this.getInsets();
-                    preferredSize.width += insets.right;
-                    preferredSize.height += insets.bottom;
-                    this.setMinimumSize(preferredSize);
-                    this.setPreferredSize(preferredSize);
+                //======== menu2 ========
+                {
+                    menu2.setText("\u60a3\u8005\u7ba1\u7406");
                 }
-
+                menuBar1.add(menu2);
             }
+            upPanel.add(menuBar1, BorderLayout.CENTER);
+    }
+
             private JMenuBar menuBar1;
             private JMenu menu1;
             private JMenu menu2;
+            public static int n=0;
+            private String ID;
+            private JPanel downPanel;
+            private JPanel upPanel;
 
         }

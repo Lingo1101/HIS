@@ -20,9 +20,6 @@ import java.util.Map;
  * @author dasdfaf
  */
 public class DoctorHome extends JPanel {
-    private String doctorID;
-    private JPanel downPanel;
-    private JPanel upPanel;
 
     public static void main(String[] args) {
         JFrame jFrame = new JFrame();
@@ -93,13 +90,11 @@ public class DoctorHome extends JPanel {
         //----------upPanel------------------
         upPanel = new JPanel();
         upPanel.setLayout(new BorderLayout());
-        upPanel.setBackground(Color.red);
         upPanel.setPreferredSize(new Dimension(100, 50));
         this.add(upPanel, BorderLayout.NORTH);
 
         //---------downPanel------------------
         downPanel = new JPanel();
-        downPanel.setBackground(Color.BLUE);
         downPanel.setLayout(new BorderLayout());
         this.add(downPanel, BorderLayout.CENTER);
 
@@ -113,8 +108,6 @@ public class DoctorHome extends JPanel {
         menu4 = new JMenu();
         scrollPane1 = new JScrollPane();
         table1 = new JTable();
-
-
 
         //======== menuBar1 ========
         {
@@ -153,7 +146,7 @@ public class DoctorHome extends JPanel {
             }
             menuBar1.add(menu4);
         }
-        downPanel.add(menuBar1);
+        upPanel.add(menuBar1, BorderLayout.CENTER);
 
         //======== scrollPane1 ========
         {
@@ -175,20 +168,6 @@ public class DoctorHome extends JPanel {
         }
         downPanel.add(scrollPane1);
         scrollPane1.setBounds(10, 30, 745, 225);
-
-        { // compute preferred size
-            Dimension preferredSize = new Dimension();
-            for(int i = 0; i < downPanel.getComponentCount(); i++) {
-                Rectangle bounds = downPanel.getComponent(i).getBounds();
-                preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
-                preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
-            }
-            Insets insets = downPanel.getInsets();
-            preferredSize.width += insets.right;
-            preferredSize.height += insets.bottom;
-            downPanel.setMinimumSize(preferredSize);
-            downPanel.setPreferredSize(preferredSize);
-        }
     }
 
     private void selete(String sqlString, String value) {
@@ -230,4 +209,7 @@ public class DoctorHome extends JPanel {
     private JMenu menu4;
     private JScrollPane scrollPane1;
     private JTable table1;
+    private String doctorID;
+    private JPanel downPanel;
+    private JPanel upPanel;
 }

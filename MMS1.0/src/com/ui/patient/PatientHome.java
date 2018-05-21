@@ -170,10 +170,7 @@ public class PatientHome extends JPanel {
             }
         });
     }
-    //首页事件
-    private void HomePageMouseClicked(MouseEvent e) {
-        new PatientHome(patientId);
-    }
+
     //专家事件
     private void ProfessorMouseClicked(MouseEvent e) {
         new Professor();
@@ -315,24 +312,14 @@ public class PatientHome extends JPanel {
         {
             menuBar1.setBackground(new Color(204, 204, 255));
 
-            //======== HomePage ========
-            {
-                HomePage.setText("\u9996\u9875");
-                HomePage.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseClicked(MouseEvent e) {
-                        HomePageMouseClicked(e);
-                    }
-                });
-            }
-            menuBar1.add(HomePage);
-
             //======== MedicalGuide ========
             {
                 MedicalGuide.setText("\u5c31\u533b\u6307\u5357");
+                MedicalGuide.setFont(new Font("宋体", Font.PLAIN, 20));
 
                 //---- menuItem1 ----
                 menuItem1.setText("\u5c31\u8bca\u987b\u77e5");
+                menuItem1.setFont(new Font("宋体", Font.PLAIN, 20));
                 MedicalGuide.add(menuItem1);
             }
             menuBar1.add(MedicalGuide);
@@ -340,6 +327,7 @@ public class PatientHome extends JPanel {
             //======== DepartmentGuide ========
             {
                 DepartmentGuide.setText("\u79d1\u5ba4\u5bfc\u822a");
+                DepartmentGuide.setFont(new Font("宋体", Font.PLAIN, 20));
                 DepartmentGuide.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
@@ -350,6 +338,7 @@ public class PatientHome extends JPanel {
                 //======== Internalt ========
                 {
                     Internalt.setText("\u5185\u79d1");
+                    Internalt.setFont(new Font("宋体", Font.PLAIN, 20));
                     Internalt.addMouseListener(new MouseAdapter() {
                         @Override
                         public void mouseClicked(MouseEvent e) {
@@ -362,6 +351,7 @@ public class PatientHome extends JPanel {
                 //======== Surgical ========
                 {
                     Surgical.setText("\u5916\u79d1");
+                    Surgical.setFont(new Font("宋体", Font.PLAIN, 20));
                     Surgical.addMouseListener(new MouseAdapter() {
                         @Override
                         public void mouseClicked(MouseEvent e) {
@@ -374,6 +364,7 @@ public class PatientHome extends JPanel {
                 //======== Specialist ========
                 {
                     Specialist.setText("\u4e13\u79d1");
+                    Specialist.setFont(new Font("宋体", Font.PLAIN, 20));
                     Specialist.addMouseListener(new MouseAdapter() {
                         @Override
                         public void mouseClicked(MouseEvent e) {
@@ -385,7 +376,8 @@ public class PatientHome extends JPanel {
 
                 //======== Medical ========
                 {
-                    Medical.setText("\u533b\u6280");
+                    Medical.setText("医技");
+                    Medical.setFont(new Font("宋体", Font.PLAIN, 20));
                     Medical.addMouseListener(new MouseAdapter() {
                         @Override
                         public void mouseClicked(MouseEvent e) {
@@ -399,7 +391,8 @@ public class PatientHome extends JPanel {
 
             //======== HealthCare ========
             {
-                HealthCare.setText("\u533b\u7597\u4fdd\u5065");
+                HealthCare.setText("医疗保健");
+                HealthCare.setFont(new Font("宋体", Font.PLAIN, 20));
                 HealthCare.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
@@ -408,22 +401,26 @@ public class PatientHome extends JPanel {
                 });
 
                 //---- MentalHeath ----
-                MentalHeath.setText("\u5fc3\u7406\u5065\u5eb7");
+                MentalHeath.setText("心理健康");
+                MentalHeath.setFont(new Font("宋体", Font.PLAIN, 20));
                 HealthCare.add(MentalHeath);
 
                 //---- PreHealth ----
-                PreHealth.setText("\u9884\u9632\u4fdd\u5065");
+                PreHealth.setText("预防保健");
+                PreHealth.setFont(new Font("宋体", Font.PLAIN, 20));
                 HealthCare.add(PreHealth);
 
                 //---- VommonSense ----
-                VommonSense.setText("\u6025\u6551\u5e38\u8bc6");
+                VommonSense.setText("急救常识");
+                VommonSense.setFont(new Font("宋体", Font.PLAIN, 20));
                 HealthCare.add(VommonSense);
             }
             menuBar1.add(HealthCare);
 
             //======== Professor ========
             {
-                Professor.setText("\u4e13\u5bb6\u835f\u8403");
+                Professor.setText("专家荟萃");
+                Professor.setFont(new Font("宋体", Font.PLAIN, 20));
                 Professor.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
@@ -432,32 +429,39 @@ public class PatientHome extends JPanel {
                 });
 
                 //---- InternaltPhy ----
-                InternaltPhy.setText("\u5185\u79d1\u4e13\u5bb6");
+                InternaltPhy.setText("内科专家");
+                InternaltPhy.setFont(new Font("宋体", Font.PLAIN, 20));
                 Professor.add(InternaltPhy);
 
                 //---- SurgicalPhy ----
-                SurgicalPhy.setText("\u5916\u79d1\u4e13\u5bb6");
+                SurgicalPhy.setText("外科专家");
+                SurgicalPhy.setFont(new Font("宋体", Font.PLAIN, 20));
                 Professor.add(SurgicalPhy);
 
                 //---- SpecialistPhy ----
-                SpecialistPhy.setText("\u4e13\u79d1\u4e13\u5bb6");
+                SpecialistPhy.setText("专科专家");
+                SpecialistPhy.setFont(new Font("宋体", Font.PLAIN, 20));
                 Professor.add(SpecialistPhy);
 
                 //---- MedicalPhy ----
-                MedicalPhy.setText("\u533b\u6280\u4e13\u5bb6");
+                MedicalPhy.setText("医技专家");
+                MedicalPhy.setFont(new Font("宋体", Font.PLAIN, 20));
                 Professor.add(MedicalPhy);
+
             }
             menuBar1.add(Professor);
 
             //======== WordSelect ========
             {
-                WordSelect.setText("\u4e1a\u52a1\u67e5\u8be2");
+                WordSelect.setText("业务查询");
+                WordSelect.setFont(new Font("宋体", Font.PLAIN, 20));
             }
             menuBar1.add(WordSelect);
 
             //======== BookReigser ========
             {
-                BookReigser.setText("\u9884\u7ea6\u6302\u53f7");
+                BookReigser.setText("预约挂号");
+                BookReigser.setFont(new Font("宋体", Font.PLAIN, 20));
                 BookReigser.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
@@ -481,7 +485,6 @@ public class PatientHome extends JPanel {
             Insets insets = this.getInsets();
             preferredSize.width += insets.right;
             preferredSize.height += insets.bottom;
-            this.setMinimumSize(preferredSize);
             this.setPreferredSize(preferredSize);
         }
     }

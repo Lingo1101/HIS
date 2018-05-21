@@ -21,10 +21,6 @@ public class Home {
     public Home() {
         this.initComponents();
 
-        PatientHome patientHome = new PatientHome(null);
-        masterPanel.setLayout(new BorderLayout());
-        masterPanel.add(patientHome, BorderLayout.CENTER);
-
         frame.setVisible(true);
 
         //---loginButton---
@@ -52,7 +48,7 @@ public class Home {
     private void loginActionPerformed() {
         if(logining == null) {
             //----logining----
-            logining = new Logining();
+            logining = new Logining(masterPanel);
             frame.getLayeredPane().add(logining, JLayeredPane.MODAL_LAYER);
             Point titleRightPoint = titleRight.getLocation();
             Point loginingPoint = new Point(titleRightPoint.x - logining.getWidth(), titleRightPoint.y + 60);

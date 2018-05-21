@@ -57,6 +57,7 @@ public class BeautifulFrame extends JFrame{
 		this.getContentPane().add(titleBarPanel, BorderLayout.NORTH);
 		//显示面板
 		masterPane = new JPanel();
+		masterPane.setLayout(new BorderLayout());
 		masterPane.setPreferredSize(new Dimension(frameWidth, frameHeight - titleBarPanelHeight));
 		masterPane.setBackground(Color.white);
 		this.getContentPane().add(masterPane, BorderLayout.SOUTH);

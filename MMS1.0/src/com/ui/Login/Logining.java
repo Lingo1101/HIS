@@ -11,6 +11,7 @@ import com.utils.JDBCUtils;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +26,7 @@ public class Logining extends JPanel {
         JFrame jFrame = new JFrame();
         jFrame.setSize(1000, 600);
         jFrame.getContentPane().setLayout(null);
-        Logining logining = new Logining();
+        Logining logining = new Logining(null);
         logining.setLocation(0, 0);
         jFrame.getContentPane().add(logining);
         jFrame.setLocationRelativeTo(jFrame.getOwner());
@@ -33,9 +34,23 @@ public class Logining extends JPanel {
         jFrame.setVisible(true);
 
     }
-    public Logining() {
+
+    public Logining(JPanel masterPanel) {
+        this.masterPanel = masterPanel;
         initComponents();
         passwordCheckBox.addActionListener(e -> {showPasswordActionPerformed(e); });
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(userNameComnoBox.getSelectedItem().toString().equals("病人")) {
+                    PatientHome patientHome = new PatientHome(null);
+                    masterPanel.add(patientHome, BorderLayout.CENTER);
+                } else {
+                    masterPanel.removeAll();
+                    masterPanel.repaint();
+                }
+            }
+        });
     }
 
     private void initComponents() {
@@ -166,4 +181,5 @@ public class Logining extends JPanel {
     private JPasswordField passwordField;
     private JButton submitButton;
     private JCheckBox passwordCheckBox;
+    private JPanel masterPanel;
 }

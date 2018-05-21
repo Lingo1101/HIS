@@ -50,9 +50,6 @@ public class PatientHome extends JPanel {
         //按屏幕尺寸固定比例设置软件尺寸
         totalWidth = (int) Math.round(screenWidth * 0.7);
         totalHeight = (int) Math.round(screenHeight * 0.9);//round是四舍五入
-        //获取任务栏高度,以便将软件位置初始化为屏幕正中央
-//        Insets screenInsets = Toolkit.getDefaultToolkit().getScreenInsets(this.getGraphicsConfiguration());
-   //     int bottomInset = screenInsets.bottom;
         /**
          * 添加推送图片
          */
@@ -108,9 +105,6 @@ public class PatientHome extends JPanel {
         this.add(PpatientIfoShowL);
         this.add(PpatientIfoShowR);
         this.add(DoctorRemind);
-        this.setSize(totalWidth + 16, totalHeight);
-       // this.setLocation(Math.round((screenWidth - totalWidth) / 2), Math.round((screenHeight - bottomInset - totalHeight) / 2));
-        this.setVisible(true);
         //关闭病例查询事件
         BClose.addMouseListener(new MouseAdapter() {
             @Override
@@ -485,7 +479,6 @@ public class PatientHome extends JPanel {
             Insets insets = this.getInsets();
             preferredSize.width += insets.right;
             preferredSize.height += insets.bottom;
-            this.setPreferredSize(preferredSize);
         }
     }
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

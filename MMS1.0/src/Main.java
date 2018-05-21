@@ -1,3 +1,4 @@
+import com.ui.Doctor.DoctorHome;
 import com.ui.Home;
 import com.ui.guide.PationGuide;
 import com.ui.patient.PatientHome;
@@ -10,6 +11,7 @@ public class Main {
        // new DoctorHome("D201821205");
         //BeautifulFrame beautifulFrame = new BeautifulFrame();
        // beautifulFrame.setVisible(true);
-        new Home();
+       new Home();
+        //new DoctorHome(null);
     }
 }

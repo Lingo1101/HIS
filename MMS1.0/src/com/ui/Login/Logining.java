@@ -39,22 +39,8 @@ public class Logining extends JPanel {
         this.masterPanel = masterPanel;
         initComponents();
         passwordCheckBox.addActionListener(e -> {showPasswordActionPerformed(e); });
-        //==================测试===========================================
-        submitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(userNameComnoBox.getSelectedItem().toString().equals("病人")) {
-                    masterPanel.removeAll();
-                    PatientHome patientHome = new PatientHome(null);
-                    masterPanel.add(patientHome, BorderLayout.CENTER);
-                    masterPanel.repaint();
-                } else {
-                    masterPanel.removeAll();
-                    masterPanel.repaint();
-                }
-            }
-        });
-        //===============================================================================
+        submitButton.addActionListener(e -> {submitButtonActionPerformed(e);});
+
     }
 
     private void initComponents() {
@@ -106,24 +92,9 @@ public class Logining extends JPanel {
     }
 
     private void submitButtonActionPerformed(ActionEvent e) {
-        String strUserName;
-        String strUserID;
-        String strPassword;
-        switch(userNameComnoBox.getSelectedItem().toString().trim()) {
-            case "医生":
-                strUserName = "Doctor";
-                break;
-            case "护士":
-                strUserName = "Nurse";
-                break;
-            default:
-                strUserName = "Patient";
-                break;
-        }
-        strUserID = userIDField.getText().trim();
-        strPassword = String.valueOf(passwordField.getPassword()).trim();
 
-        if (userIDField.getText().trim().equals("")) // 判断是否用户名和密码都为空
+        //=====================测试阶段先不执行===================================
+/*        if (userIDField.getText().trim().equals("")) // 判断是否用户名和密码都为空
         {
             JOptionPane.showMessageDialog(null, "用户名不可为空!");
             return;
@@ -131,19 +102,27 @@ public class Logining extends JPanel {
         if (passwordField.equals("")) {
             JOptionPane.showMessageDialog(null, "密码不可为空!");
             return;
-        }
+        }*/
 
         if(isTrueUser()) {
-            switch (strUserName) {
-                case "Doctor":
-                   new DoctorHome("D201821205");
-                    break;
-                case "Nurse":
-                    new NurseHome("N201821102");
+            masterPanel.removeAll();
 
+            switch (userNameComnoBox.getSelectedItem().toString()) {
+                case "医生":
+/*                    DoctorHome doctorHome = new DoctorHome(null);
+                    masterPanel.add(doctorHome, BorderLayout.CENTER);*/
+                    JPanel jPanel = new JPanel();
+                    jPanel.setBackground(Color.yellow);
+                    masterPanel.add(jPanel, BorderLayout.CENTER);
+                    masterPanel.repaint();
                     break;
-                default:
-                    new PatientHome(strUserName);
+                case "护士":
+                    new NurseHome("N201821102");
+                    break;
+                case "病人":
+                    PatientHome patientHome = new PatientHome(null);
+                    masterPanel.add(patientHome, BorderLayout.CENTER);
+                    masterPanel.repaint();
                     break;
             }
         }
@@ -152,7 +131,9 @@ public class Logining extends JPanel {
 
     //判断是否为正确的用户
     public boolean isTrueUser() {
-        String strSQL;
+        return true;
+        //测试阶段对任何结果都为true
+ /*       String strSQL;
         Map<String, Object> maps = new HashMap<>();
         strSQL = "select * from UserInfo where UserName = '"+ userNameComnoBox +"'and PassWord = '"+ passwordField +"'and UserID = '"+ userIDField +"'";
         try {
@@ -163,7 +144,7 @@ public class Logining extends JPanel {
         if(maps.size() != 0) {
             return true;
         }
-        return false;
+        return false;*/
     }
 
     /**

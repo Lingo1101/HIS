@@ -19,19 +19,34 @@ import java.util.Map;
 /**
  * @author dasdfaf
  */
-public class DoctorHome extends JFrame {
+public class DoctorHome extends JPanel {
     private String doctorID;
+    private JPanel downPanel;
+    private JPanel upPanel;
+
+    public static void main(String[] args) {
+        JFrame jFrame = new JFrame();
+        jFrame.setSize(1000, 600);
+        jFrame.getContentPane().setLayout(new BorderLayout());
+
+        DoctorHome doctorHome = new DoctorHome(null);
+        jFrame.getContentPane().add(doctorHome, BorderLayout.CENTER);
+
+        jFrame.setLocationRelativeTo(jFrame.getOwner());
+        jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        jFrame.setVisible(true);
+
+    }
+
     public DoctorHome(String doctorID) {
         this.doctorID =doctorID;
         initComponents();
-        setSize(800, 800);
+        this.setVisible(true);
         selete("SELECT InpatientInfo.HspID,InpatientInfo.PatientID,DepartID," +
                 "DoctorID,NurseID,BedID,InHspTimes,PatientName,GENDER,IDNumber," +
                 "PhoneNumber from InpatientInfo,PatientInfo where" +
                 " InpatientInfo.PatientID=PatientInfo.PatientID and " +
                 "DoctorID='" + doctorID + "'", "InpatientInfo");
-        this.setLocationRelativeTo(getOwner());
-        setVisible(true);
 
     }
 
@@ -72,6 +87,25 @@ public class DoctorHome extends JFrame {
     }
 
     private void initComponents() {
+        //======== this ========
+        this.setLayout(new BorderLayout());
+
+        //----------upPanel------------------
+        upPanel = new JPanel();
+        upPanel.setLayout(new BorderLayout());
+        upPanel.setBackground(Color.red);
+        upPanel.setPreferredSize(new Dimension(100, 50));
+        this.add(upPanel, BorderLayout.NORTH);
+
+        //---------downPanel------------------
+        downPanel = new JPanel();
+        downPanel.setBackground(Color.BLUE);
+        downPanel.setLayout(new BorderLayout());
+        this.add(downPanel, BorderLayout.CENTER);
+
+
+
+/*
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         menuBar1 = new JMenuBar();
         menu1 = new JMenu();
@@ -81,9 +115,7 @@ public class DoctorHome extends JFrame {
         scrollPane1 = new JScrollPane();
         table1 = new JTable();
 
-        //======== this ========
-        Container contentPane = getContentPane();
-        contentPane.setLayout(null);
+
 
         //======== menuBar1 ========
         {
@@ -122,7 +154,7 @@ public class DoctorHome extends JFrame {
             }
             menuBar1.add(menu4);
         }
-        setJMenuBar(menuBar1);
+        downPanel.add(menuBar1);
 
         //======== scrollPane1 ========
         {
@@ -142,28 +174,29 @@ public class DoctorHome extends JFrame {
             });
             scrollPane1.setViewportView(table1);
         }
-        contentPane.add(scrollPane1);
+        downPanel.add(scrollPane1);
         scrollPane1.setBounds(10, 30, 745, 225);
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
-            for(int i = 0; i < contentPane.getComponentCount(); i++) {
-                Rectangle bounds = contentPane.getComponent(i).getBounds();
+            for(int i = 0; i < downPanel.getComponentCount(); i++) {
+                Rectangle bounds = downPanel.getComponent(i).getBounds();
                 preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                 preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
             }
-            Insets insets = contentPane.getInsets();
+            Insets insets = downPanel.getInsets();
             preferredSize.width += insets.right;
             preferredSize.height += insets.bottom;
-            contentPane.setMinimumSize(preferredSize);
-            contentPane.setPreferredSize(preferredSize);
+            downPanel.setMinimumSize(preferredSize);
+            downPanel.setPreferredSize(preferredSize);
         }
-        pack();
-        setLocationRelativeTo(getOwner());
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
+*/
     }
 
-    void selete(String sqlString, String value) {
+    private void selete(String sqlString, String value) {
+        if(null == doctorID) {
+            return;
+        }
         if (value == "InpatientInfo") {
             String[] col = {"病人ID","姓名" ,"性别","身份证号","电话号码","住院号", "科室",
                     "医生", "护士", "床位号","入院时间"};
@@ -192,7 +225,6 @@ public class DoctorHome extends JFrame {
         }
     }
 
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JMenuBar menuBar1;
     private JMenu menu1;
     private JMenu menu2;
@@ -200,5 +232,4 @@ public class DoctorHome extends JFrame {
     private JMenu menu4;
     private JScrollPane scrollPane1;
     private JTable table1;
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

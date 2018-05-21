@@ -39,18 +39,22 @@ public class Logining extends JPanel {
         this.masterPanel = masterPanel;
         initComponents();
         passwordCheckBox.addActionListener(e -> {showPasswordActionPerformed(e); });
+        //==================测试===========================================
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(userNameComnoBox.getSelectedItem().toString().equals("病人")) {
+                    masterPanel.removeAll();
                     PatientHome patientHome = new PatientHome(null);
                     masterPanel.add(patientHome, BorderLayout.CENTER);
+                    masterPanel.repaint();
                 } else {
                     masterPanel.removeAll();
                     masterPanel.repaint();
                 }
             }
         });
+        //===============================================================================
     }
 
     private void initComponents() {

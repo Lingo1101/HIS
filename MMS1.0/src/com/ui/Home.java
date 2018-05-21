@@ -1,6 +1,7 @@
 package com.ui;
 
 import com.ui.Login.Logining;
+import com.ui.guide.PationGuide;
 import com.ui.patient.PatientHome;
 import com.utils.BeautifulButton;
 import com.utils.BeautifulFrame;
@@ -9,6 +10,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Home {
     private BeautifulFrame frame;
@@ -17,6 +20,8 @@ public class Home {
     private JPanel titleCenter;
     private Logining logining;
     private JPanel titleRight;
+    private PationGuide pationGuide;
+    private JLabel titleLabel;
 
     public Home() {
         this.initComponents();
@@ -30,6 +35,16 @@ public class Home {
                 loginActionPerformed();
             }
         });
+
+        //------------titleLabel--------------------
+        titleLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                masterPanel.removeAll();
+                masterPanel.add(pationGuide, BorderLayout.CENTER);
+                masterPanel.repaint();
+            }
+        });
     }
 
     public void initComponents() {
@@ -38,10 +53,15 @@ public class Home {
         masterPanel = frame.getMasterPane();
         titleCenter = frame.getTitleCenter();
         titleRight = frame.getTitleRight();
+        titleLabel = frame.getTitleLabel();
 
         //---titleCenter---
         titleCenter.setLayout(new BorderLayout());
         titleCenter.add(loginButton, BorderLayout.EAST);
+
+        //----patientHome-----
+        pationGuide = new PationGuide();
+        masterPanel.add(pationGuide, BorderLayout.CENTER);
 
     }
 

@@ -16,7 +16,7 @@ import java.io.InputStreamReader;
 import java.lang.String;
 import java.util.ArrayList;
 
-public class PationGuide extends JFrame implements ActionListener {
+public class PationGuide extends JPanel implements ActionListener {
     JPanel rightPanel = new JPanel();
     JPanel leftPanel = new JPanel();
     JLabel title = new JLabel();
@@ -42,15 +42,6 @@ public class PationGuide extends JFrame implements ActionListener {
 
     /*Constructor*/
     public PationGuide(){
-        super("就医指南");
-        this.setSize(Home_old.WIDTH, Home_old.HEIGHT);
-        this.setLocationRelativeTo(this.getOwner());
-        this.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                dispose();
-            }
-        });
 
         JTextArea copyright = new JTextArea("地址：湖北省武汉市武珞路627号，乘2号线在宝通寺站下，C1出口出站前行20米即可  "
                 +"电话：027-50773333(总机) 公交路线：公汽804、608、806、703、518、540等直达医院");
@@ -126,6 +117,7 @@ public class PationGuide extends JFrame implements ActionListener {
         leftPanel.add(an5);
         leftPanel.setLayout(new BoxLayout(leftPanel,BoxLayout.Y_AXIS));//竖着排列
 
+        this.setLayout(new BorderLayout());
         this.add(title,BorderLayout.NORTH);
         this.add(leftPanel,BorderLayout.WEST);
         this.add(rightPanel,BorderLayout.CENTER);

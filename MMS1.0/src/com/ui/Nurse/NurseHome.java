@@ -105,12 +105,14 @@ public class NurseHome extends JPanel {
                 //======== menu1 ========
                 {
                     menu1.setText("\u6570\u636e\u9996\u9875");
+                    menu1.setFont(new Font("宋体", Font.PLAIN, 20));
                 }
                 menuBar1.add(menu1);
 
                 //======== menu2 ========
                 {
                     menu2.setText("\u60a3\u8005\u7ba1\u7406");
+                    menu2.setFont(new Font("宋体", Font.PLAIN, 20));
                 }
                 menuBar1.add(menu2);
             }

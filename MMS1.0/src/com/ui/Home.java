@@ -1,8 +1,9 @@
 package com.ui;
 
+import com.ui.Login.Session;
+import com.ui.Login.Logined;
 import com.ui.Login.Logining;
 import com.ui.guide.PationGuide;
-import com.ui.patient.PatientHome;
 import com.utils.BeautifulButton;
 import com.utils.BeautifulFrame;
 
@@ -22,6 +23,7 @@ public class Home {
     private JPanel titleRight;
     private PationGuide pationGuide;
     private JLabel titleLabel;
+    private Logined logined;
 
     public Home() {
         this.initComponents();
@@ -42,7 +44,7 @@ public class Home {
             public void mouseClicked(MouseEvent e) {
                 masterPanel.removeAll();
                 masterPanel.add(pationGuide, BorderLayout.CENTER);
-                masterPanel.repaint();
+                masterPanel.updateUI();
             }
         });
     }
@@ -66,19 +68,56 @@ public class Home {
     }
 
     private void loginActionPerformed() {
-        if(logining == null) {
-            //----logining----
-            logining = new Logining(masterPanel);
-            frame.getLayeredPane().add(logining, JLayeredPane.MODAL_LAYER);
+        if(null == Session.user) {
+            toLogin();
+        } else {
+            toExit();
+        }
+    }
+
+    private void toLogin() {
+        if (null == logining) {
+            logining = new Logining(this);
+            frame.getLayeredPane().add(logining, JLayeredPane.POPUP_LAYER);
             Point titleRightPoint = titleRight.getLocation();
             Point loginingPoint = new Point(titleRightPoint.x - logining.getWidth(), titleRightPoint.y + 60);
             logining.setLocation(loginingPoint);
         } else if(logining.isVisible()) {
             logining.setVisible(false);
+            logining = null;
         } else {
             logining.setVisible(true);
         }
-
     }
 
+    private void toExit() {
+        if (null == logined) {
+            logined = new Logined(this);
+            frame.getLayeredPane().add(logined, JLayeredPane.POPUP_LAYER);
+            Point titleRightPoint = titleRight.getLocation();
+            Point loginingPoint = new Point(titleRightPoint.x - logined.getWidth(), titleRightPoint.y + 60);
+            logined.setLocation(loginingPoint);
+        } else if(logined.isVisible()) {
+            logined.setVisible(false);
+            logined = null;
+        } else {
+            logined.setVisible(true);
+        }
+    }
+
+    public BeautifulButton getLoginButton() {
+        return loginButton;
+    }
+
+    public void setLoginButton(BeautifulButton loginButton) {
+        this.loginButton = loginButton;
+    }
+
+    public JPanel getMasterPanel() {
+        return masterPanel;
+    }
+
+    public void setMasterPanel(JPanel masterPanel) {
+        this.masterPanel = masterPanel;
+    }
 }

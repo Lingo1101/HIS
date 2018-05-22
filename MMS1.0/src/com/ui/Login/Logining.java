@@ -4,7 +4,9 @@
 
 package com.ui.Login;
 
+import com.model.User;
 import com.ui.Doctor.DoctorHome;
+import com.ui.Home;
 import com.ui.Nurse.NurseHome;
 import com.ui.patient.PatientHome;
 import com.utils.JDBCUtils;
@@ -15,6 +17,7 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import javax.swing.*;
 
 /**
@@ -22,21 +25,9 @@ import javax.swing.*;
  */
 public class Logining extends JPanel {
 
-    public static void main(String[] args) {
-        JFrame jFrame = new JFrame();
-        jFrame.setSize(1000, 600);
-        jFrame.getContentPane().setLayout(null);
-        Logining logining = new Logining(null);
-        logining.setLocation(0, 0);
-        jFrame.getContentPane().add(logining);
-        jFrame.setLocationRelativeTo(jFrame.getOwner());
-        jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        jFrame.setVisible(true);
-
-    }
-
-    public Logining(JPanel masterPanel) {
-        this.masterPanel = masterPanel;
+    public Logining(Home home) {
+        this.home = home;
+        masterPanel = home.getMasterPanel();
         initComponents();
         passwordCheckBox.addActionListener(e -> {showPasswordActionPerformed(e); });
         submitButton.addActionListener(e -> {submitButtonActionPerformed(e);});
@@ -105,24 +96,33 @@ public class Logining extends JPanel {
         }*/
 
         if(isTrueUser()) {
-            masterPanel.removeAll();
-
-            switch (userNameComnoBox.getSelectedItem().toString()) {
-                case "医生":
-                    DoctorHome doctorHome = new DoctorHome(null);
-                    masterPanel.add(doctorHome, BorderLayout.CENTER);
-                    masterPanel.updateUI();
-                    break;
-                case "护士":
-                    NurseHome nurseHome = new NurseHome(null);
-                    masterPanel.add(nurseHome, BorderLayout.CENTER);
-                    masterPanel.updateUI();
-                    break;
-                case "病人":
-                    PatientHome patientHome = new PatientHome(null);
-                    masterPanel.add(patientHome, BorderLayout.CENTER);
-                    masterPanel.updateUI();
-                    break;
+            try {
+                switch (userNameComnoBox.getSelectedItem().toString()) {
+                    case "医生":
+                        DoctorHome doctorHome = new DoctorHome(null);
+                        masterPanel.add(doctorHome, BorderLayout.CENTER);
+                        masterPanel.updateUI();
+                        break;
+                    case "护士":
+                        NurseHome nurseHome = new NurseHome(null);
+                        masterPanel.add(nurseHome, BorderLayout.CENTER);
+                        masterPanel.updateUI();
+                        break;
+                    case "病人":
+                        PatientHome patientHome = new PatientHome(null);
+                        masterPanel.add(patientHome, BorderLayout.CENTER);
+                        masterPanel.updateUI();
+                        break;
+                }
+            } finally {
+userIDField.setText("测试13213543");
+                masterPanel.removeAll();
+                home.getLoginButton().setText(userNameComnoBox.getSelectedItem().toString());
+                //初始化User
+                Session.user = new User();
+                Session.user.setUserName(userNameComnoBox.getSelectedItem().toString());
+                Session.user.setUserID(userIDField.getText());
+                this.setVisible(false);
             }
         }
 
@@ -165,5 +165,6 @@ public class Logining extends JPanel {
     private JPasswordField passwordField;
     private JButton submitButton;
     private JCheckBox passwordCheckBox;
+    private Home home;
     private JPanel masterPanel;
 }

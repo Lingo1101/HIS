@@ -469,19 +469,7 @@ public class PatientHome extends JPanel {
         menuBar1.setPreferredSize(new Dimension(0, 30));
         this.PshowImage.add(menuBar1, BorderLayout.NORTH);
 
-        { // compute preferred size
-            Dimension preferredSize = new Dimension();
-            for(int i = 0; i < this.getComponentCount(); i++) {
-                Rectangle bounds = this.getComponent(i).getBounds();
-                preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
-                preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
-            }
-            Insets insets = this.getInsets();
-            preferredSize.width += insets.right;
-            preferredSize.height += insets.bottom;
-        }
     }
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JMenuBar menuBar1;
     private JMenu HomePage;
     private JMenu MedicalGuide;
@@ -502,5 +490,4 @@ public class PatientHome extends JPanel {
     private JMenuItem MedicalPhy;
     private JMenu WordSelect;
     private JMenu BookReigser;
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

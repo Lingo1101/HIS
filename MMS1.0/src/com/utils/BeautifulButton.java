@@ -17,9 +17,10 @@ public class BeautifulButton extends JButton {
 
     public BeautifulButton(String text) {
         this.setFont(new Font("宋体", Font.PLAIN, 20));
-        this.setText(text + "▼");
+        this.setText(text);
         addMouseSysle();
     }
+
     public BeautifulButton(ImageIcon normalStyle, ImageIcon armeStyle, int weight, int height) {
         this.normalStyle = normalStyle;
         this.armeStyle = armeStyle;
@@ -60,5 +61,10 @@ public class BeautifulButton extends JButton {
         } else {
             g.drawImage(normalStyle.getImage(), 0, 0, weight, height ,null);
         }
+    }
+
+    @Override
+    public void setText(String text) {
+        super.setText(text + "▼");
     }
 }

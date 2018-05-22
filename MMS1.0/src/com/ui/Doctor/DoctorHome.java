@@ -98,8 +98,6 @@ public class DoctorHome extends JPanel {
         downPanel.setLayout(new BorderLayout());
         this.add(downPanel, BorderLayout.CENTER);
 
-
-
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         menuBar1 = new JMenuBar();
         menu1 = new JMenu();
@@ -115,18 +113,21 @@ public class DoctorHome extends JPanel {
             //======== menu1 ========
             {
                 menu1.setText("\u6570\u636e\u9996\u9875");
+                menu1.setFont(new Font("宋体", Font.PLAIN, 20));
             }
             menuBar1.add(menu1);
 
             //======== menu2 ========
             {
                 menu2.setText("\u60a3\u8005\u7ba1\u7406");
+                menu2.setFont(new Font("宋体", Font.PLAIN, 20));
             }
             menuBar1.add(menu2);
 
             //======== menu3 ========
             {
                 menu3.setText("\u60a3\u8005\u4fe1\u606f\u7f16\u8f91");
+                menu3.setFont(new Font("宋体", Font.PLAIN, 20));
                 menu3.addActionListener(e -> {
 			menu3ActionPerformed(e);
 			menu3ActionPerformed(e);
@@ -143,6 +144,7 @@ public class DoctorHome extends JPanel {
             //======== menu4 ========
             {
                 menu4.setText("\u7cfb\u7edf\u8bbe\u7f6e");
+                menu4.setFont(new Font("宋体", Font.PLAIN, 20));
             }
             menuBar1.add(menu4);
         }
@@ -210,6 +212,7 @@ public class DoctorHome extends JPanel {
     private JScrollPane scrollPane1;
     private JTable table1;
     private String doctorID;
-    private JPanel downPanel;
     private JPanel upPanel;
+    private JPanel downPanel;
+
 }

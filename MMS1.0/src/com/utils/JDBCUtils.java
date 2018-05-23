@@ -13,14 +13,19 @@ public class JDBCUtils {
 
     //测试
     public static void main(String[] args) {
+        String strSQL;
+        String userName = "Patient";
+        String password = "6666";
+        String userID = "P201821105";
+        Map<String, Object> maps = new HashMap<>();
+        strSQL = "select * from UserInfo where UserName = '"+ userName
+                +"'and PassWord = '"+ password +"'and UserID = '"+ userID +"'";
         try {
-            List<Map<String, Object>> list = JDBCUtils.findModeResult("select * from departinfo", null);
-            for(Map<String, Object> map : list) {
-                System.out.println(map);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+            maps = JDBCUtils.findSimpleResult(strSQL, null);
+        } catch (SQLException e1) {
+            e1.printStackTrace();
         }
+        System.out.println(maps);
     }
 
     private static final String USERNAME = "MMS";

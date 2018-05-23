@@ -17,7 +17,7 @@ public class HealthyReadTxt002 extends JFrame{
     JPanel jPanel = new JPanel();
 
     public HealthyReadTxt002(){
-        String filePath = "F:\\texta.txt";
+        String filePath = "file/texta.txt";
         try {
             String encoding = "GBK";
             File file = new File(filePath);

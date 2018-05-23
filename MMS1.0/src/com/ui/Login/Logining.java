@@ -83,18 +83,6 @@ public class Logining extends JPanel {
     }
 
     private void submitButtonActionPerformed(ActionEvent e) {
-
-        //=====================测试阶段先不执行===================================
-/*        if (userIDField.getText().trim().equals("")) // 判断是否用户名和密码都为空
-        {
-            JOptionPane.showMessageDialog(null, "用户名不可为空!");
-            return;
-        }
-        if (passwordField.equals("")) {
-            JOptionPane.showMessageDialog(null, "密码不可为空!");
-            return;
-        }*/
-
         if(isTrueUser()) {
             try {
                 masterPanel.removeAll();
@@ -116,7 +104,6 @@ public class Logining extends JPanel {
                         break;
                 }
             } finally {
-userIDField.setText("测试13213543");
                 home.getLoginButton().setText(userNameComnoBox.getSelectedItem().toString());
                 //初始化User
                 Session.user = new User();
@@ -130,11 +117,24 @@ userIDField.setText("测试13213543");
 
     //判断是否为正确的用户
     public boolean isTrueUser() {
-        return true;
-        //测试阶段对任何结果都为true
- /*       String strSQL;
+        String userName = userNameComnoBox.getSelectedItem().toString();
+        String password = String.valueOf(passwordField.getPassword()).trim();
+        String userID = userIDField.getText().toString().trim();
+        switch (userName) {
+            case "医生":
+                userName = "Doctor";
+                break;
+            case "护士":
+                userName = "Nurse";
+                break;
+            case "病人":
+                userName = "Patient";
+                break;
+        }
+        String strSQL;
         Map<String, Object> maps = new HashMap<>();
-        strSQL = "select * from UserInfo where UserName = '"+ userNameComnoBox +"'and PassWord = '"+ passwordField +"'and UserID = '"+ userIDField +"'";
+        strSQL = "select * from UserInfo where UserName = '"+ userName
+                +"'and PassWord = '"+ password +"'and UserID = '"+ userID +"'";
         try {
             maps = JDBCUtils.findSimpleResult(strSQL, null);
         } catch (SQLException e1) {
@@ -143,7 +143,7 @@ userIDField.setText("测试13213543");
         if(maps.size() != 0) {
             return true;
         }
-        return false;*/
+        return false;
     }
 
     /**

@@ -20,7 +20,7 @@ public class HealthyReadTxt001 extends JFrame{
     JPanel jPanel = new JPanel();
 
     public HealthyReadTxt001(){
-        String filePath = "F:\\res.txt";
+        String filePath = "file/res.txt";
         try {
             String encoding = "GBK";
             File file = new File(filePath);

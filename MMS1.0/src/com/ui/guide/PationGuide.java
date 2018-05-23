@@ -1,9 +1,13 @@
 package com.ui.guide;
 
-import com.ui.Home_old;
+import com.ui.Home;
+import com.ui.Login.Session;
 import com.ui.guide.search.SearchPanel;
+import com.utils.BeautifulFrame;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.plaf.FontUIResource;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -61,8 +65,7 @@ public class PationGuide extends JPanel implements ActionListener {
         title.setBorder(BorderFactory.createEtchedBorder());
 
         leftPanel.setBackground(Color.LIGHT_GRAY);//copyright.setFont(new Font("黑体", Font.PLAIN, 12));
-        rightPanel.setLayout(null);
-        rightPanel.setSize((int) ((Home_old.WIDTH-leftPanel.getWidth())/1.3), Home_old.HEIGHT-title.getHeight());
+        rightPanel.setLayout(new BorderLayout());
         rightPanel.setBackground(Color.WHITE);
 
         ImageIcon p1 = new ImageIcon("pho/科室分布.jpg");
@@ -131,12 +134,11 @@ public class PationGuide extends JPanel implements ActionListener {
         setThird();
         setFourth();
         setFifth();
+        rightPanel.add(firstPanel, BorderLayout.CENTER);
     }
 
     private void setFirst() {
-            firstPanel.setBounds(0, 0, rightPanel.getWidth(), rightPanel.getHeight());
-            //first.setBackground(Color.red);
-            rightPanel.add(firstPanel);
+            rightPanel.add(firstPanel, BorderLayout.CENTER);
             firstPanel.setViewportView(first);
             first.setContentType("text/html");
             String filepath = "D:\\java学习/就诊须知.txt";
@@ -160,29 +162,23 @@ public class PationGuide extends JPanel implements ActionListener {
             }catch (IOException a){
                 System.out.println("文件读取错误");
             }
-            firstPanel.setVisible(false);
     }
     private void setSecond() {
-        secondPanel.setBounds(0, 0, rightPanel.getWidth(), rightPanel.getHeight());
         second.add(picS);
-        rightPanel.add(secondPanel);
+        rightPanel.add(secondPanel,BorderLayout.CENTER);
         secondPanel.setViewportView(second);
-        secondPanel.setVisible(false);
     }
     private void setThird() {
-        thirdPanel.setBounds(0, 0, rightPanel.getWidth(), rightPanel.getHeight());
-        rightPanel.add(thirdPanel);
+        rightPanel.add(thirdPanel, BorderLayout.CENTER);
         thirdPanel.setViewportView(third);
         SearchPanel searchPanel = new SearchPanel();
         third.add(searchPanel);
         searchPanel.repaint();
-        thirdPanel.setVisible(false);
     }
     private void setFourth() {
             fourth.setContentType("text/html");
-            fourthPanel.setBounds(0, 0, rightPanel.getWidth(), rightPanel.getHeight());
             fourthPanel.setBackground(Color.WHITE);
-            rightPanel.add(fourthPanel);
+            rightPanel.add(fourthPanel, BorderLayout.CENTER);
             fourthPanel.setViewportView(fourth);
             fourthPanel.setBounds(0, 0, rightPanel.getWidth(), rightPanel.getHeight());
             String filepath = "D:\\java学习/住院须知.txt";
@@ -208,39 +204,48 @@ public class PationGuide extends JPanel implements ActionListener {
             }catch (IOException a){
                 System.out.println("文件读取错误");
             }
-            fourthPanel.setVisible(false);
     }
     private void setFifth() {
         fifthPanel.setBounds(0, 0, rightPanel.getWidth(), rightPanel.getHeight());
         fifth.add(picSe);
         rightPanel.add(fifthPanel);
         fifthPanel.setViewportView(fifth);
-        fifthPanel.setVisible(false);
     }
     /*实现接口ActionListener */
     public void actionPerformed(ActionEvent e) {
-        for(JScrollPane jScrollPane : list) {
-            jScrollPane.setVisible(false);
-        }
+        rightPanel.removeAll();
+
         /*1*/
         if(e.getActionCommand().equals("jz")){
-            firstPanel.setVisible(true);
+            rightPanel.add(firstPanel);
+            rightPanel.updateUI();
         }
         /*2*/
         if(e.getActionCommand().equals("ks")){
-            secondPanel.setVisible(true);
+            rightPanel.add(secondPanel);
+            rightPanel.updateUI();
         }
         /*3*/
         if(e.getActionCommand().equals("ly")){
-            thirdPanel.setVisible(true);
+            if(null == Session.user) {
+                // 设置按钮显示效果
+                UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("宋体", Font.PLAIN, 20)));
+                UIManager.put("OptionPane.messageFont", new FontUIResource(new Font("宋体", Font.PLAIN, 20)));
+                JOptionPane.showMessageDialog(null, "请登陆后返回主页使用");
+                return;
+            }
+            rightPanel.add(thirdPanel);
+            rightPanel.updateUI();
         }
         /*4*/
         if(e.getActionCommand().equals("zy")){
-            fourthPanel.setVisible(true);
+            rightPanel.add(fourthPanel);
+            rightPanel.updateUI();
         }
         /*5*/
         if(e.getActionCommand().equals("dy")) {
-            fifthPanel.setVisible(true);
+            rightPanel.add(fifthPanel);
+            rightPanel.updateUI();
         }
     }
 }

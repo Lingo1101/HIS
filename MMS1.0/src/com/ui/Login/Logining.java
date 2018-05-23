@@ -97,6 +97,7 @@ public class Logining extends JPanel {
 
         if(isTrueUser()) {
             try {
+                masterPanel.removeAll();
                 switch (userNameComnoBox.getSelectedItem().toString()) {
                     case "医生":
                         DoctorHome doctorHome = new DoctorHome(null);
@@ -116,7 +117,6 @@ public class Logining extends JPanel {
                 }
             } finally {
 userIDField.setText("测试13213543");
-                masterPanel.removeAll();
                 home.getLoginButton().setText(userNameComnoBox.getSelectedItem().toString());
                 //初始化User
                 Session.user = new User();

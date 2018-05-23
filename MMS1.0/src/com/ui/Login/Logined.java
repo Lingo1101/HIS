@@ -1,7 +1,11 @@
 package com.ui.Login;
 
+import com.ui.Doctor.DoctorHome;
 import com.ui.Home;
+import com.ui.Nurse.NurseHome;
 import com.ui.guide.PationGuide;
+import com.ui.patient.PatientHome;
+import com.utils.BeautifulButton;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,17 +18,23 @@ public class Logined extends JPanel {
     public Logined(Home home) {
         this.home = home;
         initComponents();
-        exitLogin.addActionListener(new ActionListener() {
+        exitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 exitButtonActionPerformed();
             }
         });
+        userButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                userButtonActionPerformed();
+            }
+        });
     }
 
     public void initComponents() {
-        message = new JLabel("你好");
-        exitLogin = new JButton("退出登陆");
+        userButton = new BeautifulButton("你好");
+        exitButton = new JButton("退出登陆");
 
         //======== this ========
         this.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
@@ -32,18 +42,18 @@ public class Logined extends JPanel {
         this.setBackground(Color.lightGray);
         this.setLayout(null);
 
-        //-------------message----------
-        message.setText(Session.user.toString());
-        message.setFont(new Font("宋体", Font.PLAIN, 22));
-        add(message);
-        message.setBounds(10, 50, 280, 50);
+        //-------------userButton----------
+        userButton.setText(Session.user.toString());
+        userButton.setFont(new Font("宋体", Font.PLAIN, 22));
+        add(userButton);
+        userButton.setBounds(10, 50, 280, 50);
 
         //---- submitButton ----
-        exitLogin.setFont(new Font("宋体", Font.PLAIN, 22));
-        exitLogin.setBackground(Color.red);
-        exitLogin.setForeground(Color.white);
-        add(exitLogin);
-        exitLogin.setBounds(10, 120, 280, 50);
+        exitButton.setFont(new Font("宋体", Font.PLAIN, 22));
+        exitButton.setBackground(Color.red);
+        exitButton.setForeground(Color.white);
+        add(exitButton);
+        exitButton.setBounds(10, 120, 280, 50);
     }
 
     private void exitButtonActionPerformed() {
@@ -55,6 +65,29 @@ public class Logined extends JPanel {
         home.getLoginButton().setText("未登录");
     }
 
-    private JLabel message;
-    private JButton exitLogin;
+    private void userButtonActionPerformed() {
+        String userName = Session.user.getUserName();
+        home.getMasterPanel().removeAll();
+        switch (userName) {
+            case "医生":
+                DoctorHome doctorHome = new DoctorHome(null);
+                home.getMasterPanel().add(doctorHome, BorderLayout.CENTER);
+                home.getMasterPanel().updateUI();
+                break;
+            case "护士":
+                NurseHome nurseHome = new NurseHome(null);
+                home.getMasterPanel().add(nurseHome, BorderLayout.CENTER);
+                home.getMasterPanel().updateUI();
+                break;
+            case "病人":
+                PatientHome patientHome = new PatientHome(null);
+                home.getMasterPanel().add(patientHome, BorderLayout.CENTER);
+                home.getMasterPanel().updateUI();
+                break;
+        }
+        this.setVisible(false);
+    }
+
+    private BeautifulButton userButton;
+    private JButton exitButton;
 }

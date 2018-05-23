@@ -16,6 +16,8 @@ import java.util.Map;
 
 /**
  * @author dasdfaf
+ * 标题放在了upPanel
+ * 内容放在了downPanel
  */
 public class NurseHome extends JPanel {
 

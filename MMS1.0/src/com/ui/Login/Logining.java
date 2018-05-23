@@ -88,17 +88,17 @@ public class Logining extends JPanel {
                 masterPanel.removeAll();
                 switch (userNameComnoBox.getSelectedItem().toString()) {
                     case "医生":
-                        DoctorHome doctorHome = new DoctorHome(null);
+                        DoctorHome doctorHome = new DoctorHome(userIDField.getText().toString().trim());
                         masterPanel.add(doctorHome, BorderLayout.CENTER);
                         masterPanel.updateUI();
                         break;
                     case "护士":
-                        NurseHome nurseHome = new NurseHome(null);
+                        NurseHome nurseHome = new NurseHome(userIDField.getText().toString().trim());
                         masterPanel.add(nurseHome, BorderLayout.CENTER);
                         masterPanel.updateUI();
                         break;
                     case "病人":
-                        PatientHome patientHome = new PatientHome(null);
+                        PatientHome patientHome = new PatientHome(userIDField.getText().toString().trim());
                         masterPanel.add(patientHome, BorderLayout.CENTER);
                         masterPanel.updateUI();
                         break;

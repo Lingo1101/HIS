@@ -30,7 +30,7 @@ public class Add extends JFrame {
     }
 
     public Add(String patientID, String pass) {
-        
+
         setPatientID(patientID);
 
         initComponents();

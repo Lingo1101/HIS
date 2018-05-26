@@ -24,6 +24,24 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="DepartIntroduce.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/ui/patient/DepartIntroduce.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2484">
+              <caret line="92" column="1" lean-forward="false" selection-start-line="92" selection-start-column="1" selection-end-line="92" selection-end-column="1" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#735#736#0" expanded="true" />
+                <element signature="e#803#804#0" expanded="true" />
+                <element signature="e#2195#2341#0" expanded="true" />
+                <element signature="e#2340#2341#0" expanded="true" />
+                <element signature="e#2499#2500#0" expanded="true" />
+                <element signature="e#2534#2535#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="NurseHome.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ui/Nurse/NurseHome.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -59,11 +77,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Add.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Add.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ui/Doctor/Add.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="32" column="8" lean-forward="false" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
+            <state relative-caret-position="-1242">
+              <caret line="22" column="35" lean-forward="true" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -93,6 +111,7 @@
       <find>KS</find>
       <find>KsI</find>
       <find>KsIntroduce</find>
+      <find>sys</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -172,16 +191,17 @@
         <option value="$PROJECT_DIR$/src/com/utils/JDBCUtils.java" />
         <option value="$PROJECT_DIR$/src/com/ui/patient/PatientHome.java" />
         <option value="$PROJECT_DIR$/src/com/ui/patient/BookReigserKS.java" />
-        <option value="$PROJECT_DIR$/src/com/ui/patient/DepartIntroduce.java" />
         <option value="$PROJECT_DIR$/src/com/ui/Nurse/NurseHome.java" />
         <option value="$PROJECT_DIR$/src/com/ui/Doctor/PatientManagement.java" />
         <option value="$PROJECT_DIR$/src/com/ui/Doctor/DoctorHome.java" />
         <option value="$PROJECT_DIR$/src/com/ui/Doctor/Add.java" />
+        <option value="$PROJECT_DIR$/src/com/ui/patient/DepartIntroduce.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-9" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="373" />
+    <option name="y" value="41" />
     <option name="width" value="1456" />
     <option name="height" value="876" />
   </component>
@@ -225,14 +245,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MMS1.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MMS1.0" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="Doctor" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -492,7 +504,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1050" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -822,14 +834,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ui/patient/DepartIntroduce.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="74" column="5" lean-forward="false" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ui/Login/Logining.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3159">
@@ -871,9 +875,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ui/Doctor/Add.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="32" column="8" lean-forward="false" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
+        <state relative-caret-position="-1242">
+          <caret line="22" column="35" lean-forward="true" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ui/patient/DepartIntroduce.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2484">
+          <caret line="92" column="1" lean-forward="false" selection-start-line="92" selection-start-column="1" selection-end-line="92" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#735#736#0" expanded="true" />
+            <element signature="e#803#804#0" expanded="true" />
+            <element signature="e#2195#2341#0" expanded="true" />
+            <element signature="e#2340#2341#0" expanded="true" />
+            <element signature="e#2499#2500#0" expanded="true" />
+            <element signature="e#2534#2535#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

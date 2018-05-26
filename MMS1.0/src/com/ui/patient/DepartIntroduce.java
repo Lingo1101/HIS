@@ -85,12 +85,10 @@ public class DepartIntroduce extends JFrame{
         strSQL = "select Introduce from DepartInfo where DEPARTID = '"+ ksid +"'";
         try{
             maps = JDBCUtils.findSimpleResult(strSQL, null);
-            DeFtextArea.setText(maps.get("KsIntroduce".toUpperCase()).toString());
+            DeFtextArea.setText(maps.get("Introduce".toUpperCase()).toString());
         }catch (Exception e1){
             e1.printStackTrace();
         }
     }
 }
-
-//public class DepartIntroduce {
 

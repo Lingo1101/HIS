@@ -82,7 +82,7 @@ public class DepartIntroduce extends JFrame{
     public void getnr(){
         String strSQL;
         Map<String, Object> maps = new HashMap<>();
-        strSQL = "select KsIntroduce from DepartInfo where DEPARTID = '"+ ksid +"'";
+        strSQL = "select Introduce from DepartInfo where DEPARTID = '"+ ksid +"'";
         try{
             maps = JDBCUtils.findSimpleResult(strSQL, null);
             DeFtextArea.setText(maps.get("KsIntroduce".toUpperCase()).toString());

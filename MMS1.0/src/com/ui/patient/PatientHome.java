@@ -273,7 +273,7 @@ public class PatientHome extends JPanel {
     //科室预约
     private void BookReigserMouseClicked(MouseEvent e) {
         BookReigserKS bookReigserKS =new BookReigserKS();
-        bookReigserKS.getUserID(patientId);
+        bookReigserKS.getUserID();
     }
 
     private void initComponents() {

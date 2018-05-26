@@ -147,8 +147,8 @@ public class BookReigserKS extends JFrame{
     /**
      * 获取病人ID
      */
-    public void getUserID(String _str){
-        this.patientId1 = _str;
+    public void getUserID(){
+        this.patientId1 = PatientHome.patientId;
         getIfos();
     }
     /**
@@ -196,6 +196,7 @@ public class BookReigserKS extends JFrame{
     public void getproject(){
         Check.removeAllItems();
         addChoices();
+        this.repaint();
     }
     public void addChoices() {
         String sql = "select ProjectName from HspPriceInfo where DepartID = '" + XmId + "' ";

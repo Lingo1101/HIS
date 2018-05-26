@@ -29,12 +29,9 @@ public class Add extends JFrame {
         Add.patientID = patientID;
     }
 
-//  构造函数
-    public Add(String patientID,String pass) {
-
-        System.out.println(patientID);
+    public Add(String patientID, String pass) {
+        
         setPatientID(patientID);
-        //button3 = new JButton(new ImageIcon("pictures/7.jpg"));
 
         initComponents();
         Map<String, Object> maps = new HashMap<>();

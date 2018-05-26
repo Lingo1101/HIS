@@ -16,7 +16,7 @@ public class JDBCUtils {
         String strSQL;
         String userName = "Patient";
         String password = "6666";
-        String userID = "P201821105";
+        String userID = "D201821105";
         Map<String, Object> maps = new HashMap<>();
         strSQL = "select * from UserInfo where UserName = '"+ userName
                 +"'and PassWord = '"+ password +"'and UserID = '"+ userID +"'";
@@ -27,11 +27,12 @@ public class JDBCUtils {
         }
         System.out.println(maps);
     }
-
-    private static final String USERNAME = "MMS";
-    private static final String PASSWORD = "tiger";
-    private static final String DRIVER = "oracle.jdbc.driver.OracleDriver";
-    private static final String URL = "jdbc:oracle:thin:@localhost:1521:orcl";
+//oracle.jdbc.driver.OracleDriver
+//jdbc:oracle:thin:@localhost:1521:orcl
+    private static final String USERNAME = "sa";
+    private static final String PASSWORD = "1245";
+    private static final String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+    private static final String URL = "jdbc:sqlserver://localhost:1433;databaseName=MMS";
     private static Connection connection = null;
     private static PreparedStatement preparedStatement = null;
     private static ResultSet resultSet = null;

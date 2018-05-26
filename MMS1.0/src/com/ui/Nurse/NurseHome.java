@@ -23,29 +23,24 @@ public class NurseHome extends JPanel {
 
     public NurseHome(String nurseID) {
         initComponents();
-        setSize(1000,1000);
-
-        downPanel.setLayout(new GridLayout(5,5,3,4));
         if(null != nurseID) {
             selete("SELECT InpatientInfo.HspID,InpatientInfo.PatientID," +
                     "DepartID,DoctorID,NurseID,BedID,InHspTimes,PatientName,GENDER," +
                     "IDNumber,PhoneNumber from InpatientInfo,PatientInfo " +
                     "where InpatientInfo.PatientID=PatientInfo.PatientID " +
-                    "and NurseID='" + nurseID + "'", "InpatientInfo");
+                    "and NurseID='" + nurseID + "'");
         }
 
     }
     // 获取当前护士管理患者人数
-    void selete(String sqlString, String value) {
-        if (value == "InpatientInfo") {
-        this.setLayout(new FlowLayout(FlowLayout.LEFT));
+    void selete(String sqlString) {
         List<Map<String, Object>> lists = new ArrayList<>();
         try {
             lists = JDBCUtils.findModeResult(sqlString, null);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+System.out.println(lists);
         for(Map<String, Object> maps : lists) {
             String patientID = maps.get("PatientID".toUpperCase()).toString();
             this.ID = patientID;
@@ -59,9 +54,8 @@ public class NurseHome extends JPanel {
             downPanel.add(b);
             n++;
         }
-
-        }
     }
+
 // 窗口按钮变色
     private Color getMyColor(String patientID) {
         String a="select IsExecuted from DoctorsAdviceInfo where PatientID='"+ patientID+"'";
@@ -99,7 +93,7 @@ public class NurseHome extends JPanel {
 
             //---------downPanel------------------
             downPanel = new JPanel();
-            downPanel.setLayout(new BorderLayout());
+            downPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
             this.add(downPanel, BorderLayout.CENTER);
 
             //======== menuBar1 ========

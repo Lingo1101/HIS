@@ -141,7 +141,7 @@ public class PationGuide extends JPanel implements ActionListener {
             rightPanel.add(firstPanel, BorderLayout.CENTER);
             firstPanel.setViewportView(first);
             first.setContentType("text/html");
-            String filepath = "D:\\java学习/就诊须知.txt";
+            String filepath = "file/住院须知.txt";
             File file = new File(filepath);
             try{
                 if(file.isFile() && file.exists()){ //判断文件是否存在
@@ -181,7 +181,7 @@ public class PationGuide extends JPanel implements ActionListener {
             rightPanel.add(fourthPanel, BorderLayout.CENTER);
             fourthPanel.setViewportView(fourth);
             fourthPanel.setBounds(0, 0, rightPanel.getWidth(), rightPanel.getHeight());
-            String filepath = "D:\\java学习/住院须知.txt";
+            String filepath = "file/就诊须知.txt";
             File file = new File(filepath);
             try{
                 if(file.isFile() && file.exists()){ //判断文件是否存在

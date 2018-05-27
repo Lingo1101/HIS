@@ -100,10 +100,12 @@ public class DoctorHome extends JPanel {
             //======== menu1 ========
             {
                 menu1.setText("数据首页");
+                menu1.setFont(new Font("宋体", Font.PLAIN, 20));
 
                 //---- menuItem1 ----
                 JMenuItem menuItem1 = new JMenuItem();
                 menuItem1.setText("刷新");
+                menuItem1.setFont(new Font("宋体", Font.PLAIN, 20));
                 menuItem1.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {

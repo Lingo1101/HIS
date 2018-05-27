@@ -2,6 +2,8 @@ package com.ui.Nurse;
 
 import com.utils.JDBCUtils;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.List;
 import javax.swing.*;
 import java.awt.*;
@@ -9,6 +11,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 /*
  * Created by JFormDesigner on Wed Mar 28 09:35:09 CST 2018
  */
@@ -40,7 +44,6 @@ public class NurseHome extends JPanel {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-System.out.println(lists);
         for(Map<String, Object> maps : lists) {
             String patientID = maps.get("PatientID".toUpperCase()).toString();
             this.ID = patientID;
@@ -48,16 +51,31 @@ System.out.println(lists);
             String gender = maps.get("GENDER".toUpperCase()).toString();
             String bedID = maps.get("BedID".toUpperCase()).toString();
             JTextPane b = new JTextPane();
+            b.setEditable(false);
             b.setText("姓名：" + patientName + "\n" + "病人ID：" + patientID + "\n" + "性别：" + gender + "\n" + "病床号：" + bedID + "");
             b.setBackground(getMyColor(patientID));
             b.setSize(50, 40);
             downPanel.add(b);
             n++;
+
+            b.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    textPanelMouseClicked(b);
+                }
+            });
+
+            b.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                    b.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                }
+            });
         }
     }
 
-// 窗口按钮变色
-    private Color getMyColor(String patientID) {
+    //窗口按钮变色
+    public  Color getMyColor(String patientID) {
         String a="select IsExecuted from DoctorsAdviceInfo where PatientID='"+ patientID+"'";
         String aaaa = "";
         Map<String, Object> maps = new HashMap<>();
@@ -74,7 +92,11 @@ System.out.println(lists);
         else{
             return Color.green;
         }
+    }
 
+    //点击病人块 弹出执行框
+    private void textPanelMouseClicked(JTextPane jTextPane) {
+        new PationText(jTextPane, this);
     }
 
     private void initComponents () {

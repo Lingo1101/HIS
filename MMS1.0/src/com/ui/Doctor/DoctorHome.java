@@ -50,7 +50,7 @@ public class DoctorHome extends JPanel {
             }
             ID = (String) table1.getValueAt(row, 0);
         }
-        if (e.getButton() == MouseEvent.BUTTON3) {
+        if (null != ID && e.getButton() == MouseEvent.BUTTON3) {
             new Add(ID, doctorID);
         }
 

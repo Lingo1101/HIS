@@ -62,6 +62,7 @@ public class Logined extends JPanel {
 
     private void exitButtonActionPerformed() {
         Session.user = null;
+        Session.loginedHome = null;
         home.getMasterPanel().removeAll();
         home.getMasterPanel().add(new PationGuide(), BorderLayout.CENTER);
         home.getMasterPanel().updateUI();
@@ -74,17 +75,17 @@ public class Logined extends JPanel {
         home.getMasterPanel().removeAll();
         switch (userName) {
             case "医生":
-                DoctorHome doctorHome = new DoctorHome(null);
+                DoctorHome doctorHome = (DoctorHome)Session.loginedHome;
                 home.getMasterPanel().add(doctorHome, BorderLayout.CENTER);
                 home.getMasterPanel().updateUI();
                 break;
             case "护士":
-                NurseHome nurseHome = new NurseHome(null);
+                NurseHome nurseHome = (NurseHome)Session.loginedHome;
                 home.getMasterPanel().add(nurseHome, BorderLayout.CENTER);
                 home.getMasterPanel().updateUI();
                 break;
             case "病人":
-                PatientHome patientHome = new PatientHome(null);
+                PatientHome patientHome = (PatientHome)Session.loginedHome;
                 home.getMasterPanel().add(patientHome, BorderLayout.CENTER);
                 home.getMasterPanel().updateUI();
                 break;

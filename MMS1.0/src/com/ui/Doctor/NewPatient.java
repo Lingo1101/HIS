@@ -128,6 +128,7 @@ public class NewPatient extends JDialog {
         textField_6 = new JTextField(getComDoctorName());
         textField_6.setBounds(395, 136, 106, 30);
         textField_6.setFont(new Font("宋体", Font.PLAIN, 20));
+        contentPanel.add(textField_6);
 
         JLabel label_5 = new JLabel("出生日期");
         label_5.setBounds(20, 184, 80, 24);

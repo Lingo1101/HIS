@@ -6,6 +6,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
@@ -50,7 +51,8 @@ public class DoctorHome extends JPanel {
             }
             ID = (String) table1.getValueAt(row, 0);
         }
-        if (null != ID && e.getButton() == MouseEvent.BUTTON3) {
+
+        if (null != ID && e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 2) {
             new Add(ID, doctorID);
         }
 
@@ -93,6 +95,7 @@ public class DoctorHome extends JPanel {
         menu4 = new JMenu();
         scrollPane1 = new JScrollPane();
         table1 = new JTable();
+        table1.setEnabled(false);
 
         //======== menuBar1 ========
         {
@@ -120,6 +123,17 @@ System.out.println("刷新数据");
             {
                 menu2.setText("患者管理");
                 menu2.setFont(new Font("宋体", Font.PLAIN, 20));
+
+                //---- menuItem2 ----
+                JMenuItem menuItem2 = new JMenuItem();
+                menuItem2.setText("新增患者");
+                menuItem2.setFont(new Font("宋体", Font.PLAIN, 20));
+                menuItem2.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        new NewPatient(doctorID);
+                    }
+                });
+                menu2.add(menuItem2);
             }
             menuBar1.add(menu2);
 

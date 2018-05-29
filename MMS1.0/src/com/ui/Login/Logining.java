@@ -21,7 +21,8 @@ import java.util.Random;
 import javax.swing.*;
 
 /**
- * @author du
+ * 未登录的界面
+ * @author dutz
  */
 public class Logining extends JPanel {
 

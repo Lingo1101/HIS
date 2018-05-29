@@ -6,7 +6,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 /**
- * beautiful button
+ * 美化的按钮
+ * @author dutz
  */
 public class BeautifulButton extends JButton {
     private ImageIcon normalStyle;

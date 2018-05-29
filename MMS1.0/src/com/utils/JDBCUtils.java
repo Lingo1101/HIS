@@ -8,6 +8,7 @@ import java.util.Map;
 
 /**
  * 连接数据库
+ * @author dutz
  */
 public class JDBCUtils {
 

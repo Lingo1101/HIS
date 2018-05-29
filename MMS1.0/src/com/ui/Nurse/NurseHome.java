@@ -34,6 +34,17 @@ public class NurseHome extends JPanel {
                     "where InpatientInfo.PatientID=PatientInfo.PatientID " +
                     "and NurseID='" + nurseID + "'");
         }
+       timeTest = new TimeTest(patientTime, patientPane);
+        new Thread(() -> {
+            while(patientTime.size() != 0) {
+                timeTest.excute();
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
 
     }
     // 获取当前护士管理患者人数
@@ -58,13 +69,20 @@ public class NurseHome extends JPanel {
             downPanel.add(b);
             n++;
 
+            if(b.getBackground() == Color.red) {
+                Map<String, int[]> map = new HashMap<>();
+                map.put(patientID, getTime(patientID));
+                patientTime.add(map);
+
+                patientPane.put(patientID, b);
+            }
+
             b.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     textPanelMouseClicked(b);
                 }
             });
-
             b.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent e) {
@@ -92,6 +110,31 @@ public class NurseHome extends JPanel {
         else{
             return Color.green;
         }
+    }
+
+    /**
+     * 传病人ID 返回病人的时间
+     * @param pID
+     * @return
+     */
+    public int[] getTime(String pID) {
+        String sql = "select EffectiveTime from DoctorsAdviceInfo where PatientID = '" + pID + "'";
+        String time = null;
+        Map<String, Object> maps = new HashMap<>();
+        try {
+            maps = JDBCUtils.findSimpleResult(sql, null);
+            time = maps.get("EffectiveTime".toUpperCase()).toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Pattern p = Pattern.compile("\\d{2,5}");
+        Matcher m = p.matcher(time);
+        int arr[] = new int[7];
+        int i = 0;
+        while(m.find()) {
+            arr[i++] = Integer.parseInt(m.group());
+        }
+        return arr;
     }
 
     //点击病人块 弹出执行框
@@ -137,12 +180,22 @@ public class NurseHome extends JPanel {
             upPanel.add(menuBar1, BorderLayout.CENTER);
     }
 
-            private JMenuBar menuBar1;
-            private JMenu menu1;
-            private JMenu menu2;
-            public static int n=0;
-            private String ID;
-            private JPanel downPanel;
-            private JPanel upPanel;
+    private class PatientThread implements Runnable {
+        @Override
+        public void run() {
 
         }
+    }
+
+    private JMenuBar menuBar1;
+    private JMenu menu1;
+    private JMenu menu2;
+    public static int n=0;
+    private String ID;
+    private JPanel downPanel;
+    private JPanel upPanel;
+    private List<Map<String, int[]>> patientTime = new ArrayList<>();
+    private Map<String, JTextPane> patientPane = new HashMap<>();
+    private TimeTest timeTest;
+
+}

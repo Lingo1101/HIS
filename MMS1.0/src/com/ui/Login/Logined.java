@@ -12,6 +12,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * 登陆后的界面
+ * @author dutz
+ */
 public class Logined extends JPanel {
     private Home home;
 

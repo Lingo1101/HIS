@@ -9,7 +9,8 @@ import java.awt.geom.RoundRectangle2D;
 import javax.swing.*;
 
 /**
- * beautilful Frame
+ * 美化的窗体
+ * @author dutz
  */
 public class BeautifulFrame extends JFrame{
 	public  static final int screenWidth, screenHeight;

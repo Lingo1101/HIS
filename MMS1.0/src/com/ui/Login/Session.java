@@ -2,6 +2,10 @@ package com.ui.Login;
 
 import com.model.User;
 
+/**
+ * 存储登录信息
+ * @author dutz
+ */
 public class Session {
 
     /**

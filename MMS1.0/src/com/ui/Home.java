@@ -14,6 +14,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * 主页面 组合所有界面
+ * @author dutz
+ */
 public class Home {
     private BeautifulFrame frame;
     private BeautifulButton loginButton;

@@ -2,7 +2,9 @@
  * Created by JFormDesigner on Mon May 28 22:00:20 CST 2018
  */
 
-package com.ui.Nurse;
+package com.utils;
+
+import com.utils.MonitorPatient;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -14,17 +16,19 @@ import java.util.Map;
 import javax.swing.*;
 
 /**
+ * 提醒框
  * @author dutz
  */
 public class TipFrame extends JFrame {
 
     public TipFrame(String patientID, Map<String, int[]> map, List<Map<String, int[]>> patientTime,
-                    Map<String, JTextPane> patientPane, TimeTest timeTest) {
+                    Map<String, JTextPane> patientPane, CanNotify canNotify, String centerStr) {
         this.patientID = patientID;
         this.map = map;
         this.patientTime = patientTime;
         this.patientPane = patientPane;
-        this.timeTest = timeTest;
+        this.canNotify = canNotify;
+        this.centerStr = centerStr;
         initComponents();
         this.setVisible(true);
         button1.addActionListener(new ActionListener() {
@@ -37,7 +41,7 @@ public class TipFrame extends JFrame {
             @Override
             public void windowClosed(WindowEvent e) {
                 dispose();
-                timeTest.run();
+                canNotify.run();
             }
         });
     }
@@ -47,7 +51,7 @@ public class TipFrame extends JFrame {
         patientTime.remove(map);
         patientPane.remove(patientID);
         dispose();
-        timeTest.run();
+        canNotify.run();
     }
 
     private void initComponents() {
@@ -65,7 +69,11 @@ public class TipFrame extends JFrame {
         //====jTextPane=====
         jTextPane.setEditable(false);
         jTextPane.setContentType("text/html");
-        jTextPane.setText("<hr><h2 align='center'>" + "请注意执行" + patientID + "的医嘱" + "</h2><hr>" );
+        if(null == centerStr) {
+            jTextPane.setText("<hr><h2 align='center'>" + "请注意执行" + patientID + "的医嘱" + "</h2><hr>");
+        } else {
+            jTextPane.setText("<hr><h2 align='center'>" + centerStr + "</h2><hr>");
+        }
         contentPane.add(jTextPane, BorderLayout.CENTER);
 
         //==========jpanel==========
@@ -92,5 +100,6 @@ public class TipFrame extends JFrame {
     private List<Map<String, int[]>> patientTime;
     private Map<String, JTextPane> patientPane;
     private Map<String, int[]> map;
-    TimeTest timeTest;
+    private CanNotify canNotify;
+    private String centerStr = null;
 }

@@ -1,6 +1,7 @@
 package com.ui.Nurse;
 
 import com.utils.JDBCUtils;
+import com.utils.MonitorPatient;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -34,7 +35,7 @@ public class NurseHome extends JPanel {
                     "where InpatientInfo.PatientID=PatientInfo.PatientID " +
                     "and NurseID='" + nurseID + "'");
         }
-       timeTest = new TimeTest(patientTime, patientPane);
+       timeTest = new MonitorPatient(patientTime, patientPane);
         new Thread(() -> {
             while(patientTime.size() != 0) {
                 timeTest.excute();
@@ -61,32 +62,32 @@ public class NurseHome extends JPanel {
             String patientName = maps.get("PatientName".toUpperCase()).toString();
             String gender = maps.get("GENDER".toUpperCase()).toString();
             String bedID = maps.get("BedID".toUpperCase()).toString();
-            JTextPane b = new JTextPane();
-            b.setEditable(false);
-            b.setText("姓名：" + patientName + "\n" + "病人ID：" + patientID + "\n" + "性别：" + gender + "\n" + "病床号：" + bedID + "");
-            b.setBackground(getMyColor(patientID));
-            b.setSize(50, 40);
-            downPanel.add(b);
+            JTextPane jTextPane = new JTextPane();
+            jTextPane.setEditable(false);
+            jTextPane.setText("姓名：" + patientName + "\n" + "病人ID：" + patientID + "\n" + "性别：" + gender + "\n" + "病床号：" + bedID + "");
+            jTextPane.setBackground(getMyColor(patientID));
+            jTextPane.setSize(50, 40);
+            downPanel.add(jTextPane);
             n++;
 
-            if(b.getBackground() == Color.red) {
+            if(jTextPane.getBackground() == Color.red) {
                 Map<String, int[]> map = new HashMap<>();
-                map.put(patientID, getTime(patientID));
+                map.put(patientID, MonitorPatient.getTime(patientID));
                 patientTime.add(map);
 
-                patientPane.put(patientID, b);
+                patientPane.put(patientID, jTextPane);
             }
 
-            b.addMouseListener(new MouseAdapter() {
+            jTextPane.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    textPanelMouseClicked(b);
+                    textPanelMouseClicked(jTextPane);
                 }
             });
-            b.addMouseListener(new MouseAdapter() {
+            jTextPane.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent e) {
-                    b.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                    jTextPane.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                 }
             });
         }
@@ -112,30 +113,6 @@ public class NurseHome extends JPanel {
         }
     }
 
-    /**
-     * 传病人ID 返回病人的时间
-     * @param pID
-     * @return
-     */
-    public int[] getTime(String pID) {
-        String sql = "select EffectiveTime from DoctorsAdviceInfo where PatientID = '" + pID + "'";
-        String time = null;
-        Map<String, Object> maps = new HashMap<>();
-        try {
-            maps = JDBCUtils.findSimpleResult(sql, null);
-            time = maps.get("EffectiveTime".toUpperCase()).toString();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        Pattern p = Pattern.compile("\\d{2,5}");
-        Matcher m = p.matcher(time);
-        int arr[] = new int[7];
-        int i = 0;
-        while(m.find()) {
-            arr[i++] = Integer.parseInt(m.group());
-        }
-        return arr;
-    }
 
     //点击病人块 弹出执行框
     private void textPanelMouseClicked(JTextPane jTextPane) {
@@ -196,6 +173,6 @@ public class NurseHome extends JPanel {
     private JPanel upPanel;
     private List<Map<String, int[]>> patientTime = new ArrayList<>();
     private Map<String, JTextPane> patientPane = new HashMap<>();
-    private TimeTest timeTest;
+    private MonitorPatient timeTest;
 
 }

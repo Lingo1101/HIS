@@ -1,19 +1,15 @@
-package com.ui.Nurse;
+package com.utils;
 
 import javax.swing.*;
-import java.awt.*;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * java演示倒计时
- *
+ * 监控医嘱
+ *@author dutz
  */
-class TimeTest {
+public class MonitorPatient implements CanNotify{
     private static Calendar c;
     private static long endTime;
     private static Date date;
@@ -22,7 +18,7 @@ class TimeTest {
     private List<Map<String, int[]>> patientTime;
     private Map<String, JTextPane> patientPane;
 
-    TimeTest(List<Map<String, int[]>> patientTime, Map<String, JTextPane> patientPane) {
+    public MonitorPatient(List<Map<String, int[]>> patientTime, Map<String, JTextPane> patientPane) {
         this.patientTime = patientTime;
         this.patientPane = patientPane;
         c = Calendar.getInstance();
@@ -42,8 +38,8 @@ class TimeTest {
             long hh = midTime / 60 / 60 % 60;
             long mm = midTime / 60 % 60;
             long ss = midTime % 60;
-            if(hh <= 50) {
-                new TipFrame(patientID, map, patientTime, patientPane, this);
+            if(hh <= 50) {              //调时间
+                new TipFrame(patientID, map, patientTime, patientPane, this, null);
                 try {
                     this.wait();
                 } catch (InterruptedException e) {
@@ -65,9 +61,32 @@ class TimeTest {
     }
 
     /**
-     * 设定时间戳，倒计时
+     * 传病人ID 返回病人的时间
+     * @param pID
+     * @return
      */
-    public synchronized  void run() {
+    public static int[] getTime(String pID) {
+        String sql = "select EffectiveTime from DoctorsAdviceInfo where PatientID = '" + pID + "'";
+        String time = null;
+        Map<String, Object> maps = new HashMap<>();
+        try {
+            maps = JDBCUtils.findSimpleResult(sql, null);
+            time = maps.get("EffectiveTime".toUpperCase()).toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Pattern p = Pattern.compile("\\d{2,5}");
+        Matcher m = p.matcher(time);
+        int arr[] = new int[7];
+        int i = 0;
+        while(m.find()) {
+            arr[i++] = Integer.parseInt(m.group());
+        }
+        return arr;
+    }
+
+    @Override
+    public synchronized void run() {
         this.notify();
     }
 }

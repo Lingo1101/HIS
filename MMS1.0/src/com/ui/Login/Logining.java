@@ -62,7 +62,7 @@ public class Logining extends JPanel {
         this.setBackground(Color.lightGray);
         this.setLayout(null);
 
-        userNameComnoBox.addItem("病人");
+        userNameComnoBox.addItem("患者");
         userNameComnoBox.addItem("医生");
         userNameComnoBox.addItem("护士");
         this.add(userNameComnoBox);
@@ -114,7 +114,7 @@ public class Logining extends JPanel {
                         masterPanel.add(nurseHome, BorderLayout.CENTER);
                         masterPanel.updateUI();
                         break;
-                    case "病人":
+                    case "患者":
                         PatientHome patientHome = new PatientHome(userIDField.getText().toString().trim());
                         Session.loginedHome = patientHome;
                         masterPanel.add(patientHome, BorderLayout.CENTER);
@@ -145,7 +145,7 @@ public class Logining extends JPanel {
             case "护士":
                 userName = "Nurse";
                 break;
-            case "病人":
+            case "患者":
                 userName = "Patient";
                 break;
         }

@@ -84,7 +84,7 @@ public class Logined extends JPanel {
                 home.getMasterPanel().add(nurseHome, BorderLayout.CENTER);
                 home.getMasterPanel().updateUI();
                 break;
-            case "病人":
+            case "患者":
                 PatientHome patientHome = (PatientHome)Session.loginedHome;
                 home.getMasterPanel().add(patientHome, BorderLayout.CENTER);
                 home.getMasterPanel().updateUI();

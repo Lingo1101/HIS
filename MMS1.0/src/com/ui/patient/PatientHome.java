@@ -1,4 +1,5 @@
 package com.ui.patient;
+import com.utils.BeautifulFrame;
 import com.utils.JDBCUtils;
 
 import java.awt.*;
@@ -7,164 +8,92 @@ import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
+
 /**
  * @author ddd zhaung 主窗体函数，用于实现主要功能的操作界面
  */
 //比如 你在这改了代码 保存下 然后 打开github的那个
 public class PatientHome extends JPanel {
-    int screenWidth,screenHeight;
-    static int totalWidth;
-    static int totalHeight;
-    public static String patientId;
 
-    JPanel PshowImage = new JPanel();//显示推送图片的panel
-    JPanel PpatientIfoShowL = new JPanel();//显示病人基本信息的panel
-    JPanel PpatientIfoShowR = new JPanel();//显示病人基本信息的panel
-    JPanel DoctorRemind = new JPanel();//显示医嘱的panel
-    JPanel SelectPatientIfos = new JPanel();//添加查询病例控件的panel
-    JPanel PMedRecordInfo = new JPanel();//显示病例的panel
+    public static void main(String[] args) {
+        String s = "xx省xx市xx区xx街道xx号";
+        Pattern p = Pattern.compile("区.*");
+        Matcher m = p.matcher(s);
+        if(m.find()) {
+            String s1 = m.group().substring(1);
+            System.out.println(s1);
+        }
+    }
 
-    JLabel SelectClinic = new JLabel("病例查询:");//查询病例按钮
-    JTextField TuserID = new JTextField("P201821101");//病例查询ID
-    JButton BselectIfo = new JButton(new ImageIcon("Images/search3.png"));
-    JButton BClose = new JButton(new ImageIcon("Images/return.png"));//关闭病例查询按钮
-
-    JLabel[] lab = {new JLabel("用户ID",JLabel.CENTER),new JLabel("",JLabel.CENTER),
-            new JLabel("用户名",JLabel.CENTER),new JLabel("",JLabel.CENTER),new JLabel("用户性别",JLabel.CENTER),
-            new JLabel("",JLabel.CENTER), new JLabel("出生日期",JLabel.CENTER),new JLabel("",JLabel.CENTER),
-            new JLabel("身份证号",JLabel.CENTER),new JLabel("",JLabel.CENTER), new JLabel("电话号码",JLabel.CENTER),
-            new JLabel("",JLabel.CENTER), new JLabel("家庭住址",JLabel.CENTER),new JLabel("",JLabel.CENTER)};
-    JTextArea textArea = new JTextArea();//显示病例的JTextArea
-    JScrollPane jScrollPane = new JScrollPane();//病例超出滚动条
-
-
-    //构造函数
     public PatientHome(String _str) {
         this.patientId = _str;
         initComponents();
         getIfos();
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();//获取主显示器屏幕大小即获取PC屏幕尺寸
-        screenWidth = screenSize.width;
-        screenHeight = screenSize.height;
-        //按屏幕尺寸固定比例设置软件尺寸
-        totalWidth = (int) Math.round(screenWidth * 0.7);
-        totalHeight = (int) Math.round(screenHeight * 0.9);//round是四舍五入
-        /**
-         * 添加推送图片
-         */
-        ShowImagePanel t = new ShowImagePanel();
-        PshowImage.setPreferredSize(new Dimension(200, 100));
-        PshowImage.add(t, BorderLayout.CENTER);
-        this.add(PshowImage, BorderLayout.NORTH);
-
-
-        SelectPatientIfos.setLayout(null);
-        PpatientIfoShowL.setLayout(new GridLayout(18,1,5,5));
-        PpatientIfoShowR.setLayout(new GridLayout(18,1,5,5));
-        DoctorRemind.setLayout(new GridLayout(18,1,5,5));
+        patientCases();
+        showImage();
+        downLeftDownL.setLayout(new GridLayout(10,1,5,5));
+        downLeftDownR.setLayout(new GridLayout(10,1,5,5));
         for (int i = 0;i < 13;){
-            PpatientIfoShowL.add(lab[i]);
+            downLeftDownL.add(lab[i]);
             i = i+2;
         }
         for (int i = 1;i < 14;){
-            PpatientIfoShowR.add(lab[i]);
+            downLeftDownR.add(lab[i]);
             i = i+2;
         }
-        PshowImage.setBackground(Color.cyan);
-        PpatientIfoShowL.setBackground(Color.getHSBColor(0,100,240));
-        PpatientIfoShowR.setBackground(Color.getHSBColor(0,100,240));
-        PMedRecordInfo.setBackground(Color.getHSBColor(0,100,240));
-        textArea.setBackground(Color.getHSBColor(0,100,240));
-        DoctorRemind.setBackground(Color.lightGray);
-        SelectPatientIfos.setBackground(Color.lightGray);
-        PshowImage.setBounds(0,0,totalWidth,totalHeight/5);
-        PpatientIfoShowL.setBounds(0,(totalHeight/5 ) + 105,(totalWidth/4)/3,(4*totalHeight/5)-2);
-        PpatientIfoShowR.setBounds((totalWidth/4)/3 + 2,(totalHeight/5 ) + 105,totalWidth/6 - 2,(4*totalHeight/5)-2);
-        //显示医生嘱咐panel
-        DoctorRemind.setBounds((totalWidth/4) + 2,(totalHeight/5 ) + 2,(3*totalWidth/4) - 2,(4*totalHeight/5)-2);
-        SelectPatientIfos.setBounds(0,(totalHeight/5 ) + 2,totalWidth/4,100);
-        //显示病人医嘱panel，要通过查询才会显示
-        PMedRecordInfo.setBounds((totalWidth/4) + 2,(totalHeight/5 ) + 2,(3*totalWidth/4) - 2,(4*totalHeight/5)-2);
-        jScrollPane.setBounds((totalWidth/4) + 2,(totalHeight/5 ) + 2,(3*totalWidth/4) - 2,(4*totalHeight/5)-2);
-        textArea.setBounds((totalWidth/4) + 2,(totalHeight/5 ) + 2,(3*totalWidth/4) - 2,(4*totalHeight/5)-2);
-        BClose.setBounds(170,10,50,30);
-        TuserID.setBounds(35,50,120,30);
-        BselectIfo.setBounds(170,50,50,30);
-        SelectClinic.setBounds(35,10,120,30);
-        SelectClinic.setFont(new Font("华文新魏",Font.PLAIN, 25));
-        textArea.setFont(new Font("华文新魏",Font.PLAIN, 15));
-        PMedRecordInfo.setVisible(false);
-        SelectPatientIfos.add(BClose);
-        SelectPatientIfos.add(SelectClinic);
-        SelectPatientIfos.add(TuserID);
-        SelectPatientIfos.add(BselectIfo);
-        this.add(PMedRecordInfo);
-        this.add(SelectPatientIfos);
-        this.add(PshowImage);
-        this.add(PpatientIfoShowL);
-        this.add(PpatientIfoShowR);
-        this.add(DoctorRemind);
-        //关闭病例查询事件
-        BClose.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                PMedRecordInfo.setVisible(false);
-                PatientHome.this.repaint();
+        for(JLabel jLabel : lab) {
+            jLabel.setFont(new Font("华文新魏",Font.PLAIN, 18));
 
-            }
-        });
-        //病例查询事件
-        BselectIfo.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                textArea.setText("");
-                String patientId1 = TuserID.getText().trim();
-                String ChiefComplaints0 = "",MedID0 = "";
-                String strSQLa;
-                strSQLa = "select * from MedRecordInfo where PatientID = '"+ patientId1 +"'";
-                Map<String, Object> maps = new HashMap<>();
-                try {
-                    maps = JDBCUtils.findSimpleResult(strSQLa, null);
-                } catch (SQLException e1) {
-                    e1.printStackTrace();
-                }
-                MedID0 = maps.get("PatientID".toUpperCase()).toString();
-                textArea.append("病人ID    ：" + maps.get( "PatientID".toUpperCase()) + "\n");
-                textArea.append("主诉        ：" + maps.get("ChiefComplaints".toUpperCase()) + "\n");
-                textArea.append("现病史    ：" + maps.get("PresentIllness".toUpperCase()) + "\n");
-                textArea.append("既往史    ：" + maps.get("PastHistory".toUpperCase()) + "\n");
-                textArea.append("婚育史    ：" + maps.get("MarriageHistory".toUpperCase()) + "\n");
-                textArea.append("月经史    ：" + maps.get("MenstrualHistory".toUpperCase()) + "\n");
-                textArea.append("家族史    ：" + maps.get("FamilyHistory".toUpperCase()) + "\n");
-                textArea.append("体格检查：" + maps.get("PhysicalExamination".toUpperCase()) + "\n");
-                textArea.append("专科检查：" + maps.get("SpecialistInspection".toUpperCase()) + "\n");
-                textArea.append("辅助检查：" + maps.get("AuxiliaryInspection".toUpperCase()) + "\n");
-                textArea.append("鉴别诊断：" + maps.get("DifferentialDiagnosis".toUpperCase()) + "\n");
-                textArea.append("辅助诊断：" + maps.get("InitialDiagnosis".toUpperCase()) + "\n");
-                textArea.append("初步诊断：" + maps.get("AssessmentPlan".toUpperCase()) + "\n");
-                textArea.append("诊断计划：" + maps.get("DoctorsAdviceID".toUpperCase()) + "\n");
-                textArea.setLineWrap(true);
-                jScrollPane.add(textArea);
-                PMedRecordInfo.add(textArea);
-                jScrollPane.setViewportView(PMedRecordInfo);
-                PatientHome.this.add(jScrollPane);
+        }
 
-                PMedRecordInfo.setVisible(true);
-                if (!TuserID.getText().trim().equals(MedID0)){
-                    //若用户IP输入是否正确，提示
-                    JOptionPane.showConfirmDialog(null,"用户ID输入有误！！！","信息",JOptionPane.INFORMATION_MESSAGE);
-                    return;
-                }
-                if (TuserID.getText().trim().equals("")){
-                    //若用户IP输入是否为空，提示
-                    JOptionPane.showConfirmDialog(null,"用户ID不能为空！！！","信息",JOptionPane.INFORMATION_MESSAGE);
-                    return;
-                }
-            }
-        });
     }
 
+    private void showImage() {
+        ShowImagePanel t = new ShowImagePanel();
+        PshowImage.setPreferredSize(new Dimension(0, BeautifulFrame.frameHeight/5));
+        PshowImage.add(t, BorderLayout.CENTER);
+        this.add(PshowImage, BorderLayout.NORTH);
+        PshowImage.setBackground(Color.cyan);
+    }
+
+    /**
+     * 病人病例信息
+     */
+    private void patientCases() { ;
+        String patientId1 = patientId;
+        String strSQLa;
+        strSQLa = "select * from MedRecordInfo where PatientID = '"+ patientId1 +"'";
+        Map<String, Object> maps = new HashMap<>();
+        try {
+            maps = JDBCUtils.findSimpleResult(strSQLa, null);
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        }
+        textArea.append("病人ID    ：" + maps.get( "PatientID".toUpperCase()) + "\n");
+        textArea.append("主诉        ：" + maps.get("ChiefComplaints".toUpperCase()) + "\n");
+        textArea.append("现病史    ：" + maps.get("PresentIllness".toUpperCase()) + "\n");
+        textArea.append("既往史    ：" + maps.get("PastHistory".toUpperCase()) + "\n");
+        textArea.append("婚育史    ：" + maps.get("MarriageHistory".toUpperCase()) + "\n");
+        textArea.append("月经史    ：" + maps.get("MenstrualHistory".toUpperCase()) + "\n");
+        textArea.append("家族史    ：" + maps.get("FamilyHistory".toUpperCase()) + "\n");
+        textArea.append("体格检查：" + maps.get("PhysicalExamination".toUpperCase()) + "\n");
+        textArea.append("专科检查：" + maps.get("SpecialistInspection".toUpperCase()) + "\n");
+        textArea.append("辅助检查：" + maps.get("AuxiliaryInspection".toUpperCase()) + "\n");
+        textArea.append("鉴别诊断：" + maps.get("DifferentialDiagnosis".toUpperCase()) + "\n");
+        textArea.append("辅助诊断：" + maps.get("InitialDiagnosis".toUpperCase()) + "\n");
+        textArea.append("初步诊断：" + maps.get("AssessmentPlan".toUpperCase()) + "\n");
+        textArea.append("诊断计划：" + maps.get("DoctorsAdviceID".toUpperCase()) + "\n");
+        textArea.setLineWrap(true);
+        textArea.setBackground(Color.getHSBColor(0,100,240));
+        textArea.setFont(new Font("华文新魏",Font.PLAIN, 20));
+        downRight.add(textArea, BorderLayout.CENTER);
+        jScrollPane.setViewportView(textArea);
+        downRight.add(jScrollPane, BorderLayout.CENTER);
+    }
     //专家事件
     private void ProfessorMouseClicked(MouseEvent e) {
         new Professor();
@@ -175,7 +104,7 @@ public class PatientHome extends JPanel {
     }
 
     /**
-     * 查询病人基本信息方法
+     * 病人基本信息方法
      */
     public void getIfos(){
         if(null == patientId) {
@@ -198,7 +127,25 @@ public class PatientHome extends JPanel {
         lab[7].setText(maps.get("BIRTHDAY".toUpperCase()).toString());
         lab[9].setText(maps.get("IDNUMBER".toUpperCase()).toString());
         lab[11].setText(maps.get("PHONENUMBER".toUpperCase()).toString());
-        lab[13].setText(maps.get("ADDRESS".toUpperCase()).toString());
+        String adress = maps.get("ADDRESS".toUpperCase()).toString();
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append("<html>");
+        Pattern pattern = Pattern.compile(".*区");
+        Matcher matcher = pattern.matcher(adress);
+        if(matcher.find()) {
+            stringBuffer.append(matcher.group());
+        }
+        stringBuffer.append("<br>");
+
+        Pattern p = Pattern.compile("区.*");
+        Matcher m = p.matcher(adress);
+        if(m.find()) {
+            String s1 = m.group().substring(1);
+            stringBuffer.append(s1);
+        }
+        stringBuffer.append("<br>");
+        stringBuffer.append("</html>");
+        lab[13].setText(stringBuffer.toString());
 
     }
     //内科事件
@@ -300,7 +247,47 @@ public class PatientHome extends JPanel {
         BookReigser = new JMenu();
 
         //======== this ========
-        this.setLayout(null);
+        this.setLayout(new BorderLayout());
+        Color myColor = Color.getHSBColor(0,100,240);
+
+        //========downPanel==============
+        downpanel = new JPanel();
+        this.add(downpanel, BorderLayout.CENTER);
+        downpanel.setLayout(new BorderLayout());
+
+        //========downLeft==============
+        downLeft = new JPanel();
+        downpanel.add(downLeft, BorderLayout.WEST);
+        downLeft.setPreferredSize(new Dimension(BeautifulFrame.frameWidth/4, 0));
+        downLeft.setLayout(new BorderLayout());
+
+        //========downRight==============
+        downRight = new JPanel();
+        downpanel.add(downRight, BorderLayout.CENTER);
+        downRight.setLayout(new BorderLayout());
+
+        //========downLeftTop==============
+        downLeftTop = new JPanel();
+        downLeftTop.setBackground(Color.red);
+        downLeftTop.setPreferredSize(new Dimension(200, 200));
+        downLeft.add(downLeftTop, BorderLayout.NORTH);
+
+        //========downLeftDown==============
+        downLeftDown = new JPanel();
+        downLeft.add(downLeftDown, BorderLayout.CENTER);
+        downLeftDown.setLayout(new BorderLayout());
+
+        //========downLeftDownL==============
+        downLeftDownL = new JPanel();
+        downLeftDownL.setBackground(myColor);
+        downLeftDownL.setPreferredSize(new Dimension(BeautifulFrame.frameWidth/12, 0));
+        downLeftDown.add(downLeftDownL, BorderLayout.WEST);
+
+        //========downLeftDownR==============
+        downLeftDownR = new JPanel();
+        downLeftDownR.setBackground(myColor);
+        downLeftDown.add(downLeftDownR, BorderLayout.CENTER);
+
 
         //======== menuBar1 ========
         {
@@ -470,6 +457,7 @@ public class PatientHome extends JPanel {
         this.PshowImage.add(menuBar1, BorderLayout.NORTH);
 
     }
+
     private JMenuBar menuBar1;
     private JMenu HomePage;
     private JMenu MedicalGuide;
@@ -490,4 +478,20 @@ public class PatientHome extends JPanel {
     private JMenuItem MedicalPhy;
     private JMenu WordSelect;
     private JMenu BookReigser;
+    public static String patientId;
+    JPanel PshowImage = new JPanel();//显示推送图片的panel
+    JLabel[] lab = {new JLabel("用户ID",JLabel.CENTER),new JLabel("",JLabel.CENTER),
+            new JLabel("用户名",JLabel.CENTER),new JLabel("",JLabel.CENTER),new JLabel("用户性别",JLabel.CENTER),
+            new JLabel("",JLabel.CENTER), new JLabel("出生日期",JLabel.CENTER),new JLabel("",JLabel.CENTER),
+            new JLabel("身份证号",JLabel.CENTER),new JLabel("",JLabel.CENTER), new JLabel("电话号码",JLabel.CENTER),
+            new JLabel("",JLabel.CENTER), new JLabel("家庭住址",JLabel.CENTER),new JLabel("",JLabel.CENTER)};
+    JTextArea textArea = new JTextArea();//显示病例的JTextArea
+    JScrollPane jScrollPane = new JScrollPane();//病例超出滚动条
+    private JPanel downpanel;
+    private JPanel downLeft;
+    private JPanel downRight;
+    private JPanel downLeftTop;
+    private JPanel downLeftDown;
+    private JPanel downLeftDownL;
+    private JPanel downLeftDownR;
 }

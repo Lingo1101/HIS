@@ -6,6 +6,7 @@ import com.ui.Login.Logining;
 import com.ui.guide.PationGuide;
 import com.utils.BeautifulButton;
 import com.utils.BeautifulFrame;
+import com.utils.JDBCUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,27 +31,25 @@ public class Home {
     private Logined logined;
 
     public Home() {
-        this.initComponents();
-
-        frame.setVisible(true);
-
-        //---loginButton---
-        loginButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                loginActionPerformed();
-            }
-        });
-
-        //------------titleLabel--------------------
-        titleLabel.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                masterPanel.removeAll();
-                masterPanel.add(pationGuide, BorderLayout.CENTER);
-                masterPanel.updateUI();
-            }
-        });
+            JDBCUtils.connect();    //初始化时就连接数据库 去掉需要操作时有的卡顿
+            this.initComponents();
+            frame.setVisible(true);
+            //---loginButton---
+            loginButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    loginActionPerformed();
+                }
+            });
+            //------------titleLabel--------------------
+            titleLabel.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    masterPanel.removeAll();
+                    masterPanel.add(pationGuide, BorderLayout.CENTER);
+                    masterPanel.updateUI();
+                }
+            });
     }
 
     public void initComponents() {

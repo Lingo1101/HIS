@@ -14,6 +14,8 @@ import com.utils.JDBCUtils;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
@@ -32,6 +34,18 @@ public class Logining extends JPanel {
         initComponents();
         passwordCheckBox.addActionListener(e -> {showPasswordActionPerformed(e); });
         submitButton.addActionListener(e -> {submitButtonActionPerformed(e);});
+        userIDField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                KeyActionPerformed(e);
+            }
+        });
+        passwordField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                KeyActionPerformed(e);
+            }
+        });
 
     }
 
@@ -155,12 +169,18 @@ public class Logining extends JPanel {
      * @param e
      */
     private void showPasswordActionPerformed(ActionEvent e) {
-
         if (passwordCheckBox.isSelected()){
             passwordField.setEchoChar('\0');
         }
         else{
             passwordField.setEchoChar('*');
+        }
+    }
+
+    private void KeyActionPerformed(KeyEvent e) {
+        int key = e.getKeyCode();
+        if(key == KeyEvent.VK_ENTER) {
+            submitButton.doClick();
         }
     }
 

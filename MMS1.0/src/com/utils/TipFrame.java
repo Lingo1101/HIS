@@ -4,8 +4,6 @@
 
 package com.utils;
 
-import com.utils.MonitorPatient;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -48,8 +46,8 @@ public class TipFrame extends JFrame {
 
     public  void ClickActionPerformed() {
         patientPane.get(patientID).setBackground(Color.yellow);
-        patientTime.remove(map);
-        patientPane.remove(patientID);
+        if(null != map) patientTime.remove(map);
+        if(null != patientPane) patientPane.remove(patientID);
         dispose();
         canNotify.run();
     }

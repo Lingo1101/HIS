@@ -1,22 +1,21 @@
 package com.ui.patient;
-import com.utils.BeautifulFrame;
-import com.utils.JDBCUtils;
+import com.utils.*;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.*;
-import javax.swing.border.TitledBorder;
+import java.util.List;
 
 /**
  * @author ddd zhaung 主窗体函数，用于实现主要功能的操作界面
  */
-//比如 你在这改了代码 保存下 然后 打开github的那个
 public class PatientHome extends JPanel {
 
     public static void main(String[] args) {
@@ -35,6 +34,7 @@ public class PatientHome extends JPanel {
         getIfos();
         patientCases();
         showImage();
+        advicePanel();
         downLeftDownL.setLayout(new GridLayout(10,1,5,5));
         downLeftDownR.setLayout(new GridLayout(10,1,5,5));
         for (int i = 0;i < 13;){
@@ -49,6 +49,20 @@ public class PatientHome extends JPanel {
             jLabel.setFont(new Font("华文新魏",Font.PLAIN, 18));
 
         }
+
+        map = new HashMap<>();
+        map.put(patientId, advicePanel);
+        canNotify = new AlonePatientMonitor(patientId, map);
+        new Thread(() -> {
+            while(map.size() != 0) {
+                canNotify.excute();
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
 
     }
 
@@ -148,6 +162,27 @@ public class PatientHome extends JPanel {
         lab[13].setText(stringBuffer.toString());
 
     }
+
+    private void advicePanel() {
+        String sql = "select * from DoctorsAdviceInfo where PatientID=?";
+        List params = new ArrayList();
+        params.add(patientId);
+        Map<String, Object> map = new HashMap<>();
+        try {
+            map = JDBCUtils.findSimpleResult(sql, params);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append("<h2 align='center'>");
+        stringBuffer.append(map.get("MedicalContent".toUpperCase()).toString());
+        stringBuffer.append("<hr>");
+        stringBuffer.append(map.get("EffectiveTime".toUpperCase()).toString());
+        stringBuffer.append("<h2>");
+        advicePanel.setText(stringBuffer.toString());
+        advicePanel.setBackground(AdviceUtils.getMyColor(patientId));
+    }
+
     //内科事件
     private void menu1MouseClicked(MouseEvent e) {
         DepartClassify departClassify = new DepartClassify();
@@ -266,11 +301,12 @@ public class PatientHome extends JPanel {
         downpanel.add(downRight, BorderLayout.CENTER);
         downRight.setLayout(new BorderLayout());
 
-        //========downLeftTop==============
-        downLeftTop = new JPanel();
-        downLeftTop.setBackground(Color.red);
-        downLeftTop.setPreferredSize(new Dimension(200, 200));
-        downLeft.add(downLeftTop, BorderLayout.NORTH);
+        //========advicePanel==============
+        advicePanel = new JTextPane();
+        advicePanel.setPreferredSize(new Dimension(0, BeautifulFrame.frameHeight/5));
+        advicePanel.setEditable(false);
+        advicePanel.setContentType("text/html");
+        downLeft.add(advicePanel, BorderLayout.NORTH);
 
         //========downLeftDown==============
         downLeftDown = new JPanel();
@@ -490,8 +526,10 @@ public class PatientHome extends JPanel {
     private JPanel downpanel;
     private JPanel downLeft;
     private JPanel downRight;
-    private JPanel downLeftTop;
+    private JTextPane advicePanel;
     private JPanel downLeftDown;
     private JPanel downLeftDownL;
     private JPanel downLeftDownR;
+    private CanNotify canNotify;
+    private Map<String, JTextPane> map;
 }

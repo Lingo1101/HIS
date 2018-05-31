@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
  * 监控医嘱
  *@author dutz
  */
-public class MonitorPatient implements CanNotify{
+public class ManyPatientMonitor implements CanNotify{
     private static Calendar c;
     private static long endTime;
     private static Date date;
@@ -18,14 +18,13 @@ public class MonitorPatient implements CanNotify{
     private List<Map<String, int[]>> patientTime;
     private Map<String, JTextPane> patientPane;
 
-    public MonitorPatient(List<Map<String, int[]>> patientTime, Map<String, JTextPane> patientPane) {
+    public ManyPatientMonitor(List<Map<String, int[]>> patientTime, Map<String, JTextPane> patientPane) {
         this.patientTime = patientTime;
         this.patientPane = patientPane;
         c = Calendar.getInstance();
-
-
     }
 
+    @Override
     public synchronized void excute() {
         for(Map<String, int[]> map : patientTime) {
             String patientID = parse(map.toString());
@@ -47,7 +46,6 @@ public class MonitorPatient implements CanNotify{
                 }
                 break;
             }
-
         }
     }
 
@@ -58,31 +56,6 @@ public class MonitorPatient implements CanNotify{
             return m.group();
         }
         return  null;
-    }
-
-    /**
-     * 传病人ID 返回病人的时间
-     * @param pID
-     * @return
-     */
-    public static int[] getTime(String pID) {
-        String sql = "select EffectiveTime from DoctorsAdviceInfo where PatientID = '" + pID + "'";
-        String time = null;
-        Map<String, Object> maps = new HashMap<>();
-        try {
-            maps = JDBCUtils.findSimpleResult(sql, null);
-            time = maps.get("EffectiveTime".toUpperCase()).toString();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        Pattern p = Pattern.compile("\\d{2,5}");
-        Matcher m = p.matcher(time);
-        int arr[] = new int[7];
-        int i = 0;
-        while(m.find()) {
-            arr[i++] = Integer.parseInt(m.group());
-        }
-        return arr;
     }
 
     @Override

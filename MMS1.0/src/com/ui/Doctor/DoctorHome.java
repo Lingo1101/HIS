@@ -169,6 +169,8 @@ System.out.println("刷新数据");
                     table1MouseClicked(e);
                 }
             });
+            table1.setFont(new Font("宋体", Font.PLAIN, 20));
+            table1.getTableHeader().setFont(new Font("宋体", Font.BOLD, 16));
             scrollPane1.setViewportView(table1);
         }
         downPanel.add(scrollPane1);
@@ -203,6 +205,7 @@ System.out.println("刷新数据");
         String[] str_row = {patientID,patientName,gender,idNumber,phoneNumber,id,departID, doctorID,  nurseID,  bedID,inHspTimes}; // 将一行的数据存在str_row
         dfm.addRow(str_row);
         table1.setModel(dfm);
+
 
     }
 

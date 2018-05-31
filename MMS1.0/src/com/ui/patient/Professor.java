@@ -1,5 +1,6 @@
 package com.ui.patient;
 
+import com.utils.BeautifulFrame;
 import com.utils.JDBCUtils;
 
 import javax.swing.*;
@@ -13,7 +14,6 @@ import java.util.Map;
  * 专家荟萃界面
  */
 public class Professor extends JFrame {
-    int screenWidth,screenHeight;
     static int totalWidth;
     static int totalHeight;
 
@@ -268,17 +268,6 @@ public class Professor extends JFrame {
 
         Department.add("内科专家",PInternalt);  Department.add("外科专家",PSurgical);
         Department.add("专科专家",PSpecialist);  Department.add("医技专家",PMedical);
-
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();//获取主显示器屏幕大小即获取PC屏幕尺寸
-        screenWidth = screenSize.width;
-        screenHeight = screenSize.height;
-        //按屏幕尺寸固定比例设置软件尺寸
-        totalWidth = (int) Math.round(screenWidth * 0.7);
-        totalHeight = (int) Math.round(screenHeight * 0.9);//round是四舍五入
-        this.setSize(totalWidth, totalHeight);
-        //获取任务栏高度,以便将软件位置初始化为屏幕正中央
-        Insets screenInsets = Toolkit.getDefaultToolkit().getScreenInsets(this.getGraphicsConfiguration());
-        int bottomInset = screenInsets.bottom;
         PSelect.add(label);
         PInternalt01.add(lb001);
         PInternalt01.add(PInternalt001);
@@ -307,8 +296,11 @@ public class Professor extends JFrame {
         this.add(PSelect,BorderLayout.NORTH);
         this.add(Department,BorderLayout.CENTER);
         this.setTitle("专家荟萃");
-        this.setLocation(Math.round((screenWidth - totalWidth) / 2), Math.round((screenHeight - bottomInset - totalHeight) / 2));
+        totalWidth = BeautifulFrame.frameWidth*2/3;
+        totalHeight = BeautifulFrame.frameHeight*4/5;
+        this.setSize(totalWidth, totalHeight);
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        this.setLocationRelativeTo(this.getOwner());
         this.setVisible(true);
 
     }

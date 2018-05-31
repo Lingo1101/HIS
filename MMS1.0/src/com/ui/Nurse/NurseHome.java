@@ -1,7 +1,8 @@
 package com.ui.Nurse;
 
+import com.utils.AdviceUtils;
 import com.utils.JDBCUtils;
-import com.utils.MonitorPatient;
+import com.utils.ManyPatientMonitor;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -12,8 +13,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 /*
  * Created by JFormDesigner on Wed Mar 28 09:35:09 CST 2018
  */
@@ -35,10 +34,10 @@ public class NurseHome extends JPanel {
                     "where InpatientInfo.PatientID=PatientInfo.PatientID " +
                     "and NurseID='" + nurseID + "'");
         }
-       timeTest = new MonitorPatient(patientTime, patientPane);
+        manyPatientMonitor = new ManyPatientMonitor(patientTime, patientPane);
         new Thread(() -> {
-            while(patientTime.size() != 0) {
-                timeTest.excute();
+            while(patientPane.size() != 0) {
+                manyPatientMonitor.excute();
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
@@ -65,14 +64,14 @@ public class NurseHome extends JPanel {
             JTextPane jTextPane = new JTextPane();
             jTextPane.setEditable(false);
             jTextPane.setText("姓名：" + patientName + "\n" + "病人ID：" + patientID + "\n" + "性别：" + gender + "\n" + "病床号：" + bedID + "");
-            jTextPane.setBackground(getMyColor(patientID));
+            jTextPane.setBackground(AdviceUtils.getMyColor(patientID));
             jTextPane.setSize(50, 40);
             downPanel.add(jTextPane);
             n++;
 
             if(jTextPane.getBackground() == Color.red) {
                 Map<String, int[]> map = new HashMap<>();
-                map.put(patientID, MonitorPatient.getTime(patientID));
+                map.put(patientID, AdviceUtils.getTime(patientID));
                 patientTime.add(map);
 
                 patientPane.put(patientID, jTextPane);
@@ -92,27 +91,6 @@ public class NurseHome extends JPanel {
             });
         }
     }
-
-    //窗口按钮变色
-    public  Color getMyColor(String patientID) {
-        String a="select IsExecuted from DoctorsAdviceInfo where PatientID='"+ patientID+"'";
-        String aaaa = "";
-        Map<String, Object> maps = new HashMap<>();
-        try {
-            maps = JDBCUtils.findSimpleResult(a, null);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        aaaa = maps.get("IsExecuted".toUpperCase()).toString();
-
-        if(aaaa.equals("否")) {
-            return Color.red;
-        }
-        else{
-            return Color.green;
-        }
-    }
-
 
     //点击病人块 弹出执行框
     private void textPanelMouseClicked(JTextPane jTextPane) {
@@ -173,6 +151,6 @@ public class NurseHome extends JPanel {
     private JPanel upPanel;
     private List<Map<String, int[]>> patientTime = new ArrayList<>();
     private Map<String, JTextPane> patientPane = new HashMap<>();
-    private MonitorPatient timeTest;
+    private ManyPatientMonitor manyPatientMonitor;
 
 }

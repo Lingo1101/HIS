@@ -131,8 +131,6 @@ public class BeautifulFrame extends JFrame{
 				System.exit(0);
 			}
 		});
-
-
 	}
 
 	/**

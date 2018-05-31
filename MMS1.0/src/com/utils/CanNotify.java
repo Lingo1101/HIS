@@ -1,5 +1,6 @@
 package com.utils;
 
 public interface CanNotify {
-    void  run() ;
+    public abstract void excute();
+    public abstract void  run() ;
 }

@@ -1,6 +1,7 @@
 package com.ui.Doctor;
 
 import com.ui.patient.YyTime;
+import com.utils.BeautifulFrame;
 import com.utils.JDBCUtils;
 
 import java.awt.BorderLayout;
@@ -59,11 +60,6 @@ public class NewPatient extends JDialog {
     public NewPatient(String doctorID) {
         this.doctorID = doctorID;
         setFont(new Font("Dialog", Font.PLAIN, 20));
-        setResizable(false);
-
-        setSize(860, 760);
-        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-        setLocation((d.width - 860) / 2, (d.height - 760) / 2);
         getContentPane().setLayout(new BorderLayout());
         contentPanel.setToolTipText("");
         contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -332,14 +328,19 @@ public class NewPatient extends JDialog {
                 buttonPane.add(cancelButton);
             }
         }
-        setVisible(true);
+
+        this.setResizable(false);
+        int totalWidth = BeautifulFrame.frameWidth*2/3;
+        int totalHeight = BeautifulFrame.frameHeight*4/5;
+        this.setSize(totalWidth, totalHeight);
+        this.setLocationRelativeTo(this.getOwner());
+        this.setVisible(true);
     }
 
     /**
      * 保存病人记录
      */
     private void savePatient() {
-
         // 完整性检查
         if (check() == false) {
             JOptionPane.showMessageDialog(null, "请输入所有的项目");
@@ -370,7 +371,7 @@ public class NewPatient extends JDialog {
                 + "','" + nurseID + "','" + bedID + "','" + inHspTime + "','" + admissionReason + "')";
         try {
             System.out.println(strSQL1);
-//            JDBCUtils.updateByPreparedStatement(strSQL1, null);
+
             JDBCUtils.updateByPreparedStatement(strSQL2, null);
         } catch (Exception e) {
             e.printStackTrace();
@@ -378,7 +379,6 @@ public class NewPatient extends JDialog {
             return;
         }
         JOptionPane.showMessageDialog(null, "添加成功！");
-//        dispose();
     }
 
     /**

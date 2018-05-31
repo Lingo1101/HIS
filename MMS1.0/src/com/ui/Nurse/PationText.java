@@ -10,6 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.*;
 
+import com.utils.AdviceUtils;
 import com.utils.JDBCUtils;
 /*
  * Created by JFormDesigner on Sat Apr 14 22:05:36 CST 2018
@@ -126,7 +127,7 @@ public class PationText extends JFrame {
         } catch (SQLException e1) {
             e1.printStackTrace();
         }
-        jTextPane.setBackground(nurseHome.getMyColor(patientID));
+        jTextPane.setBackground(AdviceUtils.getMyColor(patientID));
         nurseHome.updateUI();
         this.dispose();
     }

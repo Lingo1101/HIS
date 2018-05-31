@@ -1,5 +1,7 @@
 package com.ui.patient;
 
+import com.utils.BeautifulFrame;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -46,16 +48,10 @@ public class Department extends JFrame{
         Department department = new Department();
     }
     public Department(){
-
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();//获取主显示器屏幕大小即获取PC屏幕尺寸
-        screenWidth = screenSize.width;
-        screenHeight = screenSize.height;
-        //按屏幕尺寸固定比例设置软件尺寸
-        totalWidth = (int) Math.round(screenWidth * 0.7);
-        totalHeight = (int) Math.round(screenHeight * 0.9);//round是四舍五入
+        totalWidth = BeautifulFrame.frameWidth*2/3;
+        totalHeight = BeautifulFrame.frameHeight*4/5;
         Insets screenInsets = Toolkit.getDefaultToolkit().getScreenInsets(this.getGraphicsConfiguration());
         int bottomInset = screenInsets.bottom;
-        this.setLocation(Math.round((screenWidth - totalWidth) / 2), Math.round((screenHeight - bottomInset - totalHeight) / 2));
         this.setSize(totalWidth, totalHeight);
         //获取任务栏高度,以便将软件位置初始化为屏幕正中央
 
@@ -126,6 +122,7 @@ public class Department extends JFrame{
         this.add(label);
         this.add(kong);
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        this.setLocationRelativeTo(this.getOwner());
         this.setVisible(true);
         //内科事件
         buttonsneike[0].addMouseListener(new MouseAdapter() {

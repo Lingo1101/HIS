@@ -1,5 +1,6 @@
 package com.ui.Doctor;
 
+import com.utils.BeautifulFrame;
 import com.utils.JDBCUtils;
 
 import javax.swing.*;
@@ -30,9 +31,7 @@ public class Add extends JFrame {
     }
 
     public Add(String patientID, String pass) {
-
         setPatientID(patientID);
-
         initComponents();
         Map<String, Object> maps = new HashMap<>();
         try {
@@ -48,16 +47,18 @@ public class Add extends JFrame {
         textField8.setText(maps.get("BIRTHDAY".toUpperCase()).toString());
         textField10.setText(maps.get("PhoneNumber".toUpperCase()).toString());
         textField23.setText(pass);
+        int totalWidth = BeautifulFrame.frameWidth*9/20;
+        int totalHeight = BeautifulFrame.frameHeight*2/3;
+        this.setSize(totalWidth, totalHeight);
+        this.setLocationRelativeTo(getOwner());
         setVisible(true);
     }
 
     private void button2ActionPerformed(ActionEvent e) {
-        // TODO add your code here
         dispose();
     }
 // 编辑患者信息，下医嘱
     private void button1ActionPerformed(ActionEvent e) {
-        // TODO add your code here
         String a=textField4.getText().trim();
         String b=textField5.getText().trim();
         String c=textField6.getText().trim();
@@ -82,7 +83,6 @@ public class Add extends JFrame {
     }
 
     private void initComponents() {
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         scrollPane1 = new JScrollPane();
         panel1 = new JPanel();
         label14 = new JLabel();
@@ -354,11 +354,9 @@ public class Add extends JFrame {
                 }
             }
             scrollPane1.setViewportView(panel1);
+            scrollPane1.getVerticalScrollBar().setUnitIncrement(20);		//改速度
         }
         contentPane.add(scrollPane1, BorderLayout.CENTER);
-        pack();
-        setLocationRelativeTo(getOwner());
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

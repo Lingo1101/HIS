@@ -1,5 +1,6 @@
 package com.ui.patient;
 
+import com.utils.BeautifulFrame;
 import com.utils.JDBCUtils;
 
 import javax.swing.*;
@@ -15,7 +16,6 @@ import java.util.Map;
  * 用于预约科室检查的类
  */
 public class BookReigserKS extends JFrame{
-    int screenWidth,screenHeight;
     static int totalWidth;
     static int totalHeight;
     public String patientId1;//病人ID
@@ -34,23 +34,24 @@ public class BookReigserKS extends JFrame{
     JComboBox    Check = new JComboBox();
     JPanel       jPanelA = new JPanel();
     JPanel       jPanelB = new JPanel();
-    JPanel       jPanelC = new JPanel();
     JPanel       jPanelD = new JPanel();
-    JLabel       jLabel =  new JLabel(new ImageIcon("Images/YY001.jpg"));
+    JPanel jPanelC =  new JPanel(){
+       @Override
+       public void paintComponent(Graphics g) {
+           g.drawImage(new ImageIcon("Images/YY001.jpg").getImage(),
+                   0, 0, totalWidth,200, null);
+       }
+   };
     TextField    time = new TextField();
     JTextField   Ksname = new JTextField();
     JTextField   BookNumber = new JTextField();
 
     public BookReigserKS(){
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();//获取主显示器屏幕大小即获取PC屏幕尺寸
-        screenWidth = screenSize.width;
-        screenHeight = screenSize.height;
         //按屏幕尺寸固定比例设置软件尺寸
-        totalWidth = (int) Math.round(screenWidth * 0.7);
-        totalHeight = (int) Math.round(screenHeight * 0.9);//round是四舍五入
+        totalWidth = BeautifulFrame.frameWidth*2/3;
+        totalHeight = BeautifulFrame.frameHeight*4/5;
         Insets screenInsets = Toolkit.getDefaultToolkit().getScreenInsets(this.getGraphicsConfiguration());
         int bottomInset = screenInsets.bottom;
-        this.setLocation(Math.round((screenWidth - totalWidth) / 2), Math.round((screenHeight - bottomInset - totalHeight) / 2));
         this.setSize(totalWidth + 16, totalHeight);
         //获取任务栏高度,以便将软件位置初始化为屏幕正中央
         BookNumber.setFont(new Font("宋体",Font.PLAIN,15));
@@ -61,7 +62,7 @@ public class BookReigserKS extends JFrame{
         jPanelD.setBounds(0,200,250,totalHeight - 200);
         jPanelA.setBackground(Color.getHSBColor(0,100,240));
         jPanelB.setBackground(Color.getHSBColor(0,100,240));
-        jPanelD.setBackground(Color.cyan);
+        jPanelD.setBackground(Color.getHSBColor(0,100,240));
         jLabelsName[4].setBounds(30,210,100,30);
         jLabelsName[5].setBounds(30,250,100,30);
         jLabelsName[6].setBounds(30,290,100,30);
@@ -87,13 +88,15 @@ public class BookReigserKS extends JFrame{
         jPanelA.add(Confirmbutton);
         jPanelA.add(time);
         jPanelA.add(BookNumber);
-        jPanelC.add(jLabel);
         getPatients();
         this.add(jPanelA);
         this.add(jPanelB);
         this.add(jPanelC);
         this.add(jPanelD);
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        this.setTitle("预约");
+        //this.setResizable(false);
+        this.setLocationRelativeTo(this.getOwner());
         this.setVisible(true);
 
         //选择时间time事件

@@ -1,5 +1,6 @@
 package com.ui.patient;
 
+import com.utils.BeautifulFrame;
 import com.utils.JDBCUtils;
 
 import javax.swing.*;
@@ -13,8 +14,6 @@ import java.util.Map;
  * 科室简介
  */
 public class DepartIntroduce extends JFrame{
-
-    int screenWidth,screenHeight;
     static int totalWidth;
     static int totalHeight;
     public static String ksid;
@@ -22,7 +21,8 @@ public class DepartIntroduce extends JFrame{
     JTextArea DeFtextArea = new JTextArea();
     JScrollPane scrollPane = new JScrollPane();
     JPanel panel = new JPanel();
-    JButton button = new JButton(new ImageIcon("Images/return.png"));
+    JButton button = new JButton();
+    ImageIcon imageIcon = new ImageIcon("Images/return.png");
     JLabel label = new JLabel(" ",JLabel.CENTER);
 
     /**
@@ -37,15 +37,10 @@ public class DepartIntroduce extends JFrame{
      * 构造函数
      */
     public DepartIntroduce(){
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();//获取主显示器屏幕大小即获取PC屏幕尺寸
-        screenWidth = screenSize.width;
-        screenHeight = screenSize.height;
-        //按屏幕尺寸固定比例设置软件尺寸
-        totalWidth = (int) Math.round(screenWidth * 0.7);
-        totalHeight = (int) Math.round(screenHeight * 0.9);//round是四舍五入
+        totalWidth = BeautifulFrame.frameWidth*2/3;
+        totalHeight = BeautifulFrame.frameHeight*4/5;
         Insets screenInsets = Toolkit.getDefaultToolkit().getScreenInsets(this.getGraphicsConfiguration());
         int bottomInset = screenInsets.bottom;
-        this.setLocation(Math.round((screenWidth - totalWidth) / 2), Math.round((screenHeight - bottomInset - totalHeight) / 2));
         this.setSize(totalWidth + 16, totalHeight);
         this.setUndecorated(true);//让Frame窗口失去边框和标题栏的修饰
         panel.setLayout(new BorderLayout());
@@ -53,19 +48,28 @@ public class DepartIntroduce extends JFrame{
         DeFtextArea.setFont(new Font("黑体",Font.PLAIN,20));
         button.setBorderPainted(false);
         button.setOpaque(false);
+        button.setContentAreaFilled(false);
+        button.setIcon(imageIcon);
         DeFtextArea.setLineWrap(true);//自动换行
         scrollPane.add(DeFtextArea);
         panel.add(label);
         panel.add(button,BorderLayout.EAST);
         this.add(panel,BorderLayout.NORTH);
         this.add(DeFtextArea,BorderLayout.CENTER);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        this.setLocationRelativeTo(this.getOwner());
         this.setVisible(true);
 
         button.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 dispose();
+            }
+        });
+        button.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             }
         });
     }

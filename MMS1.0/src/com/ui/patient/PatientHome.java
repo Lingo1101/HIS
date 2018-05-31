@@ -51,7 +51,9 @@ public class PatientHome extends JPanel {
         }
 
         map = new HashMap<>();
-        map.put(patientId, advicePanel);
+        if(advicePanel.getBackground() == Color.red) {
+            map.put(patientId, advicePanel);
+        }
         canNotify = new AlonePatientMonitor(patientId, map);
         new Thread(() -> {
             while(map.size() != 0) {

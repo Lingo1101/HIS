@@ -232,10 +232,11 @@ public class PationGuide extends JPanel implements ActionListener {
                 UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("宋体", Font.PLAIN, 20)));
                 UIManager.put("OptionPane.messageFont", new FontUIResource(new Font("宋体", Font.PLAIN, 20)));
                 JOptionPane.showMessageDialog(null, "请登陆后返回主页使用");
-                return;
+                rightPanel.updateUI();
+            } else {
+                rightPanel.add(thirdPanel);
+                rightPanel.updateUI();
             }
-            rightPanel.add(thirdPanel);
-            rightPanel.updateUI();
         }
         /*4*/
         if(e.getActionCommand().equals("zy")){
